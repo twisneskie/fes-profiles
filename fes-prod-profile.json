@@ -71,6 +71,31 @@
         }
       },
       "lineage": {
+        "processStep": {
+          "citation": {
+            "basicInformation": {
+              "presentationForm": false
+            },
+            "onlineResource": {
+              "protocol": false,
+              "applicationProfile": false,
+              "protocolRequest": false
+            },
+            "identifier": false,
+            "identifierShort": {
+              "version": false,
+              "description": false
+            },
+            "graphic": false
+          },
+          "timePeriod": {
+            "identifier": false,
+            "periodName": false,
+            "interval": false,
+            "duration": false,
+            "scope": false
+          }
+        }
         "source": {
           "sourceCitation": {
             "onlineResource": {
@@ -78,9 +103,11 @@
               "applicationProfile": false,
               "protocolRequest": false
             },
-            "identifier": {
-              "authority": false
-            }
+            "identifier": false
+            "identifierShort": {
+              "version": false,
+              "description": false
+            },
           },
           "metadataCitation": false,
           "referenceSystem": false,
@@ -95,13 +122,13 @@
             "applicationProfile": false,
             "protocolRequest": false
           },
-          "identifier": {
+          "identifier": false,
+          "identifierShort": {
             "version": false,
-            "description": false,
-            "authority": false
+            "description": false
           },
           "graphic": false
-        },
+          },
         "scope": false
       },
       "taxonomy": {
