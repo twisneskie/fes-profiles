@@ -9,7 +9,8 @@
     "record": {
       "main": {
         "basicInformation": {
-          "recordId": false
+          "recordId": false,
+          "defaultLocale": false
         },
         "citation": {
           "basicInformation": {
@@ -51,33 +52,16 @@
         "credit": false
       },
       "metadata": {
-        "metadataIdentifier": {
-          "version": false,
-          "description": false,
-          "authority": false
+        "metadataIdentifier": false,
+        "parentMetadata": false,
+        "onlineResource": false,
+        "maintenance": {
+          "frequency": true,
+          "dates": false,
+          "contact": false,
+          "note": false,
+          "scope": false
         },
-        "parentMetadata": {
-          "basicInformation": {
-            "alternateTitle": false,
-            "edition": false,
-            "presentationForm": false
-          },
-          "identifier": false,
-          "identifierSimple": {
-            "version": false,
-            "description": false,
-            "authority": false
-          },
-          "series": false,
-          "otherCitationDetails": false,
-          "graphic": false
-        },
-        "onlineResource": {
-          "protocol": false,
-          "applicationProfile": false,
-          "protocolRequest": false
-        },
-        "maintenance": false,
         "defaultLocale": false,
         "alternateMetadataReference": false
       },
@@ -85,25 +69,6 @@
         "geographic": {
           "description": false,
           "containsData": false
-        }
-      },
-      "spatial": {
-        "spatialReferenceSystem": {
-          "referenceSystemIdentifier": {
-            "version": false,
-            "description": false,
-            "authority": {
-              "basicInformation": {
-                "alternateTitle": false
-              },
-              "onlineResource": {
-                "protocol": false,
-                "applicationProfile": false,
-                "protocolRequest": false
-              },
-              "identifier": false
-            }
-          }
         }
       },
       "taxonomy": {
@@ -146,8 +111,14 @@
               "storage": {
                 "density": false,
                 "units": false
-              }
-            }
+              },
+              "identifier": false
+            },
+            "transferFrequency": false
+          },
+          "orderProcess": {
+            "plannedAvailability": false,
+            "turnaround": false
           }
         }
       },
@@ -161,54 +132,196 @@
             "edition": false,
             "presentationForm": false
           },
-          "identifier": false,
+          "onlineResource": false,
           "identifierSimple": false,
-          "onlineResource": {
-            "protocol": false,
-            "applicationProfile": false,
-            "protocolRequest": false
-          },
-          "identifierShort": {},
           "series": false,
           "otherCitationDetails": false,
           "graphic": false
         },
-        "metadataCitation": {
+        "metadataCitation": false
+      }
+    },
+    "contact": {},
+    "dictionary": {
+      "main": {
+        "basicInformation": {
+          "functionalLanguage": false
+        },
+        "recommendedUse": false,
+        "locale": false
+      },
+      "citation": {
+        "basicInformation": {
+          "alternateTitle": false,
+          "edition": false,
+          "presentationForm": false
+        },
+        "onlineResource": {
+          "description": false,
+          "protocol": false
+        },
+        "identifier": false,
+        "series": false,
+        "identifierSimple": {
+          "visible": true,
+          "authority": false,
+          "version": false,
+          "description": false
+        },
+        "identifierShort": false,
+        "otherCitationDetails": false,
+        "graphic": false
+      },
+      "entity": {
+        "information": {},
+        "identifier": {},
+        "codeName": {},
+        "definition": {},
+        "commonName": {},
+        "alias": {},
+        "structure": {
+          "fieldSeparatorCharacter": {},
+          "numberOfHeaderLines": {},
+          "quoteCharacter": {}
+        },
+        "keys": {},
+        "index": {},
+        "entityReference": {
+          "basicInformation": {},
+          "title": {},
+          "alternateTitle": {},
+          "date": {},
+          "edition": {},
+          "presentationForm": {},
+          "responsibleParty": {},
+          "onlineResource": {},
+          "identifier": {},
+          "identifierSimple": {},
+          "identifierShort": {},
+          "series": {
+            "name": {},
+            "issue": {},
+            "page": {}
+          },
+          "otherCitationDetails": {},
+          "graphicOverview": {}
+        },
+        "attribute": {
+          "name": {},
+          "dataType": {},
+          "definition": {},
+          "allowNull": {},
+          "information": {
+            "codeName": {},
+            "definition": {},
+            "dataType": {},
+            "allowNull": {},
+            "commonName": {},
+            "domain": {},
+            "alias": {},
+            "units": {},
+            "unitsResolution": {},
+            "caseSensitive": {},
+            "fieldWidth": {},
+            "missingValue": {},
+            "minValue": {},
+            "maxValue": {}
+          },
+          "valueRange": {},
+          "timePeriod": {},
+          "attributeReference": {
+            "basicInformation": {},
+            "title": {},
+            "alternateTitle": {},
+            "date": {},
+            "edition": {},
+            "presentationForm": {},
+            "responsibleParty": {},
+            "onlineResource": {},
+            "identifier": {},
+            "identifierSimple": {},
+            "identifierShort": {},
+            "series": {
+              "name": {},
+              "issue": {},
+              "page": {}
+            },
+            "otherCitationDetails": {},
+            "graphicOverview": {}
+          }
+        },
+        "citation": {
+          "identifier": {
+            "identifier": {},
+            "namespace": {},
+            "version": {},
+            "description": {},
+            "authority": {
+              "basicInformation": {},
+              "title": {},
+              "alternateTitle": {},
+              "date": {},
+              "responsibleParty": {},
+              "onlineResource": {},
+              "identifier": {},
+              "identifierSimple": {},
+              "identifierShort": {}
+            }
+          }
+        }
+      },
+      "domain": {
+        "information": {
+          "commonName": false
+        },
+        "domainReference": {
           "basicInformation": {
             "alternateTitle": false,
             "edition": false,
             "presentationForm": false
           },
-          "identifier": false,
-          "identifierSimple": false,
           "onlineResource": {
-            "protocol": false,
-            "applicationProfile": false,
-            "protocolRequest": false
+            "description": false,
+            "protocol": false
           },
-          "identifierShort": {},
+          "identifier": false,
           "series": false,
-          "otherCitationDetails": false,
-          "graphic": false
-        }
-      },
-      "documents": {
-        "citation": {
-          "identifier": false,
-          "identifierSimple": false,
-          "onlineResource": {
-            "protocol": false,
-            "applicationProfile": false,
-            "protocolRequest": false
+          "identifierSimple": {
+            "visible": true,
+            "authority": false,
+            "version": false,
+            "description": false
           },
-          "identifierShort": {},
+          "identifierShort": false,
           "otherCitationDetails": false,
           "graphic": false
+        },
+        "domainItem": {
+          "reference": {
+            "basicInformation": {
+              "alternateTitle": false,
+              "edition": false,
+              "presentationForm": false
+            },
+            "onlineResource": {
+              "description": false,
+              "protocol": false
+            },
+            "identifier": false,
+            "series": false,
+            "identifierSimple": {
+              "visible": true,
+              "authority": false,
+              "version": false,
+              "description": false
+            },
+            "identifierShort": false,
+            "otherCitationDetails": false,
+            "graphic": false
+          }
         }
       }
-    },
-    "contact": {},
-    "dictionary": {}
+    }
   },
   "nav": {
     "record": [
@@ -231,11 +344,6 @@
         "title": "Extent",
         "target": "record.show.edit.extent",
         "tip": "Information describing the bounds of the product."
-      },
-      {
-        "title": "Spatial",
-        "target": "record.show.edit.spatial",
-        "tip": "Information concerning the spatial attributes of the product."
       },
       {
         "title": "Lineage",
@@ -261,11 +369,6 @@
         "title": "Associated",
         "target": "record.show.edit.associated",
         "tip": "Other resources with a defined relationship to the product."
-      },
-      {
-        "title": "Documents",
-        "target": "record.show.edit.documents",
-        "tip": "Other documents related to, but not defining, the product."
       },
       {
         "title": "Dictionaries",
