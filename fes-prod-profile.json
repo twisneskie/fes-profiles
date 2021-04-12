@@ -70,42 +70,6 @@
           "containsData": false
         }
       },
-      "lineage": {
-        "source": {
-          "sourceCitation": {
-            "onlineResource": {
-              "protocol": false,
-              "applicationProfile": false,
-              "protocolRequest": false
-            },
-            "identifier": false
-            "identifierShort": {
-              "version": false,
-              "description": false
-            },
-          },
-          "metadataCitation": false,
-          "referenceSystem": false,
-          "spatialResolution": false
-        },
-        "citation": {
-          "basicInformation": {
-            "presentationForm": false
-          },
-          "onlineResource": {
-            "protocol": false,
-            "applicationProfile": false,
-            "protocolRequest": false
-          },
-          "identifier": false,
-          "identifierShort": {
-            "version": false,
-            "description": false
-          },
-          "graphic": false
-          },
-        "scope": false
-      },
       "taxonomy": {
         "collection": {
           "taxonomicSystem": {
