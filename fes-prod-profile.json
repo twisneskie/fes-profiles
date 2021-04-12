@@ -86,7 +86,7 @@
               "version": false,
               "description": false
             },
-            "graphic": false,
+            "graphic": false
           },
           "timePeriod": {
             "identifier": false,
