@@ -318,23 +318,23 @@
           }
         },
         "citation": {
+          "basicInformation": {
+            "presentationForm": false
+          },
+          "onlineResource": {
+            "protocol": false,
+            "description": false,
+            "applicationProfile": false,
+            "protocolRequest": false
+          },
           "identifier": {
             "identifier": {},
             "namespace": {},
-            "version": {},
-            "description": {},
-            "authority": {
-              "basicInformation": {},
-              "title": {},
-              "alternateTitle": {},
-              "date": {},
-              "responsibleParty": {},
-              "onlineResource": {},
-              "identifier": {},
-              "identifierSimple": {},
-              "identifierShort": {}
-            }
-          }
+            "version": false,
+            "description": false,
+            "authority": false
+          },
+          "graphic": false
         }
       },
       "domain": {
