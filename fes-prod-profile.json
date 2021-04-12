@@ -72,22 +72,20 @@
       },
       "lineage": {
         "processStep": {
-          "stepCitation": {
-            "basicInformation": {
-              "presentationForm": false
-            },
-            "onlineResource": {
-              "protocol": false,
-              "applicationProfile": false,
-              "protocolRequest": false
-            },
-            "identifier": false,
-            "identifierShort": {
-              "version": false,
-              "description": false
-            },
-            "graphic": false
+          "basicInformation": {
+            "presentationForm": false
           },
+          "onlineResource": {
+            "protocol": false,
+            "applicationProfile": false,
+            "protocolRequest": false
+          },
+          "identifier": false,
+          "identifierShort": {
+            "version": false,
+            "description": false
+          },
+          "graphic": false,
           "timePeriod": {
             "identifier": false,
             "periodName": false,
@@ -236,10 +234,8 @@
         "graphic": false
       },
       "entity": {
-        "information": {
-          "identifier": false
-        },
-        "identifier": {},
+        "information": {},
+        "identifier": false,
         "codeName": {},
         "definition": {},
         "commonName": {},
@@ -257,19 +253,23 @@
           "alternateTitle": {},
           "date": {},
           "edition": {},
-          "presentationForm": {},
+          "presentationForm": false,
           "responsibleParty": {},
           "onlineResource": {},
-          "identifier": {},
-          "identifierSimple": {},
-          "identifierShort": {},
+          "identifier": false,
+          "identifierSimple": {
+            "version": false,
+            "description": false,
+            "authority": false
+          },
+          "identifierShort": false,
           "series": {
             "name": {},
             "issue": {},
             "page": {}
           },
           "otherCitationDetails": {},
-          "graphicOverview": {}
+          "graphicOverview": false
         },
         "attribute": {
           "name": {},
