@@ -203,7 +203,9 @@
         },
         "onlineResource": {
           "description": false,
-          "protocol": false
+          "protocol": false,
+          "applicationProfile": false,
+          "protocolRequest": false
         },
         "identifier": false,
         "series": false,
