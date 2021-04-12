@@ -70,6 +70,70 @@
           "containsData": false
         }
       },
+      "lineage": {
+        "processStep": {
+          "step": {
+            "citation": {
+              "basicInformation": {
+                "presentationForm": false
+              },
+              "onlineResource": {
+                "protocol": false,
+                "applicationProfile": false,
+                "protocolRequest": false
+              },
+              "identifier": false,
+              "identifierShort": {
+                "version": false,
+                "description": false
+              },
+              "graphic": false
+            }
+          },
+          "timePeriod": {
+            "identifier": false,
+            "periodName": false,
+            "interval": false,
+            "duration": false,
+            "scope": false
+          },
+          "scope": false
+        },
+        "source": {
+          "sourceCitation": {
+            "onlineResource": {
+              "protocol": false,
+              "applicationProfile": false,
+              "protocolRequest": false
+            },
+            "identifierSimple": false,
+            "identifierShort": {
+              "version": false,
+              "description": false
+            }
+          },
+          "metadataCitation": false,
+          "referenceSystem": false,
+          "spatialResolution": false
+        },
+        "citation": {
+          "basicInformation": {
+            "presentationForm": false
+          },
+          "onlineResource": {
+            "protocol": false,
+            "applicationProfile": false,
+            "protocolRequest": false
+          },
+          "identifier": false,
+          "identifierShort": {
+            "version": false,
+            "description": false
+          },
+          "graphic": false
+          },
+        "scope": false
+      },
       "taxonomy": {
         "collection": {
           "taxonomicSystem": {
