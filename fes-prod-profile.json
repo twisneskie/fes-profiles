@@ -78,7 +78,7 @@
               "applicationProfile": false,
               "protocolRequest": false
             },
-            "identifier": false,
+            "identifierSimple": false,
             "identifierShort": {
               "version": false,
               "description": false
