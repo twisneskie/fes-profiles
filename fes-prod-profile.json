@@ -72,21 +72,23 @@
       },
       "lineage": {
         "processStep": {
-          "citation": {
-            "basicInformation": {
-              "presentationForm": false
+          "description": {
+            "citation": {
+              "basicInformation": {
+                "presentationForm": false
+              },
+              "onlineResource": {
+                "protocol": false,
+                "applicationProfile": false,
+                "protocolRequest": false
+              },
+              "identifier": false,
+              "identifierShort": {
+                "version": false,
+                "description": false
+              },
+              "graphic": false
             },
-            "onlineResource": {
-              "protocol": false,
-              "applicationProfile": false,
-              "protocolRequest": false
-            },
-            "identifier": false,
-            "identifierShort": {
-              "version": false,
-              "description": false
-            },
-            "graphic": false
           },
           "timePeriod": {
             "identifier": false,
