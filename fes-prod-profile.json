@@ -72,7 +72,7 @@
       },
       "lineage": {
         "processStep": {
-          "description": {
+          "step": {
             "citation": {
               "basicInformation": {
                 "presentationForm": false
@@ -96,7 +96,8 @@
             "interval": false,
             "duration": false,
             "scope": false
-          }
+          },
+          "scope": false
         },
         "source": {
           "sourceCitation": {
