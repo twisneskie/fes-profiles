@@ -33,7 +33,7 @@
             "version": false,
             "description": false
           },
-          "Series" :false,
+          "series" :false,
           "otherCitationDetails": false,
           "graphic": false
         },
