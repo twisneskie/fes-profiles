@@ -4,7 +4,7 @@
   "alternateId": ["fesproja"],
   "title": "FES Project (alpha)",
   "description": "Document a project, to be associated with the project's products. Modified for use by the USFWS Alaska Region FES staff.",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "components": {
     "record": {
       "main": {
@@ -33,6 +33,7 @@
             "version": false,
             "description": false
           },
+          "Series" :false,
           "otherCitationDetails": false,
           "graphic": false
         },
