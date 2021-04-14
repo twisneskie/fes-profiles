@@ -31,17 +31,7 @@
           "identifier": {
             "version": false,
             "description": false,
-            "authority": {
-              "basicInformation": {
-                "alternateTitle": false
-              },
-              "onlineResource": {
-                "protocol": false,
-                "applicationProfile": false,
-                "protocolRequest": false
-              },
-              "identifier": false
-            }
+            "authority": false,
           },
           "otherCitationDetails": false,
           "graphic": false
