@@ -57,7 +57,7 @@
       "metadata": {
         "metadataIdentifier": false,
         "parentMetadata": false,
-        "onlineResource": true,
+        "onlineResource": false,
         "repositories": false,
         "maintenance": {
           "frequency": true,
