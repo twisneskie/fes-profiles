@@ -79,7 +79,14 @@
             "duration": false,
             "scope": false
           },
-          "reference": false,
+          "reference": {
+            "citation": {
+              "presentationForm": false,
+              "identifier": {
+                "authority": false
+              }
+            }
+          },
           "scope": false
         },
         "source": {
