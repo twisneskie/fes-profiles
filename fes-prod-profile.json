@@ -79,9 +79,7 @@
             "duration": false,
             "scope": false
           },
-          "reference": {
-            "presentationForm": false
-          },
+          "reference": false,
           "scope": false
         },
         "source": {
