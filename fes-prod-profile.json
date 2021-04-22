@@ -79,14 +79,9 @@
             "duration": false,
             "scope": false
           },
-          "reference": [
-            {
-              "title": false
-            },
-            {
-              "title": false
-            }
-          ],
+          "reference": {
+            "presentationForm": false
+          },
           "scope": false
         },
         "source": {
