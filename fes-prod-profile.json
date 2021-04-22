@@ -153,6 +153,11 @@
         "distributor": {
           "transferOption": {
             "distributionUnit": false,
+            "onlineOption": {
+              "protocol": false,
+              "applicationProfile": false,
+              "protocolRequest": false
+            },
             "offlineOption": {
               "storage": {
                 "density": false,
