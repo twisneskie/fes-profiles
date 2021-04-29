@@ -37,7 +37,6 @@
         "environmentDescription": false,
         "timePeriod": {
           "identifier": false,
-          "description": false,
           "periodName": false,
           "interval": false,
           "duration": false
