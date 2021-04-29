@@ -40,12 +40,10 @@
         "description": {
           "shortAbstract": false
         },
-        "purpose": false,
         "supplementalInfo": false,
         "environmentDescription": false,
         "timePeriod": {
           "identifier": false,
-          "description": false,
           "periodName": false,
           "interval": false,
           "duration": false
