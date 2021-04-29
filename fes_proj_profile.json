@@ -3,8 +3,8 @@
   "namespace": "gov.fws.profile",
   "alternateId": ["fesproj"],
   "title": "FES Project",
-  "description": "Document a project, to be associated with the project's products. Modified for use by the USFWS Alaska Region FES staff.",
-  "version": "1.0.0",
+  "description": "Document a project, to be associated with the project's products. Modified for use by the USFWS Alaska Region staff.",
+  "version": "1.0.1",
   "components": {
     "record": {
       "main": {
