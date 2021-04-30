@@ -48,12 +48,15 @@
     },
     "PointOfContact": {
       "type": "array",
-      "properties": {
-        "role": {
-          "const": "AKRegionDataSteward",
-          "errorMessage": "One role must be AKRegionDataSteward."
-        }
-      },
+      "minItems": 1,
+      "contains": {
+        "properties": {
+          "role": {
+            "const": "AKRegionDataSteward",
+            "errorMessage": "One role must be AKRegionDataSteward."
+          }
+        },
+      }
       "required": [
         "role"
       ],
