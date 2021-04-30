@@ -45,7 +45,7 @@
       "contains": {
         "properties": {
           "role": {
-            "const": "AKRegionDataSteward"
+            "const": "AKRegionDataSteward",
             "errorMessage": "One role must be AKRegionDataSteward"
           }
       }
