@@ -44,7 +44,7 @@
       "minItems": 3,
       "properties": {
         "responsibility":{
-          "$ref": "./responsibility.json#"
+          "$ref": "#/responsibility.json#"
         }
       },
       "errorMessage": "AKRegionDataSteward, AKRegionDataTrustee, and AKRegionDataCustodian are required"
