@@ -53,7 +53,7 @@
         "properties": {
           "role": {
             "const": {
-              "principalInvestigator"
+              "principalInvestigator",
               "AKRegionDataSteward",
               "AKRegionDataCustodian",
               "AKRegionDataTrustee"
