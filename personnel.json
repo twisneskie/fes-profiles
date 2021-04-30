@@ -60,6 +60,7 @@
                 "AKRegionDataTrustee"
               ],
             },
+            "minContains": 4,
             "errorMessage": "Point of Contact must contain principalInvestigator, AKRegionDataSteward, AKRegionDataTrustee, and AKRegionDataCustodian"
           }
         },
