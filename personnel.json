@@ -36,9 +36,13 @@
           "$ref": "#/definitions/PointOfContact"
         }
       },
-      "errorMessage": "Main citation is required.",
+      "errorMessage": {
+        "contact": "Main citation is required.",
+        "pointOfContact": "Project personnel required."
+      },
       "required": [
-        "citation"
+        "citation",
+        "pointOfContact"
       ],
       "title": "ResourceInfo"
     },
@@ -50,7 +54,9 @@
           "errorMessage": "One role must be AKRegionDataSteward."
         }
       },
-      "required": [],
+      "required": [
+        "role"
+      ],
       "title": "PointOfContact"
     },
     "Citation": {
