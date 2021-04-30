@@ -31,23 +31,31 @@
       "properties": {
         "citation": {
           "$ref": "#/definitions/Citation"
+        },
+        "pointOfContact": {
+          "$ref": "#/definitions/responsibility"
         }
       },
       "errorMessage": "Main citation is required.",
       "required": [
-        "citation"
+        "citation",
+        "pointOfContact"
       ],
       "title": "ResourceInfo"
     },
     "pointOfContact": {
       "type": "array",
-      "minItems": 3,
       "properties": {
-        "responsibility":{
-          "$ref": "#/responsibility.json#"
+        "role":{
+          "minItems": 3,
+          "const": "AKRegionDataSteward",
+          "errorMessage": "One role must be pointOfContact"
         }
       },
-      "errorMessage": "AKRegionDataSteward, AKRegionDataTrustee, and AKRegionDataCustodian are required"
+      "required": [
+        "responsibility"
+      ],
+      "title": "pointOfContact"
     },
     "Citation": {
       "type": "object",
