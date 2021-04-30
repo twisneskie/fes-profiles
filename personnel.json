@@ -48,12 +48,22 @@
     },
     "PointOfContact": {
       "type": "array",
-      "minItems": 1,
+      "minItems": 4,
       "contains": {
         "properties": {
           "role": {
-            "const": "AKRegionDataSteward",
-            "errorMessage": "One role must be AKRegionDataSteward."
+            "const": {
+              "principalInvestigator"
+              "AKRegionDataSteward",
+              "AKRegionDataCustodian",
+              "AKRegionDataTrustee"
+            },
+            "errorMessage": {
+              "principalInvestigator": "One role must be principalInvestigator.",
+              "AKRegionDataSteward": "One role must be AKRegionDataSteward.",
+              "AKRegionDataTrustee": "One role must be AKRegionDataTrustee.",
+              "AKRegionDataCustodian": "One role must be AKRegionDataCustodian"
+            }
           }
         },
       },
