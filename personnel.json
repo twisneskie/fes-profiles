@@ -42,14 +42,12 @@
     "pointOfContact": {
       "type": "array",
       "minItems": 3,
-      "contains": {
-        "properties": {
-          "role": {
-            "const": "AKRegionDataSteward",
-            "errorMessage": "One role must be AKRegionDataSteward"
-          }
-      }
-      }
+      "properties": {
+        "responsibility":{
+          "$ref": "./responsibility.json#"
+        }
+      },
+      "errorMessage": "AKRegionDataSteward, AKRegionDataTrustee, and AKRegionDataCustodian are required"
     },
     "Citation": {
       "type": "object",
