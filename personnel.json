@@ -52,12 +52,14 @@
       "contains": {
         "properties": {
           "role": {
-            "oneOf": [
-              {"const": "principalInvestigator"},
-              {"const": "AKRegionDataSteward"},
-              {"const": "AKRegionDataTrustee"},
-              {"const": "AKRegionDataCustodian"}
-            ],
+            "contains": {
+              "enum": [
+                "principalInvestigator",
+                "AKRegionDataSteward",
+                "AKRegionDataCustodian",
+                "AKRegionDataTrustee"
+              ],
+            },
             "errorMessage": "Point of Contact must contain principalInvestigator, AKRegionDataSteward, AKRegionDataTrustee, and AKRegionDataCustodian"
           }
         },
