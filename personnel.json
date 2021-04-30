@@ -52,18 +52,18 @@
       "contains": {
         "properties": {
           "role": {
-            "const": [
+            "enum": [
               "principalInvestigator",
               "AKRegionDataSteward",
               "AKRegionDataCustodian",
               "AKRegionDataTrustee"
             ],
-            "errorMessage": [
+            "errorMessage": {
               "principalInvestigator": "One role must be principalInvestigator.",
               "AKRegionDataSteward": "One role must be AKRegionDataSteward.",
               "AKRegionDataTrustee": "One role must be AKRegionDataTrustee.",
               "AKRegionDataCustodian": "One role must be AKRegionDataCustodian"
-            ]
+            }
           }
         },
       },
