@@ -56,7 +56,7 @@
             "errorMessage": "One role must be AKRegionDataSteward."
           }
         },
-      }
+      },
       "required": [
         "role"
       ],
