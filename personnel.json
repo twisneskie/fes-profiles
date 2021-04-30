@@ -52,7 +52,7 @@
       "contains": {
         "properties": {
           "role": {
-            "allOf": [
+            "anyOf": [
               {"const": "principalInvestigator"},
               {"const": "AKRegionDataSteward"},
               {"const": "AKRegionDataTrustee"},
