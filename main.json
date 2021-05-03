@@ -50,7 +50,8 @@
       "required": [
         "citation",
         "pointOfContact",
-        "status"
+        "status",
+        "timePeriod"
       ],
       "title": "ResourceInfo"
     },
