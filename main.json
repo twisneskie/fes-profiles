@@ -1,8 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Personnel",
-  "description": "Require an essential data management personnel.",
-  "$id": "personnel.json",
+  "title": "Main",
+  "description": "Require fields determined by the DST in the Main tab.",
+  "$id": "main.json",
   "version": "0.0.2",
   "type": "object",
   "properties": {
@@ -29,6 +29,9 @@
     "ResourceInfo": {
       "type": "object",
       "properties": {
+        "status": {
+          "$ref": "#/definitions/Status"
+        },
         "citation": {
           "$ref": "#/definitions/Citation"
         },
@@ -38,11 +41,13 @@
       },
       "errorMessage": {
         "contact": "Main citation is required.",
-        "pointOfContact": "Project personnel required."
+        "pointOfContact": "Project personnel required.",
+        "status": "Project status is required"
       },
       "required": [
         "citation",
-        "pointOfContact"
+        "pointOfContact",
+        "status"
       ],
       "title": "ResourceInfo"
     },
@@ -85,6 +90,18 @@
         "responsibleParty"
       ],
       "title": "Citation"
+    },
+    "Status": {
+      "type": "array",
+      "enum": [
+        "completed",
+        "onGoing",
+        "proposed",
+        "accepted"
+      ],
+      "errorMessage": "Status must be one of: 'completed', 'onGoing', 'proposed', or 'accepted'",
+      "required": [],
+      "title": "Status"
     }
   }
 }
