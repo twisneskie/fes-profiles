@@ -3,7 +3,7 @@
   "title": "Personnel",
   "description": "Require an essential data management personnel.",
   "$id": "personnel.json",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "type": "object",
   "properties": {
     "metadata": {
@@ -48,17 +48,11 @@
     },
     "PointOfContact": {
       "type": "array",
-      "minItems": 4,
       "contains": {
         "properties": {
           "role": {
-            "anyOf": [
-              {"const": "principalInvestigator"},
-              {"const": "AKRegionDataSteward"},
-              {"const": "AKRegionDataTrustee"},
-              {"const": "AKRegionDataCustodian"}
-            ],
-            "errorMessage": "Point of Contact must contain principalInvestigator, AKRegionDataSteward, AKRegionDataTrustee, and AKRegionDataCustodian"
+            "const": "pointOfContact",
+            "errorMessage": "Must contain at least one pointOfContact"
           }
         },
       },
