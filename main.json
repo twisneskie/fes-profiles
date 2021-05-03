@@ -103,6 +103,10 @@
         "date",
         "onlineResource"
       ],
+      "errorMessage": {
+        "date": "At least one date must be provided for the citation.",
+        "onlineResource": "At least one onlineResource should be provided. A link to the project Regional Data Repository folder can be used if no other online resource exists yet."
+      },
       "title": "Citation"
     },
     "Status": {
