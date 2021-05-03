@@ -37,6 +37,9 @@
         },
         "pointOfContact": {
           "$ref": "#/definitions/PointOfContact"
+        },
+        "timePeriod": {
+          "$ref": "#/definitions/TimePeriod"
         }
       },
       "errorMessage": {
@@ -122,6 +125,19 @@
         "errorMessage": "Status must be one of: 'completed', 'onGoing', 'proposed', or 'accepted'"
       },
       "title": "Status"
+    },
+    "TimePeriod": {
+      "type": "object",
+      "properties": {
+        "dateTime": {
+          "type": "object",
+          "minItems": 1
+        }
+      },
+      "required": [
+        "date"
+      ],
+      "title": "TimePeriod"
     }
   }
 }
