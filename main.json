@@ -135,7 +135,7 @@
         }
       },
       "required": [
-        "date"
+        "dateTime"
       ],
       "title": "TimePeriod"
     }
