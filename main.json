@@ -135,9 +135,6 @@
           "minItems": 1
         }
       },
-      "required": [
-        "dateTime"
-      ],
       "title": "TimePeriod"
     }
   }
