@@ -93,7 +93,7 @@
     },
     "Status": {
       "type": "array",
-      "properties": {
+      "contains": {
         "type": "string",
         "enum": [
           "completed",
