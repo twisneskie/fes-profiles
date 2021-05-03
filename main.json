@@ -88,9 +88,7 @@
         "date": {
           "type": "array",
           "minItems": 1,
-          "errorMessage": [
-            "minItems": "At least one date should be provided."
-          ]
+          "errorMessage": "At least one date should be provided."
         }
       },
       "required": [
