@@ -93,14 +93,16 @@
     },
     "Status": {
       "type": "array",
-      "enum": [
-        "completed",
-        "onGoing",
-        "proposed",
-        "accepted"
-      ],
-      "errorMessage": "Status must be one of: 'completed', 'onGoing', 'proposed', or 'accepted'",
-      "required": [],
+      "properties": {
+        "type": "string",
+        "enum": [
+          "completed",
+          "onGoing",
+          "proposed",
+          "accepted"
+        ],
+        "errorMessage": "Status must be one of: 'completed', 'onGoing', 'proposed', or 'accepted'"
+      },
       "title": "Status"
     }
   }
