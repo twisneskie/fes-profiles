@@ -84,6 +84,11 @@
             "minItems": "At least one responsibleParty is required in the resource citation.",
             "contains": "At least one point of contact should be present in citation."
           }
+        },
+        "date": {
+          "type": "array",
+          "minItems": 1,
+          "errorMessage": "At least one date should be provided."
         }
       },
       "required": [
