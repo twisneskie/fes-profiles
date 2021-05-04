@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "ResourceInfo",
   "description": "Information about the resource. Requires fields determined by the USFWS Alaska Region DST for Projects.",
-  "$id": "resourceInfo.json",
+  "$id": "resourceInfo.json#",
   "version": "0.1.0",
   "type": "object",
   "required": [
