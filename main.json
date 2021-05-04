@@ -44,10 +44,9 @@
       },
       "errorMessage": {
         "required": {
-          "citation": "Project citation section is required. Citation information must include, at minimum, title, date (e.g. acquisition, creation, revision), responsible parties, and online resource. Identifiers should be included, if applicable.",
           "pointOfContact": "Project personnel are required to be listed under the 'Points of Contact' section. At least one person must be listed as 'pointOfContact'. Additional personnel roles should include 'AKRegionDataTrustee', 'AKRegionDataSteward', 'AKRegionDataCustodian', and 'principalInvestigator'.",
-          "status": "Project status is required. Choose status from the following options: completed, onGoing, proposed, or accepted.",
-          "timePeriod": "Project start and/or end dates are required."
+          "status": "Project status is required under the 'Basic Information' section. Choose status from the following options: completed, onGoing, proposed, or accepted.",
+          "timePeriod": "Project start and/or end dates are required under the 'Time Period' section."
         }
       },
       "required": [
@@ -64,7 +63,7 @@
         "properties": {
           "role": {
             "const": "pointOfContact",
-            "errorMessage": "Must contain at least one pointOfContact"
+            "errorMessage": "Point of Contact section must have at least one person listed as the role 'pointOfContact'."
           }
         },
       },
@@ -76,43 +75,37 @@
     "Citation": {
       "type": "object",
       "properties": {
+        "date": {
+          "type": "array",
+          "minItems": 1
+        },
         "responsibleParty": {
           "type": "array",
-          "minItems": 1,
           "contains": {
             "properties": {
               "role": {
                 "const": "pointOfContact",
-                "errorMessage": "One role must be point of contact."
+                "errorMessage": "One role in the Points of Contact section must be pointOfContact."
               }
             }
-          },
-          "errorMessage": {
-            "minItems": "At least one responsibleParty is required in the resource citation.",
-            "contains": "At least one point of contact should be present in citation."
           }
-        },
-        "date": {
-          "type": "array",
-          "minItems": 1,
-          "errorMessage": "At least one date should be provided."
         },
         "onlineResource": {
           "type": "array",
-          "minItems": 1,
-          "errorMessage": {
-            "minItems": "At least one onlineResource should be provided. A link to the project Regional Data Repository folder can be used if no other online resource exists yet."
-          }
+          "minItems": 1
         }
       },
       "required": [
-        "responsibleParty",
         "date",
+        "responsibleParty",
         "onlineResource"
       ],
       "errorMessage": {
-        "date": "At least one date must be provided for the citation.",
-        "onlineResource": "At least one onlineResource should be provided. A link to the project Regional Data Repository folder can be used if no other online resource exists yet."
+        "required": {
+          "date": "At least one date (e.g. acquisition, creation, revision) must be provided in the Citation section.",
+          "responsibleParty": "At least one Responsible Party must be provided in the Citation section. At least one role must be listed a pointOfContact.",
+          "onlineResource": "At least one onlineResource should be provided. A link to the project Regional Data Repository folder can be used if no other online resource exists yet."
+        }
       },
       "title": "Citation"
     },
@@ -126,7 +119,7 @@
           "proposed",
           "accepted"
         ],
-        "errorMessage": "Status must be one of: 'completed', 'onGoing', 'proposed', or 'accepted'"
+        "errorMessage": "Project status in the 'Basic Information' section must be one of: 'completed', 'onGoing', 'proposed', or 'accepted'"
       },
       "title": "Status"
     },
