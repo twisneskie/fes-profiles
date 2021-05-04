@@ -1,9 +1,9 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Main",
-  "description": "Require fields determined by the DST in the Main tab.",
+  "description": "Require fields determined by the DST in the Main tab for Projects.",
   "$id": "main.json",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "type": "object",
   "properties": {
     "metadata": {
@@ -43,9 +43,12 @@
         }
       },
       "errorMessage": {
-        "contact": "Main citation is required.",
-        "pointOfContact": "Project personnel required.",
-        "status": "Project status is required"
+        "required": {
+          "citation": "Project citation section is required. Citation information must include, at minimum, title, date (e.g. acquisition, creation, revision), responsible parties, and online resource. Identifiers should be included, if applicable.",
+          "pointOfContact": "Project personnel are required to be listed under the 'Points of Contact' section. At least one person must be listed as 'pointOfContact'. Additional personnel roles should include 'AKRegionDataTrustee', 'AKRegionDataSteward', 'AKRegionDataCustodian', and 'principalInvestigator'.",
+          "status": "Project status is required. Choose status from the following options: completed, onGoing, proposed, or accepted.",
+          "timePeriod": "Project start and/or end dates are required."
+        }
       },
       "required": [
         "citation",
