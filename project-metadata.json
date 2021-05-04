@@ -1,16 +1,17 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/twisneskie/fes-profiles/blob/main/project-metadata.json",
+  "$schema": "http://json-schema.org/2020-12/schema",
+  "title": "Metadata",
   "description": "The main body of the metadata. Requires fields determined by the USFWS Alaska Region DST for Projects.",
-  "$id": "project-metadata.json#",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "type": "object",
-  "required": [
-    "resourceInfo"
-  ],
   "additionalProperties": true,
   "properties": {
     "metadataInfo": {
       "type": "object",
+      "required": [
+        "metadataContact"
+      ]
       "properties": {
         "metadataContact": {
           "type": "array",
@@ -24,7 +25,11 @@
       }
     },
     "resourceInfo": {
-      "$ref": "resourceInfo.json#"
+      "$ref": "https://raw.githubusercontent.com/twisneskie/fes-profiles/main/resourceInfo.json"
     },
-  }
+  },
+  "required": [
+    "metadataInfo",
+    "resourceInfo"
+  ],
 }
