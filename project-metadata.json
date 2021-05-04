@@ -1,13 +1,13 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Metadata",
   "description": "The main body of the metadata. Requires fields determined by the USFWS Alaska Region DST for Projects.",
-  "$id": "project-metadata.json",
+  "$id": "project-metadata.json#",
   "version": "0.0.1",
   "type": "object",
   "required": [
     "resourceInfo"
   ],
+  "additionalProperties": true,
   "properties": {
     "metadataInfo": {
       "type": "object",
