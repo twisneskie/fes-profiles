@@ -11,7 +11,7 @@
       "type": "object",
       "required": [
         "metadataContact"
-      ]
+      ],
       "properties": {
         "metadataContact": {
           "type": "array",
