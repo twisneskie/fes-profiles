@@ -62,14 +62,16 @@
       "contains": {
         "properties": {
           "role": {
-            "const": "pointOfContact",
-            "errorMessage": "Point of Contact section must have at least one person listed as the role 'pointOfContact'."
+            "const": "pointOfContact"
           }
         },
       },
       "required": [
         "role"
       ],
+      "errorMessage": {
+        "contains": "Point of Contact section must have at least one person listed as the role 'pointOfContact'."
+      },
       "title": "PointOfContact"
     },
     "Citation": {
