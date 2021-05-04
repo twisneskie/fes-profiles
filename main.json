@@ -3,7 +3,7 @@
   "title": "Main",
   "description": "Require fields determined by the DST in the Main tab for Projects.",
   "$id": "main.json",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "type": "object",
   "properties": {
     "metadata": {
@@ -62,16 +62,14 @@
       "contains": {
         "properties": {
           "role": {
-            "const": "pointOfContact"
+            "const": "pointOfContact",
+            "errorMessage": "Point of Contact section must have at least one person listed as the role 'pointOfContact'."
           }
         },
       },
       "required": [
         "role"
       ],
-      "errorMessage": {
-        "contains": "Point of Contact section must have at least one person listed as the role 'pointOfContact'."
-      },
       "title": "PointOfContact"
     },
     "Citation": {
@@ -87,7 +85,7 @@
             "properties": {
               "role": {
                 "const": "pointOfContact",
-                "errorMessage": "One role in the Points of Contact section must be pointOfContact."
+                "errorMessage": "One role for Responsible Parties within the Citation section must be pointOfContact."
               }
             }
           }
@@ -106,7 +104,7 @@
         "required": {
           "date": "At least one date (e.g. acquisition, creation, revision) must be provided in the Citation section.",
           "responsibleParty": "At least one Responsible Party must be provided in the Citation section. At least one role must be listed a pointOfContact.",
-          "onlineResource": "At least one onlineResource should be provided. A link to the project Regional Data Repository folder can be used if no other online resource exists yet."
+          "onlineResource": "At least one onlineResource should be provided within the Citation section. A link to the project Regional Data Repository folder can be used if no other online resource exists yet."
         }
       },
       "title": "Citation"
