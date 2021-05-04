@@ -1,62 +1,38 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Main",
-  "description": "Require fields determined by the DST in the Main tab for Projects.",
-  "$id": "main.json",
-  "version": "0.0.5",
+  "title": "ResourceInfo",
+  "description": "Information about the resource. Requires fields determined by the USFWS Alaska Region DST for Projects.",
+  "$id": "resourceInfo.json",
+  "version": "0.1.0",
   "type": "object",
-  "properties": {
-    "metadata": {
-      "$ref": "#/definitions/Metadata"
+  "required": [
+    "status",
+    "pointOfContact",
+    "citation",
+    "timePeriod"
+  ],
+  "errorMessage": {
+    "required": {
+      "pointOfContact": "Project personnel are required to be listed under the 'Points of Contact' section. At least one person must be listed as 'pointOfContact'. Additional personnel roles should include 'AKRegionDataTrustee', 'AKRegionDataSteward', 'AKRegionDataCustodian', and 'principalInvestigator'.",
+      "status": "Project status is required under the 'Basic Information' section. Choose status from the following options: completed, onGoing, proposed, or accepted.",
+      "timePeriod": "Project start and/or end dates are required under the 'Time Period' section."
     }
   },
-  "required": [
-    "metadata"
-  ],
+  "properties": {
+    "status": {
+      "$ref": "#/definitions/Status"
+    },
+    "pointOfContact": {
+      "$ref": "#/definitions/PointOfContact"
+    },
+    "citation": {
+      "$ref": "#/definitions/Citation"
+    },
+    "timePeriod": {
+      "$ref": "#/definitions/TimePeriod"
+    }
+  },
   "definitions": {
-    "Metadata": {
-      "type": "object",
-      "properties": {
-        "resourceInfo": {
-          "$ref": "#/definitions/ResourceInfo"
-        }
-      },
-      "required": [
-        "resourceInfo"
-      ],
-      "title": "Metadata"
-    },
-    "ResourceInfo": {
-      "type": "object",
-      "properties": {
-        "status": {
-          "$ref": "#/definitions/Status"
-        },
-        "citation": {
-          "$ref": "#/definitions/Citation"
-        },
-        "pointOfContact": {
-          "$ref": "#/definitions/PointOfContact"
-        },
-        "timePeriod": {
-          "$ref": "#/definitions/TimePeriod"
-        }
-      },
-      "errorMessage": {
-        "required": {
-          "pointOfContact": "Project personnel are required to be listed under the 'Points of Contact' section. At least one person must be listed as 'pointOfContact'. Additional personnel roles should include 'AKRegionDataTrustee', 'AKRegionDataSteward', 'AKRegionDataCustodian', and 'principalInvestigator'.",
-          "status": "Project status is required under the 'Basic Information' section. Choose status from the following options: completed, onGoing, proposed, or accepted.",
-          "timePeriod": "Project start and/or end dates are required under the 'Time Period' section."
-        }
-      },
-      "required": [
-        "citation",
-        "pointOfContact",
-        "status",
-        "timePeriod"
-      ],
-      "title": "ResourceInfo"
-    },
     "PointOfContact": {
       "type": "array",
       "contains": {
