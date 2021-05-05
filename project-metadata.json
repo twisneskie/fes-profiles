@@ -180,6 +180,7 @@
       "properties": {
         "thesaurus": {
           "type": "object",
+          "minItems": 1,
           "contains": {
             "properties": {
               "title": {
@@ -193,9 +194,6 @@
       "required": [
         "thesaurus"
       ],
-      "errorMessage": {
-        "required": "At least one keyword under the 'Keywords' tab must come from the 'ISO Topic Category' thesaurus."
-      },
       "title": "Keywords"
     }
   }
