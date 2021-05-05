@@ -41,20 +41,18 @@
     },
     "MetadataContact": {
       "type": "array",
+      "minItems": 1,
       "contains": {
         "properties": {
           "role": {
-            "$ref": "#/definitions/Role"
+            "const": "pointOfContact",
+            "errorMessage": "At least one person should be provided with the role 'pointOfContact' under the 'Metadata Contacts' section of the 'Metadata' tab."
           }
         }
       },
       "required": [
         "role"
       ]
-    },
-    "Role": {
-      "const": "pointOfContact",
-      "errorMessage": "At least one person should be provided with the role 'pointOfContact' under the 'Metadata Contacts' section of the 'Metadata' tab."
     }
   }
 }
