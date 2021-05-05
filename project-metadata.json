@@ -5,6 +5,9 @@
   "description": "The main body of the metadata. Requires fields determined by the USFWS Alaska Region DST for Projects.",
   "version": "0.0.2",
   "type": "object",
+  "required": [
+    "resourceInfo"
+  ],
   "properties": {
     "metadataInfo": {
       "type": "object",
@@ -24,10 +27,7 @@
       }
     },
     "resourceInfo": {
-      "$ref": "https://raw.githubusercontent.com/twisneskie/fes-profiles/main/resourceInfo.json"
+      "$ref": "resourceInfo.json"
     },
-  },
-  "required": [
-    "resourceInfo"
-  ]
+  }
 }
