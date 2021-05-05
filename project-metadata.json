@@ -28,14 +28,8 @@
           }
         }
       }
-    },
-        "resourceInfo": {
-          "$ref": "resourceInfo.json"
-        }
+    }
       },
-      "required": [
-        "resourceInfo"
-      ],
       "title": "Metadata"
     }
   }
