@@ -177,20 +177,20 @@
     },
     "Keywords": {
       "type": "array",
-      "properties": {
-        "thesaurus": {
-          "type": "object",
-          "minItems": 1,
-          "contains": {
+      "contains": {
+        "properties": {
+          "thesaurus": {
+            "type": "object",
+            "minItems": 1,
             "properties": {
-              "title": {
-                "const": "ISO 19115 Topic Category",
+              "type": {
+                "const": "isoTopicCategory",
                 "errorMessage": "At least one keyword under the 'Keywords' tab must be from the ISO Topic Category thesaurus."
               }
             }
           }
-        }
-      },
+        },
+      }
       "required": [
         "thesaurus"
       ],
