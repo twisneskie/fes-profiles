@@ -6,6 +6,7 @@
   "version": "0.0.2",
   "type": "object",
   "required": [
+    "metadataInfo",
     "resourceInfo"
   ],
   "properties": {
