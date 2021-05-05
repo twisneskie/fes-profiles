@@ -1,43 +1,52 @@
 {
-  "$id": "project-metadata.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Metadata",
-  "description": "The main body of the metadata. Requires fields determined by the USFWS Alaska Region DST for Projects.",
-  "version": "0.0.2",
+  "title": "Author",
+  "description": "Require an author.",
+  "$id": "author.json",
+  "version": "0.1.0",
   "type": "object",
+  "properties": {
+    "metadata": {
+      "$ref": "#/definitions/Metadata"
+    }
+  },
   "required": [
     "metadata"
   ],
-  "properties": {
-    "metadata": {
+  "definitions": {
+    "Metadata": {
       "type": "object",
       "properties": {
         "metadataInfo": {
-          "type": "object",
-          "required": [
-            "metadataContact"
-          ],
-          "properties": {
-            "metadataContact": {
-              "type": "array",
-              "properties": {
-                "role": {
-                  "const": "pointOfContact",
-                  "errorMessage": "At least one person should be provided with the role 'pointOfContact' under the 'Metadata Contacts' section of the 'Metadata' tab."
-                }
-              }
-            }
-          }
-        },
-        "resourceInfo": {
-          "$ref": "resourceInfo.json#"
+          "$ref": "#/definitions/MetadataInfo"
         }
       },
-      "required": {
-        "resourceInfo",
+      "required": [
         "metadataInfo"
-      },
+      ],
       "title": "Metadata"
+    },
+    "MetadataInfo": {
+      "type": "object",
+      "properties": {
+        "metadataContact": {
+          "type": "array",
+          "properties": {
+            "role": {
+              "const": "pointOfContact",
+              "errorMessage": "At least one person should be provided with the role 'pointOfContact' under the 'Metadata Contacts' section of the 'Metadata' tab."
+            }
+          },
+          "required": [
+            "role"
+          ]
+        }
+      },
+      "required": [
+        "metadataContact"
+      ],
+      "title": "MetadataInfo"
+
     }
   }
 }
