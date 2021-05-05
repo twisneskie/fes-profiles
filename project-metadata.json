@@ -30,7 +30,7 @@
           }
         },
         "resourceInfo": {
-          "$ref": "resourceInfo.json"
+          "$ref": "resourceInfo.json#"
         }
       },
       "title": "Metadata"
