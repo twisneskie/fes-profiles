@@ -182,7 +182,7 @@
           "type": "object",
           "contains": {
             "properties": {
-              "title"{
+              "title": {
                 "const": "ISO 19115 Topic Category",
                 "errorMessage": "At least one keyword under the 'Keywords' tab must be from the ISO Topic Category thesaurus."
               }
