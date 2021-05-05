@@ -8,14 +8,10 @@
   "properties": {
     "metadata": {
       "$ref": "#/definitions/Metadata"
-    },
-    "resourceInfo": {
-      "$ref": "#/definitions/ResourceInfo"
     }
   },
   "required": [
-    "metadata",
-    "resourceInfo"
+    "metadata"
   ],
   "definitions": {
     "Metadata": {
@@ -23,10 +19,14 @@
       "properties": {
         "metadataInfo": {
           "$ref": "#/definitions/MetadataInfo"
+        },
+        "resourceInfo": {
+          "$ref": "#/definitions/ResourceInfo"
         }
       },
       "required": [
-        "metadataInfo"
+        "metadataInfo",
+        "resourceInfo"
       ],
       "title": "Metadata"
     },
