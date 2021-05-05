@@ -8,10 +8,14 @@
   "properties": {
     "metadata": {
       "$ref": "#/definitions/Metadata"
+    },
+    "resourceInfo": {
+      "$ref": "resourceInfo.json"
     }
   },
   "required": [
-    "metadata"
+    "metadata",
+    "resourceInfo"
   ],
   "definitions": {
     "Metadata": {
