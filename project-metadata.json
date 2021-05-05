@@ -86,6 +86,7 @@
       "errorMessage": {
         "required": {
           "status": "Project status must be provided in the 'Basic Information' section under the 'Main' tab. Status should be one of: 'completed', 'onGoing', 'proposed', or 'accepted'",
+          "pointOfContact": "Project personnel must be provided in the 'Point of Contact' section under the 'Main' tab.",
           "timePeriod": "Project time period must be provided in the 'Time Period' section under the 'Main' tab. At least a project start date and/or a project end date should be provided."
         }
       },
@@ -116,6 +117,9 @@
             "errorMessage": "The 'Point of Contact' section under the 'Main' tab must have at least one person listed as the role 'pointOfContact'."
           }
         },
+      },
+      "errorMessage": {
+        "contains": "The 'Point of Contact' section under the 'Main' tab must have at least one person listed as the role 'pointOfContact'."
       },
       "required": [
         "role"
