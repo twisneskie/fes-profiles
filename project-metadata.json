@@ -83,6 +83,12 @@
         "citation",
         "timePeriod"
       ],
+      "errorMessage": {
+        "required": {
+          "status": "Project status must be provided in the 'Basic Information' section under the 'Main' tab. Status should be one of: 'completed', 'onGoing', 'proposed', or 'accepted'",
+          "timePeriod": "Project time period must be provided in the 'Time Period' section under the 'Main' tab. At least a project start date and/or a project end date should be provided."
+        }
+      },
       "title": "ResourceInfo"
     },
     "Status": {
@@ -95,7 +101,9 @@
         "proposed",
         "accepted"
       ],
-      "errorMessage": "Project status in the 'Basic Information' section under the 'Main' tab must be one of: 'completed', 'onGoing', 'proposed', or 'accepted'"
+      "errorMessage": {
+        "enum": "Project status in the 'Basic Information' section under the 'Main' tab must be one of: 'completed', 'onGoing', 'proposed', or 'accepted'"
+      }
     },
     "title": "Status"
   },
