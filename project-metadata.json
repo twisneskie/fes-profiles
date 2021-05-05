@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Metadata",
-  "description": "The main body of the metadata record. Requires fields determined by the USFWS Alaska Region DST for Projects.",
+  "description": "Requires metadata fields and terms determined by the USFWS Alaska Region DST for Projects.",
   "$id": "project-metadata.json",
   "version": "0.1.0",
   "type": "object",
@@ -40,6 +40,9 @@
       "required": [
         "metadataContact"
       ],
+      "errorMessage": {
+        "required": "At least one contact must be provided in the 'Metadata Contact' section under the 'Metadata' tab. At least one role must be 'pointOfContact'."
+      },
       "title": "MetadataInfo"
 
     },
@@ -50,7 +53,7 @@
         "properties": {
           "role": {
             "const": "pointOfContact",
-            "errorMessage": "At least one person should be provided with the role 'pointOfContact' under the 'Metadata Contacts' section of the 'Metadata' tab."
+            "errorMessage": "At least one person must be provided with the role 'pointOfContact' under the 'Metadata Contacts' section of the 'Metadata' tab."
           }
         }
       },
@@ -92,7 +95,7 @@
         "proposed",
         "accepted"
       ],
-      "errorMessage": "Project status in the 'Basic Information' section must be one of: 'completed', 'onGoing', 'proposed', or 'accepted'"
+      "errorMessage": "Project status in the 'Basic Information' section under the 'Main' tab must be one of: 'completed', 'onGoing', 'proposed', or 'accepted'"
     },
     "title": "Status"
   },
@@ -102,7 +105,7 @@
         "properties": {
           "role": {
             "const": "pointOfContact",
-            "errorMessage": "Point of Contact section must have at least one person listed as the role 'pointOfContact'."
+            "errorMessage": "The 'Point of Contact' section under the 'Main' tab must have at least one person listed as the role 'pointOfContact'."
           }
         },
       },
@@ -124,7 +127,7 @@
             "properties": {
               "role": {
                 "const": "pointOfContact",
-                "errorMessage": "One role for Responsible Parties within the Citation section must be pointOfContact."
+                "errorMessage": "One role for 'Responsible Parties' within the 'Citation' section under the 'Main' tab must be pointOfContact."
               }
             }
           }
@@ -141,9 +144,9 @@
       ],
       "errorMessage": {
         "required": {
-          "date": "At least one date (e.g. acquisition, creation, revision) must be provided in the Citation section.",
-          "responsibleParty": "At least one Responsible Party must be provided in the Citation section. At least one role must be listed a pointOfContact.",
-          "onlineResource": "At least one onlineResource should be provided within the Citation section. A link to the project Regional Data Repository folder can be used if no other online resource exists yet."
+          "date": "At least one date (e.g. acquisition, creation, revision) must be provided in the 'Citation' section under the 'Main' tab.",
+          "responsibleParty": "At least one Responsible Party must be provided in the 'Citation' section under the 'Main' tab. At least one role must be listed a pointOfContact.",
+          "onlineResource": "At least one onlineResource should be provided within the 'Citation' section under the 'Main' tab. A link to the project Regional Data Repository folder can be used if no other online resource exists yet."
         }
       },
       "title": "Citation"
