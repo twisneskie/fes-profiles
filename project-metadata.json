@@ -30,16 +30,7 @@
       "type": "object",
       "properties": {
         "metadataContact": {
-          "type": "array",
-          "properties": {
-            "role": {
-              "const": "pointOfContact",
-              "errorMessage": "At least one person should be provided with the role 'pointOfContact' under the 'Metadata Contacts' section of the 'Metadata' tab."
-            }
-          },
-          "required": [
-            "role"
-          ]
+          "$ref": "#/definitions/MetadataContact"
         }
       },
       "required": [
@@ -47,6 +38,23 @@
       ],
       "title": "MetadataInfo"
 
+    },
+    "MetadataContact": {
+      "type": "array",
+      "contains": {
+        "properties": {
+          "role": {
+            "$ref": "#/definitions/Role"
+          }
+        }
+      },
+      "required": [
+        "role"
+      ]
+    },
+    "Role": {
+      "const": "pointOfContact",
+      "errorMessage": "At least one person should be provided with the role 'pointOfContact' under the 'Metadata Contacts' section of the 'Metadata' tab."
     }
   }
 }
