@@ -6,8 +6,7 @@
   "version": "0.0.2",
   "type": "object",
   "required": [
-    "metadataInfo",
-    "resourceInfo"
+    "metadata"
   ],
   "properties": {
     "metadata": {
@@ -33,6 +32,10 @@
         "resourceInfo": {
           "$ref": "resourceInfo.json#"
         }
+      },
+      "required": {
+        "resourceInfo",
+        "metadataInfo"
       },
       "title": "Metadata"
     }
