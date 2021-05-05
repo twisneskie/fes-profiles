@@ -1,8 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Author",
-  "description": "Require an author.",
-  "$id": "author.json",
+  "title": "Metadata",
+  "description": "The main body of the metadata record. Requires fields determined by the USFWS Alaska Region DST for Projects.",
+  "$id": "project-metadata.json",
   "version": "0.1.0",
   "type": "object",
   "properties": {
@@ -10,7 +10,7 @@
       "$ref": "#/definitions/Metadata"
     },
     "resourceInfo": {
-      "$ref": "resourceInfo.json"
+      "$ref": "#/definitions/ResourceInfo"
     }
   },
   "required": [
@@ -57,6 +57,106 @@
       "required": [
         "role"
       ]
+    },
+    "ResourceInfo": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/Status"
+        },
+        "pointOfContact": {
+          "$ref": "#/definitions/PointOfContact"
+        },
+        "citation": {
+          "$ref": "#/definitions/Citation"
+        },
+        "timePeriod": {
+          "$ref": "#/definitions/TimePeriod"
+        }
+      },
+      "required": [
+        "status",
+        "pointOfContact",
+        "citation",
+        "timePeriod"
+      ],
+      "title": "ResourceInfo"
+    },
+    "Status": {
+    "type": "array",
+    "contains": {
+      "type": "string",
+      "enum": [
+        "completed",
+        "onGoing",
+        "proposed",
+        "accepted"
+      ],
+      "errorMessage": "Project status in the 'Basic Information' section must be one of: 'completed', 'onGoing', 'proposed', or 'accepted'"
+    },
+    "title": "Status"
+  },
+    "PointOfContact": {
+      "type": "array",
+      "contains": {
+        "properties": {
+          "role": {
+            "const": "pointOfContact",
+            "errorMessage": "Point of Contact section must have at least one person listed as the role 'pointOfContact'."
+          }
+        },
+      },
+      "required": [
+        "role"
+      ],
+      "title": "PointOfContact"
+    },
+    "Citation": {
+      "type": "object",
+      "properties": {
+        "date": {
+          "type": "array",
+          "minItems": 1
+        },
+        "responsibleParty": {
+          "type": "array",
+          "contains": {
+            "properties": {
+              "role": {
+                "const": "pointOfContact",
+                "errorMessage": "One role for Responsible Parties within the Citation section must be pointOfContact."
+              }
+            }
+          }
+        },
+        "onlineResource": {
+          "type": "array",
+          "minItems": 1
+        }
+      },
+      "required": [
+        "date",
+        "responsibleParty",
+        "onlineResource"
+      ],
+      "errorMessage": {
+        "required": {
+          "date": "At least one date (e.g. acquisition, creation, revision) must be provided in the Citation section.",
+          "responsibleParty": "At least one Responsible Party must be provided in the Citation section. At least one role must be listed a pointOfContact.",
+          "onlineResource": "At least one onlineResource should be provided within the Citation section. A link to the project Regional Data Repository folder can be used if no other online resource exists yet."
+        }
+      },
+      "title": "Citation"
+    },
+    "TimePeriod": {
+      "type": "object",
+      "properties": {
+        "dateTime": {
+          "type": "object",
+          "minItems": 1
+        }
+      },
+      "title": "TimePeriod"
     }
   }
 }
