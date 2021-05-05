@@ -190,6 +190,12 @@
           }
         }
       },
+      "required": [
+        "thesaurus"
+      ],
+      "errorMessage": {
+        "required": "At least one keyword under the 'Keywords' tab must come from the 'ISO Topic Category' thesaurus."
+      },
       "title": "Keywords"
     }
   }
