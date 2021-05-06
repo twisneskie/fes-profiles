@@ -1,5 +1,5 @@
 {
-  "$schema": "http://json-schema.org/2020-12/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Metadata",
   "description": "Requires metadata fields and terms determined by the USFWS Alaska Region DST for Projects.",
   "$id": "project-metadata.json",
