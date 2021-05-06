@@ -53,22 +53,16 @@
         {
           "properties": {
             "role": {
-              "enum": [
-                "pointOfContact",
-                "author"
-              ],
-              "errorMessage": "At least one contact must be provided for the roles 'author' and 'pointOfContact' under the 'Metadata Contacts' section of the 'Metadata' tab."
+              "const": "pointOfContact",
+              "errorMessage": "At least one contact must be provided for the role 'pointOfContact' under the 'Metadata Contacts' section of the 'Metadata' tab."
             }
           }
         },
         {
           "properties": {
             "role": {
-              "enum": [
-                "pointOfContact",
-                "author"
-              ],
-              "errorMessage": "At least one contact must be provided for the roles 'author' and 'pointOfContact' under the 'Metadata Contacts' section of the 'Metadata' tab."
+              "const": "author",
+              "errorMessage": "At least one contact must be provided for the role 'author' under the 'Metadata Contacts' section of the 'Metadata' tab."
             }
           }
         }
