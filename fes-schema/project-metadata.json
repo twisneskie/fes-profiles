@@ -49,10 +49,13 @@
     "MetadataContact": {
       "type": "array",
       "minItems": 1,
-      "contains": {
+      "items": {
         "properties": {
           "role": {
-            "const": "pointOfContact",
+            "enum": [
+              "pointOfContact",
+              "author"
+            ],
             "errorMessage": "At least one person must be provided with the role 'pointOfContact' under the 'Metadata Contacts' section of the 'Metadata' tab."
           }
         }
@@ -60,8 +63,7 @@
       "contains": {
         "properties": {
           "role": {
-            "const": "author",
-            "errorMessage": "At least one person must be provided with the role 'author' under the 'Metadata Contacts' section of the 'Metadata' tab."
+            "type": "string"
           }
         }
       },
