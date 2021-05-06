@@ -76,7 +76,10 @@
       "additionalItems": true,
       "required": [
         "role"
-      ]
+      ],
+      "errorMessage": {
+        "minItems": "At least two metadata contacts must be provided under the 'Metadata Contacts' section of the 'Metadata' tab. The first two metadata contacts must have the roles 'pointOfContact' and 'author'."
+      }
     },
     "ResourceInfo": {
       "type": "object",
@@ -199,10 +202,12 @@
           "thesaurus": {
             "type": "object",
             "minItems": 1,
-            "properties": {
-              "type": {
-                "const": "isoTopicCategory",
-                "errorMessage": "At least one keyword under the 'Keywords' tab must be from the ISO Topic Category thesaurus."
+            "contains": {
+              "properties": {
+                "type": {
+                  "const": "isoTopicCategory",
+                  "errorMessage": "At least one keyword under the 'Keywords' tab must be from the ISO Topic Category thesaurus."
+                }
               }
             }
           }
