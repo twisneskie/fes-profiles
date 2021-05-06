@@ -93,9 +93,7 @@
         "citation": {
           "$ref": "#/definitions/Citation"
         },
-        "abstract": {
-
-        },
+        "abstract": {},
         "timePeriod": {
           "$ref": "#/definitions/TimePeriod"
         },
