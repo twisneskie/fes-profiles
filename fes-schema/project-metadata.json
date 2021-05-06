@@ -49,27 +49,17 @@
     "MetadataContact": {
       "type": "array",
       "minItems": 2,
-      "items": [
+      "items": {
         "properties": {
           "role": {
             "enum": [
               "pointOfContact",
               "author"
             ],
-            "errorMessage": "At least one person must be provided with the role 'pointOfContact' under the 'Metadata Contacts' section of the 'Metadata' tab."
-          }
-        },
-        "properties": {
-          "role": {
-            "enum": [
-              "pointOfContact",
-              "author"
-            ],
-            "errorMessage": "At least one person must be provided with the role 'pointOfContact' under the 'Metadata Contacts' section of the 'Metadata' tab."
+            "errorMessage": "At least one contact must be provided for the roles 'author' and 'pointOfContact' under the 'Metadata Contacts' section of the 'Metadata' tab."
           }
         }
-      ],
-      "additionalItems": true,
+      },
       "required": [
         "role"
       ]
