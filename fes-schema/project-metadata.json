@@ -49,7 +49,7 @@
     "MetadataContact": {
       "type": "array",
       "minItems": 2,
-      "items": [
+      "allOf": [
         {
           "properties": {
             "role": {
