@@ -202,7 +202,7 @@
           "minItems": 1
         }
       },
-      "required" [
+      "required": [
         "dateTime"
       ],
       "errorMessage": {
