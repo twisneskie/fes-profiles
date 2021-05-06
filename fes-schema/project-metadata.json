@@ -99,7 +99,7 @@
     },
     "Status": {
     "type": "array",
-    "contains": {
+    "items": {
       "type": "string",
       "enum": [
         "completed",
