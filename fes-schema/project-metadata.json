@@ -204,12 +204,15 @@
             "minItems": 1,
             "contains": {
               "properties": {
-                "type": {
-                  "const": "isoTopicCategory",
+                "title": {
+                  "const": "ISO 19115 Topic Category",
                   "errorMessage": "At least one keyword under the 'Keywords' tab must be from the ISO Topic Category thesaurus."
                 }
               }
-            }
+            },
+            "required": [
+              "title"
+            ]
           }
         },
       },
