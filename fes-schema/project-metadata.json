@@ -196,18 +196,27 @@
     },
     "TimePeriod": {
       "type": "object",
-      "properties": {
-        "dateTime": {
+      "oneOf": [
+        {
           "type": "object",
-          "minItems": 1
-        }
-      },
-      "required": [
-        "dateTime"
+          "properties": {
+            "startDateTime": {},
+            "endDateTime": {}
+          },
+          "anyOf": [
+            {
+              "required": [
+                "startDateTime"
+              ]
+            },
+            {
+              "required": [
+                "endDateTime"
+              ]
+            }
+          ]
+        },
       ],
-      "errorMessage": {
-        "required": "At least a project start date and/or a project end date must be provided."
-      },
       "title": "TimePeriod"
     },
     "Keywords": {
