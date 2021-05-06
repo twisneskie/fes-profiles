@@ -93,6 +93,9 @@
         "citation": {
           "$ref": "#/definitions/Citation"
         },
+        "abstract": {
+
+        },
         "timePeriod": {
           "$ref": "#/definitions/TimePeriod"
         },
@@ -104,6 +107,7 @@
         "status",
         "pointOfContact",
         "citation",
+        "abstract",
         "timePeriod",
         "keyword"
       ],
@@ -111,6 +115,7 @@
         "required": {
           "status": "Project status must be provided in the 'Basic Information' section under the 'Main' tab. Status should be one of: 'completed', 'onGoing', 'proposed', or 'accepted'",
           "pointOfContact": "Project personnel must be provided in the 'Point of Contact' section under the 'Main' tab.",
+          "abstract": "Project abstract must be provided in the 'Description' section under the 'Main' tab.",
           "timePeriod": "Project time period must be provided in the 'Time Period' section under the 'Main' tab. At least a project start date and/or a project end date should be provided.",
           "keyword": "Project keywords must be provided under the 'Keywords' tab. At least one keyword should be provided from the 'ISO Topic Category' thesaurus."
         }
