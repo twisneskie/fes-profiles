@@ -116,11 +116,13 @@
         },
         "resourceType": {
           "type": "array",
-          "contains": {
+          "items": {
             "properties": {
-              "const": "project",
-              "errorMessage": {
-                "const": "Resource Type must be 'project' for projects."
+              {
+                "const": "project",
+                "errorMessage": {
+                  "const": "Resource Type must be 'project' for projects."
+                }
               }
             }
           },
