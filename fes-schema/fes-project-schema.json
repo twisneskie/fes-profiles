@@ -3,7 +3,7 @@
   "title": "Metadata",
   "description": "Required metadata fields and terms determined by the USFWS Alaska Region FES program for Projects.",
   "$id": "project-metadata.json",
-  "version": "0.3.7",
+  "version": "0.3.8",
   "type": "object",
   "properties": {
     "metadata": {
@@ -121,7 +121,10 @@
               "type": {
                 "type": "string",
                 "const": "project",
-                "minLength": 1
+                "minLength": 1,
+                "errorMessage": {
+                  "const": "Resource type for project must be listed as 'project' in the 'Resource Types' section under the 'Main' tab."
+                }
               }
             }
         }
@@ -187,7 +190,6 @@
           },
           "title": "Citation"
         },
-        "abstract": {},
         "timePeriod": {
           "type": "object",
           "oneOf": [
@@ -227,10 +229,7 @@
                       "const": "At least one keyword under the 'Keywords' tab must be from the ISO Topic Category thesaurus."
                     }
                   }
-                },
-                "required": [
-                  "title"
-                ]
+                }
               }
             },
           },
@@ -239,7 +238,19 @@
           ],
           "title": "Keywords"
         },
-        "resourceMaintenance": {}
+        "resourceMaintenance": {
+          "type": "array",
+          "items": {
+            "required": [
+              "frequency"
+            ],
+            "errorMessage": {
+              "required": {
+                "frequency": "Project resource maintenance frequency must be provided in the 'Maintenance' section under the 'Main' tab."
+              }
+            }
+          }
+        }
       },
       "required": [
         "title",
@@ -254,14 +265,14 @@
       ],
       "errorMessage": {
         "required": {
-          "title": "Project title must be provided in the 'Basic Information' section under the 'Main' tab.",
-          "status": "Project status must be provided in the 'Basic Information' section under the 'Main' tab. Status must be one of: 'completed', 'onGoing', 'proposed', or 'accepted'",
-          "resourceType": "Resource type must be provided in the 'Resource Types' section under the 'Main' tab. Project resource type must be 'project'.",
+          "title": "A short, descriptive project title must be provided in the 'Basic Information' section under the 'Main' tab.",
+          "status": "The current project status must be provided in the 'Basic Information' section under the 'Main' tab. Status must be one of: 'completed', 'onGoing', 'proposed', or 'accepted'",
+          "resourceType": "Resource type must be provided in the 'Resource Types' section under the 'Main' tab. The resource type for projects must be 'project'.",
           "pointOfContact": "Project personnel must be provided in the 'Point of Contact' section under the 'Main' tab.",
-          "abstract": "Project abstract must be provided in the 'Description' section under the 'Main' tab.",
+          "abstract": "Project abstract must be provided in the 'Description' section under the 'Main' tab. Abstracts should summarize the project's purpose and goals.",
           "timePeriod": "Project time period must be provided in the 'Time Period' section under the 'Main' tab. At least a project start date and/or a project end date must be provided.",
           "keyword": "Project keywords must be provided under the 'Keywords' tab. At least one keyword must be provided from the 'ISO Topic Category' thesaurus.",
-          "resourceMaintenance": "Resource maintenance requency must be provided in the 'Maintenance' section under the 'Main' tab."
+          "resourceMaintenance": "Resource maintenance requency must be provided in the 'Maintenance' section under the 'Main' tab. The maintenance frequency should describe how often project materials are reviewed and/or updated."
         }
       },
       "title": "ResourceInfo"
