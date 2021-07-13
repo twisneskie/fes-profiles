@@ -116,7 +116,7 @@
         },
         "resourceType": {
           "type": "array",
-          "contains": {
+          "items": {
             "properties": {
               "resourceType": {
                 "const": "project",
