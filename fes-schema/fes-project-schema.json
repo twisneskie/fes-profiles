@@ -3,7 +3,7 @@
   "title": "Metadata",
   "description": "Required metadata fields and terms determined by the USFWS Alaska Region FES program for Projects.",
   "$id": "project-metadata.json",
-  "version": "0.3.10",
+  "version": "1.0.0",
   "type": "object",
   "properties": {
     "metadata": {
