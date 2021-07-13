@@ -1,9 +1,9 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Metadata",
-  "description": "Requires metadata fields and terms determined by the USFWS Alaska Region DST for Projects.",
+  "description": "Required metadata fields and terms determined by the USFWS Alaska Region FES program for Projects.",
   "$id": "project-metadata.json",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "type": "object",
   "properties": {
     "metadata": {
@@ -33,61 +33,76 @@
     "MetadataInfo": {
       "type": "object",
       "properties": {
-        "metadataContact": {
-          "$ref": "#/definitions/MetadataContact"
-        }
-      },
-      "required": [
-        "metadataContact"
-      ],
-      "errorMessage": {
-        "required": "At least one contact must be provided in the 'Metadata Contact' section under the 'Metadata' tab. At least one role must be 'pointOfContact'."
-      },
-      "title": "MetadataInfo"
-
-    },
-    "MetadataContact": {
-      "type": "array",
-      "minItems": 2,
-      "items": [
-        {
-          "properties": {
-            "role": {
-              "enum": [
-                "author",
-                "pointOfContact"
-              ],
-              "errorMessage": "The first two metadata contacts must have the roles 'pointOfContact' and 'author' under the 'Metadata Contacts' section of the 'Metadata' tab."
+        "metadataDate": {
+          "required": [
+            "date",
+            "dateType"
+          ],
+          "errorMessage": {
+            "required": {
+              "date": "At least one date associated with the metadata must be provided in the 'Basic Information' section under the 'Metadata' tab.",
+              "dateType": "A date type must be provided for dates associated with the metadata in the 'Basic Information' section under the 'Metadata' tab."
             }
           }
         },
-        {
-          "properties": {
-            "role": {
-              "enum": [
-                "author",
-                "pointOfContact"
-              ],
-              "errorMessage": "The first two metadata contacts must have the roles 'pointOfContact' and 'author' under the 'Metadata Contacts' section of the 'Metadata' tab."
+        "metadataContact": {
+          "type": "array",
+          "minItems": 2,
+          "items": [
+            {
+              "properties": {
+                "role": {
+                  "enum": [
+                    "author",
+                    "pointOfContact"
+                  ],
+                  "errorMessage": "The first two metadata contacts must have the roles 'pointOfContact' and 'author' under the 'Metadata Contacts' section of the 'Metadata' tab."
+                }
+              }
+            },
+            {
+              "properties": {
+                "role": {
+                  "enum": [
+                    "author",
+                    "pointOfContact"
+                  ],
+                  "errorMessage": "The first two metadata contacts must have the roles 'pointOfContact' and 'author' under the 'Metadata Contacts' section of the 'Metadata' tab."
+                }
+              }
             }
+          ],
+          "uniqueItems": true,
+          "additionalItems": true,
+          "required": [
+            "role"
+          ],
+          "errorMessage": {
+            "minItems": "At least two metadata contacts must be provided under the 'Metadata Contacts' section of the 'Metadata' tab. The first two metadata contacts must have the roles 'pointOfContact' and 'author'.",
+            "uniqueItems": "Each role in the 'Metadata Contacts' section under the 'Metadata' tab must be unique."
           }
         }
-      ],
-      "uniqueItems": true,
-      "additionalItems": true,
+      },
       "required": [
-        "role"
+        "metadataDate",
+        "metadataContact"
       ],
       "errorMessage": {
-        "minItems": "At least two metadata contacts must be provided under the 'Metadata Contacts' section of the 'Metadata' tab. The first two metadata contacts must have the roles 'pointOfContact' and 'author'.",
-        "uniqueItems": "Each role in the 'Metadata Contacts' section under the 'Metadata' tab must be unique."
-      }
+        "required": {
+          "metadataDate": "At least one date associated with the metadata (such as creation or lastUpdate) must be provided in the 'Basic Information' section under the 'Metadata' tab."
+          "metadataContact": "At least one contact must be provided in the 'Metadata Contact' section under the 'Metadata' tab. At least one role must be 'pointOfContact'."
+        }
+      },
+      "title": "MetadataInfo"
     },
     "ResourceInfo": {
       "type": "object",
       "properties": {
         "status": {
           "$ref": "#/definitions/Status"
+        },
+        "resourceType": {
+          "$ref": "#/definitions/Type"
         },
         "pointOfContact": {
           "$ref": "#/definitions/PointOfContact"
@@ -101,23 +116,32 @@
         },
         "keyword": {
           "$ref": "#/definitions/Keywords"
+        },
+        "resourceMaintenance": {
+          "$ref": "#/definitions/Maintenance"
         }
       },
       "required": [
+        "title",
         "status",
+        "resourceType",
         "pointOfContact",
         "citation",
         "abstract",
         "timePeriod",
-        "keyword"
+        "keyword",
+        "resourceMaintenance"
       ],
       "errorMessage": {
         "required": {
+          "title": "Project title must be provided in the 'Basic Information' section under the 'Main' tab.",
           "status": "Project status must be provided in the 'Basic Information' section under the 'Main' tab. Status must be one of: 'completed', 'onGoing', 'proposed', or 'accepted'",
+          "resourceType": "Resource type must be provided in the 'Resource Types' section under the 'Main' tab. Project resource type must be 'project'.",
           "pointOfContact": "Project personnel must be provided in the 'Point of Contact' section under the 'Main' tab.",
           "abstract": "Project abstract must be provided in the 'Description' section under the 'Main' tab.",
           "timePeriod": "Project time period must be provided in the 'Time Period' section under the 'Main' tab. At least a project start date and/or a project end date must be provided.",
-          "keyword": "Project keywords must be provided under the 'Keywords' tab. At least one keyword must be provided from the 'ISO Topic Category' thesaurus."
+          "keyword": "Project keywords must be provided under the 'Keywords' tab. At least one keyword must be provided from the 'ISO Topic Category' thesaurus.",
+          "resourceMaintenance": "Resource maintenance requency must be provided in the 'Maintenance' section under the 'Main' tab."
         }
       },
       "title": "ResourceInfo"
@@ -138,6 +162,14 @@
     },
     "title": "Status"
   },
+    "Type": {
+      "type": "object",
+      "const": "project",
+      "errorMessage": {
+        "const": "Resource Type must be 'project' for projects."
+      },
+      "title": "Type"
+    },
     "PointOfContact": {
       "type": "array",
       "contains": {
@@ -151,9 +183,14 @@
         },
       },
       "required": [
-        "role"
+        "role",
+        "party"
       ],
-      "title": "PointOfContact"
+      "title": "PointOfContact",
+      "errorMessage": {
+        "role": "At least one role must be provided in the 'Point of Contact' section under the 'Main' tab.",
+        "party": "At least one person must be assigned to a role in the 'Point of Contact' section under the 'Main' tab."
+      }
     },
     "Citation": {
       "type": "object",
@@ -244,6 +281,7 @@
         "thesaurus"
       ],
       "title": "Keywords"
-    }
+    },
+    "Maintenance": {}
   }
 }
