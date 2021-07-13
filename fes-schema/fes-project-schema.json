@@ -3,7 +3,7 @@
   "title": "Metadata",
   "description": "Required metadata fields and terms determined by the USFWS Alaska Region FES program for Projects.",
   "$id": "project-metadata.json",
-  "version": "0.3.8",
+  "version": "0.3.9",
   "type": "object",
   "properties": {
     "metadata": {
@@ -177,12 +177,14 @@
             }
           },
           "required": [
+            "title",
             "date",
             "responsibleParty",
             "onlineResource"
           ],
           "errorMessage": {
             "required": {
+              "title": "A short, descriptive project title must be provided in the 'Basic Information' section under the 'Main' tab.",
               "date": "At least one date (e.g. acquisition, creation, revision) must be provided in the 'Citation' section under the 'Main' tab.",
               "responsibleParty": "At least one Responsible Party must be provided in the 'Citation' section under the 'Main' tab. At least one role must be listed a pointOfContact.",
               "onlineResource": "At least one online resource must be provided within the 'Citation' section under the 'Main' tab. A link to the project Regional Data Repository folder can be used if no other online resource exists yet."
@@ -253,7 +255,6 @@
         }
       },
       "required": [
-        "title",
         "status",
         "resourceType",
         "pointOfContact",
@@ -265,7 +266,6 @@
       ],
       "errorMessage": {
         "required": {
-          "title": "A short, descriptive project title must be provided in the 'Basic Information' section under the 'Main' tab.",
           "status": "The current project status must be provided in the 'Basic Information' section under the 'Main' tab. Status must be one of: 'completed', 'onGoing', 'proposed', or 'accepted'",
           "resourceType": "Resource type must be provided in the 'Resource Types' section under the 'Main' tab. The resource type for projects must be 'project'.",
           "pointOfContact": "Project personnel must be provided in the 'Point of Contact' section under the 'Main' tab.",
