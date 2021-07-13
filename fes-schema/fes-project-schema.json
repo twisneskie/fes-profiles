@@ -116,7 +116,7 @@
         },
         "resourceType": {
           "type": "array",
-          "items": {
+          "contains": {
             "properties": {
               "resourceType": {
                 "type": "object",
