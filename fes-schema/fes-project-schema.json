@@ -124,7 +124,8 @@
                 "minLength": 1
               }
             }
-        },
+        }
+      },
         "pointOfContact": {
           "type": "array",
           "contains": {
