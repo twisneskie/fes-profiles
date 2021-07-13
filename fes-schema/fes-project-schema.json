@@ -1,9 +1,9 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Metadata",
-  "description": "Requires metadata fields and terms determined by the USFWS Alaska Region DST for Projects.",
+  "description": "Required metadata fields and terms determined by the USFWS Alaska Region FES program for Projects.",
   "$id": "project-metadata.json",
-  "version": "0.2.1",
+  "version": "1.0.0",
   "type": "object",
   "properties": {
     "metadata": {
@@ -33,217 +33,298 @@
     "MetadataInfo": {
       "type": "object",
       "properties": {
-        "metadataContact": {
-          "$ref": "#/definitions/MetadataContact"
-        }
-      },
-      "required": [
-        "metadataContact"
-      ],
-      "errorMessage": {
-        "required": "At least one contact must be provided in the 'Metadata Contact' section under the 'Metadata' tab. At least one role must be 'pointOfContact'."
-      },
-      "title": "MetadataInfo"
-
-    },
-    "MetadataContact": {
-      "type": "array",
-      "minItems": 2,
-      "items": [
-        {
-          "properties": {
-            "role": {
-              "enum": [
-                "author",
-                "pointOfContact"
-              ],
-              "errorMessage": "The first two metadata contacts must have the roles 'pointOfContact' and 'author' under the 'Metadata Contacts' section of the 'Metadata' tab."
+        "metadataDate": {
+          "required": [
+            "date",
+            "dateType"
+          ],
+          "errorMessage": {
+            "required": {
+              "date": "At least one date associated with the metadata must be provided in the 'Basic Information' section under the 'Metadata' tab.",
+              "dateType": "A date type must be provided for dates associated with the metadata in the 'Basic Information' section under the 'Metadata' tab."
             }
           }
         },
-        {
-          "properties": {
-            "role": {
-              "enum": [
-                "author",
-                "pointOfContact"
-              ],
-              "errorMessage": "The first two metadata contacts must have the roles 'pointOfContact' and 'author' under the 'Metadata Contacts' section of the 'Metadata' tab."
+        "metadataContact": {
+          "type": "array",
+          "minItems": 2,
+          "items": [
+            {
+              "properties": {
+                "role": {
+                  "enum": [
+                    "author",
+                    "pointOfContact"
+                  ],
+                  "errorMessage": "The first two metadata contacts must have the roles 'pointOfContact' and 'author' under the 'Metadata Contacts' section of the 'Metadata' tab."
+                }
+              }
+            },
+            {
+              "properties": {
+                "role": {
+                  "enum": [
+                    "author",
+                    "pointOfContact"
+                  ],
+                  "errorMessage": "The first two metadata contacts must have the roles 'pointOfContact' and 'author' under the 'Metadata Contacts' section of the 'Metadata' tab."
+                }
+              }
             }
+          ],
+          "uniqueItems": true,
+          "additionalItems": true,
+          "required": [
+            "role"
+          ],
+          "errorMessage": {
+            "minItems": "At least two metadata contacts must be provided under the 'Metadata Contacts' section of the 'Metadata' tab. The first two metadata contacts must have the roles 'pointOfContact' and 'author'.",
+            "uniqueItems": "Each role in the 'Metadata Contacts' section under the 'Metadata' tab must be unique."
           }
         }
-      ],
-      "uniqueItems": true,
-      "additionalItems": true,
+      },
       "required": [
-        "role"
+        "metadataDate",
+        "metadataContact"
       ],
       "errorMessage": {
-        "minItems": "At least two metadata contacts must be provided under the 'Metadata Contacts' section of the 'Metadata' tab. The first two metadata contacts must have the roles 'pointOfContact' and 'author'.",
-        "uniqueItems": "Each role in the 'Metadata Contacts' section under the 'Metadata' tab must be unique."
-      }
+        "required": {
+          "metadataDate": "At least one date associated with the metadata (such as creation or lastUpdate) must be provided in the 'Basic Information' section under the 'Metadata' tab.",
+          "metadataContact": "At least one contact must be provided in the 'Metadata Contact' section under the 'Metadata' tab. At least one role must be 'pointOfContact'."
+        }
+      },
+      "title": "MetadataInfo"
     },
     "ResourceInfo": {
       "type": "object",
       "properties": {
         "status": {
-          "$ref": "#/definitions/Status"
-        },
-        "pointOfContact": {
-          "$ref": "#/definitions/PointOfContact"
-        },
-        "citation": {
-          "$ref": "#/definitions/Citation"
-        },
-        "abstract": {},
-        "timePeriod": {
-          "$ref": "#/definitions/TimePeriod"
-        },
-        "keyword": {
-          "$ref": "#/definitions/Keywords"
-        }
-      },
-      "required": [
-        "status",
-        "pointOfContact",
-        "citation",
-        "abstract",
-        "timePeriod",
-        "keyword"
-      ],
-      "errorMessage": {
-        "required": {
-          "status": "Project status must be provided in the 'Basic Information' section under the 'Main' tab. Status must be one of: 'completed', 'onGoing', 'proposed', or 'accepted'",
-          "pointOfContact": "Project personnel must be provided in the 'Point of Contact' section under the 'Main' tab.",
-          "abstract": "Project abstract must be provided in the 'Description' section under the 'Main' tab.",
-          "timePeriod": "Project time period must be provided in the 'Time Period' section under the 'Main' tab. At least a project start date and/or a project end date must be provided.",
-          "keyword": "Project keywords must be provided under the 'Keywords' tab. At least one keyword must be provided from the 'ISO Topic Category' thesaurus."
-        }
-      },
-      "title": "ResourceInfo"
-    },
-    "Status": {
-    "type": "array",
-    "items": {
-      "type": "string",
-      "enum": [
-        "completed",
-        "onGoing",
-        "proposed",
-        "accepted"
-      ],
-      "errorMessage": {
-        "enum": "Project status in the 'Basic Information' section under the 'Main' tab must be one of: 'completed', 'onGoing', 'proposed', or 'accepted'"
-      }
-    },
-    "title": "Status"
-  },
-    "PointOfContact": {
-      "type": "array",
-      "contains": {
-        "properties": {
-          "role": {
-            "const": "pointOfContact",
-            "errorMessage": {
-              "const": "The 'Point of Contact' section under the 'Main' tab must have at least one person listed as the role 'pointOfContact'."
-            }
-          }
-        },
-      },
-      "required": [
-        "role"
-      ],
-      "title": "PointOfContact"
-    },
-    "Citation": {
-      "type": "object",
-      "properties": {
-        "date": {
           "type": "array",
-          "minItems": 1
+          "items": {
+            "type": "string",
+            "enum": [
+              "completed",
+              "onGoing",
+              "proposed",
+              "accepted"
+            ],
+            "errorMessage": {
+              "enum": "Project status in the 'Basic Information' section under the 'Main' tab must be one of: 'completed', 'onGoing', 'proposed', or 'accepted'"
+            }
+          },
+          "title": "Status"
         },
-        "responsibleParty": {
+        "resourceType": {
+          "type": "array",
+          "items": {
+            "properties": {
+              "type": {
+                "type": "string",
+                "const": "project",
+                "minLength": 1,
+                "errorMessage": {
+                  "const": "Resource type for project must be listed as 'project' in the 'Resource Types' section under the 'Main' tab."
+                }
+              }
+            }
+        }
+      },
+        "pointOfContact": {
           "type": "array",
           "contains": {
             "properties": {
               "role": {
                 "const": "pointOfContact",
                 "errorMessage": {
-                  "const": "One role for 'Responsible Parties' within the 'Citation' section under the 'Main' tab must be pointOfContact."
+                  "const": "The 'Point of Contact' section under the 'Main' tab must have at least one person listed as the role 'pointOfContact'."
                 }
+              }
+            },
+          },
+          "required": [
+            "role",
+            "party"
+          ],
+          "title": "PointOfContact",
+          "errorMessage": {
+            "role": "At least one role must be provided in the 'Point of Contact' section under the 'Main' tab.",
+            "party": "At least one person must be assigned to a role in the 'Point of Contact' section under the 'Main' tab."
+          }
+        },
+        "citation": {
+          "type": "object",
+          "properties": {
+            "date": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "required": [
+                  "date",
+                  "dateType"
+                ],
+                "errorMessage": {
+                  "required": {
+                    "date": "At least one date (e.g. acquisition, creation, revision) must be provided in the 'Citation' section under the 'Main' tab.",
+                    "dateType": "A type must be provided for dates in the 'Citation' section under the 'Main' tab."
+                  }
+                }
+              }
+            },
+            "responsibleParty": {
+              "type": "array",
+              "contains": {
+                "properties": {
+                  "role": {
+                    "const": "pointOfContact",
+                    "errorMessage": {
+                      "const": "One role for 'Responsible Parties' within the 'Citation' section under the 'Main' tab must be pointOfContact."
+                    }
+                  }
+                }
+              }
+            },
+            "onlineResource": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "required": [
+                  "uri",
+                  "name",
+                  "function"
+                ],
+                "errorMessage": {
+                  "required": {
+                    "uri": "A URI for the project homepage or Regional Data Repository folder must be provided in the 'Online Resource' section of the 'Citation' section under the 'Main' tab. This should be a link for browsing rather than a direct download link.",
+                    "name": "A name for the project homepage or Regional Data Repository must be provided in the 'Online Resource' section of the 'Citation' section under the 'Main' tab.",
+                    "function": "The function of the project homepage (i.e. browsing) must be provided in the 'Online Resource' section of the 'Citation' section under the 'Main' tab."
+                  }
+                }
+              }
+            }
+          },
+          "required": [
+            "title",
+            "date",
+            "responsibleParty",
+            "onlineResource"
+          ],
+          "errorMessage": {
+            "required": {
+              "title": "A short, descriptive project title must be provided in the 'Basic Information' section under the 'Main' tab.",
+              "date": "At least one date (e.g. acquisition, creation, revision) must be provided in the 'Citation' section under the 'Main' tab.",
+              "responsibleParty": "At least one Responsible Party must be provided in the 'Citation' section under the 'Main' tab. At least one role must be listed a pointOfContact.",
+              "onlineResource": "At least one online resource must be provided within the 'Citation' section under the 'Main' tab. A link to the project Regional Data Repository folder can be used if no other online resource exists yet."
+            }
+          },
+          "title": "Citation"
+        },
+        "timePeriod": {
+          "type": "object",
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "startDateTime": {},
+                "endDateTime": {}
+              },
+              "anyOf": [
+                {
+                  "required": [
+                    "startDateTime"
+                  ]
+                },
+                {
+                  "required": [
+                    "endDateTime"
+                  ]
+                }
+              ]
+            },
+          ],
+          "title": "TimePeriod"
+        },
+        "keyword": {
+          "type": "array",
+          "contains": {
+            "properties": {
+              "thesaurus": {
+                "type": "object",
+                "minItems": 1,
+                "properties": {
+                  "title": {
+                    "const": "ISO 19115 Topic Category",
+                    "errorMessage": {
+                      "const": "At least one keyword under the 'Keywords' tab must be from the ISO Topic Category thesaurus."
+                    }
+                  }
+                }
+              }
+            },
+          },
+          "required": [
+            "thesaurus"
+          ],
+          "title": "Keywords"
+        },
+        "resourceMaintenance": {
+          "type": "array",
+          "items": {
+            "required": [
+              "frequency"
+            ],
+            "errorMessage": {
+              "required": {
+                "frequency": "Project resource maintenance frequency must be provided in the 'Maintenance' section under the 'Main' tab."
               }
             }
           }
         },
-        "onlineResource": {
+        "extent": {
           "type": "array",
-          "minItems": 1
+          "items": {
+            "properties": {
+              "geographicExtent": {
+                "items": {
+                  "required": [
+                    "description",
+                    "boundingBox",
+                    "geographicElement"
+                  ],
+                  "errorMessage": {
+                    "required": {
+                      "description": "A description of the geographic extent must be provided in the 'Geographic Extent' section under the 'Extent' tab.",
+                      "boundingBox": "Bounding box coordinates for the geographic extent must be provided in the 'Geographic Extent' section under the 'Extent' tab.",
+                      "geographicElement": "A map of geographic features must be provided in the 'Geographic Extent' section under the 'Extent' tab."
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
       },
       "required": [
-        "date",
-        "responsibleParty",
-        "onlineResource"
+        "status",
+        "resourceType",
+        "pointOfContact",
+        "citation",
+        "abstract",
+        "timePeriod",
+        "keyword",
+        "resourceMaintenance"
       ],
       "errorMessage": {
         "required": {
-          "date": "At least one date (e.g. acquisition, creation, revision) must be provided in the 'Citation' section under the 'Main' tab.",
-          "responsibleParty": "At least one Responsible Party must be provided in the 'Citation' section under the 'Main' tab. At least one role must be listed a pointOfContact.",
-          "onlineResource": "At least one online resource must be provided within the 'Citation' section under the 'Main' tab. A link to the project Regional Data Repository folder can be used if no other online resource exists yet."
+          "status": "The current project status must be provided in the 'Basic Information' section under the 'Main' tab. Status must be one of: 'completed', 'onGoing', 'proposed', or 'accepted'",
+          "resourceType": "Resource type must be provided in the 'Resource Types' section under the 'Main' tab. The resource type for projects must be 'project'.",
+          "pointOfContact": "Project personnel must be provided in the 'Point of Contact' section under the 'Main' tab.",
+          "abstract": "Project abstract must be provided in the 'Description' section under the 'Main' tab. Abstracts should summarize the project's purpose and goals.",
+          "timePeriod": "Project time period must be provided in the 'Time Period' section under the 'Main' tab. At least a project start date and/or a project end date must be provided.",
+          "keyword": "Project keywords must be provided under the 'Keywords' tab. At least one keyword must be provided from the 'ISO Topic Category' thesaurus.",
+          "resourceMaintenance": "Resource maintenance requency must be provided in the 'Maintenance' section under the 'Main' tab. The maintenance frequency should describe how often project materials are reviewed and/or updated."
         }
       },
-      "title": "Citation"
-    },
-    "TimePeriod": {
-      "type": "object",
-      "oneOf": [
-        {
-          "type": "object",
-          "properties": {
-            "startDateTime": {},
-            "endDateTime": {}
-          },
-          "anyOf": [
-            {
-              "required": [
-                "startDateTime"
-              ]
-            },
-            {
-              "required": [
-                "endDateTime"
-              ]
-            }
-          ]
-        },
-      ],
-      "title": "TimePeriod"
-    },
-    "Keywords": {
-      "type": "array",
-      "contains": {
-        "properties": {
-          "thesaurus": {
-            "type": "object",
-            "minItems": 1,
-            "properties": {
-              "title": {
-                "const": "ISO 19115 Topic Category",
-                "errorMessage": {
-                  "const": "At least one keyword under the 'Keywords' tab must be from the ISO Topic Category thesaurus."
-                }
-              }
-            },
-            "required": [
-              "title"
-            ]
-          }
-        },
-      },
-      "required": [
-        "thesaurus"
-      ],
-      "title": "Keywords"
+      "title": "ResourceInfo"
     }
   }
 }
