@@ -89,7 +89,7 @@
       ],
       "errorMessage": {
         "required": {
-          "metadataDate": "At least one date associated with the metadata (such as creation or lastUpdate) must be provided in the 'Basic Information' section under the 'Metadata' tab."
+          "metadataDate": "At least one date associated with the metadata (such as creation or lastUpdate) must be provided in the 'Basic Information' section under the 'Metadata' tab.",
           "metadataContact": "At least one contact must be provided in the 'Metadata Contact' section under the 'Metadata' tab. At least one role must be 'pointOfContact'."
         }
       },
