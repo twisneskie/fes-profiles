@@ -3,7 +3,7 @@
   "title": "Metadata",
   "description": "Required metadata fields and terms determined by the USFWS Alaska Region FES program for Projects.",
   "$id": "project-metadata.json",
-  "version": "0.3.9",
+  "version": "0.3.10",
   "type": "object",
   "properties": {
     "metadata": {
@@ -156,7 +156,19 @@
           "properties": {
             "date": {
               "type": "array",
-              "minItems": 1
+              "minItems": 1,
+              "items": {
+                "required": [
+                  "date",
+                  "dateType"
+                ],
+                "errorMessage": {
+                  "required": {
+                    "date": "At least one date (e.g. acquisition, creation, revision) must be provided in the 'Citation' section under the 'Main' tab.",
+                    "dateType": "A type must be provided for dates in the 'Citation' section under the 'Main' tab."
+                  }
+                }
+              }
             },
             "responsibleParty": {
               "type": "array",
@@ -173,7 +185,21 @@
             },
             "onlineResource": {
               "type": "array",
-              "minItems": 1
+              "minItems": 1,
+              "items": {
+                "required": [
+                  "uri",
+                  "name",
+                  "function"
+                ],
+                "errorMessage": {
+                  "required": {
+                    "uri": "A URI for the project homepage or Regional Data Repository folder must be provided in the 'Online Resource' section of the 'Citation' section under the 'Main' tab. This should be a link for browsing rather than a direct download link.",
+                    "name": "A name for the project homepage or Regional Data Repository must be provided in the 'Online Resource' section of the 'Citation' section under the 'Main' tab.",
+                    "function": "The function of the project homepage (i.e. browsing) must be provided in the 'Online Resource' section of the 'Citation' section under the 'Main' tab."
+                  }
+                }
+              }
             }
           },
           "required": [
@@ -249,6 +275,29 @@
             "errorMessage": {
               "required": {
                 "frequency": "Project resource maintenance frequency must be provided in the 'Maintenance' section under the 'Main' tab."
+              }
+            }
+          }
+        },
+        "extent": {
+          "type": "array",
+          "items": {
+            "properties": {
+              "geographicExtent": {
+                "items": {
+                  "required": [
+                    "description",
+                    "boundingBox",
+                    "geographicElement"
+                  ],
+                  "errorMessage": {
+                    "required": {
+                      "description": "A description of the geographic extent must be provided in the 'Geographic Extent' section under the 'Extent' tab.",
+                      "boundingBox": "Bounding box coordinates for the geographic extent must be provided in the 'Geographic Extent' section under the 'Extent' tab.",
+                      "geographicElement": "A map of geographic features must be provided in the 'Geographic Extent' section under the 'Extent' tab."
+                    }
+                  }
+                }
               }
             }
           }
