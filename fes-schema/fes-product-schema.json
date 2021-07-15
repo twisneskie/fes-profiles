@@ -3,7 +3,7 @@
   "title": "Metadata",
   "description": "Required metadata fields and terms determined by the USFWS Alaska Region FES program for Products.",
   "$id": "fes-product-schema.json",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "type": "object",
   "properties": {
     "metadata": {
@@ -340,68 +340,12 @@
     },
     "ResourceDistribution": {
       "type": "array",
-      "items": {
+      "contains": {
         "properties": {
           "distributor": {
             "type": "array",
             "items": {
-              "properties": {
-                "contact": {
-                  "type": "object",
-                  "properties": {
-                    "role": {
-                      "const": "distributor",
-                      "errorMessage": "The role in the 'Distributor' section under the 'Distribution' tab must be 'distributor'"
-                    }
-                  },
-                  "required": [
-                    "role",
-                    "party"
-                  ],
-                  "errorMessage": {
-                    "required": {
-                      "role": "A role must be provided in the 'Distributor' section under the 'Distribution' tab. The role must be 'distributor'.",
-                      "party": "A contact must be provided in the 'Distributor' section under the 'Distribution' tab. This contact should be an organization rather than an individual."
-                    }
-                  }
-                },
-                "transferOption": {
-                  "type": "array",
-                  "items": {
-                    "properties": {
-                      "onlineOption": {
-                        "type": "array",
-                        "items": {
-                          "required":[
-                            "uri",
-                            "name",
-                            "function"
-                          ],
-                          "errorMessage": {
-                            "required": {
-                              "uri": "A URI must be provided for 'Online Options' to access the resource in the 'Distributor' section under the 'Distribution' tab.",
-                              "name": "A specific name must be provided for the 'Online Options' to access the resource in the 'Distributor' section under the 'Distribution' tab.",
-                              "function": "An 'Online Options' function (i.e. 'download' if it is a direct download link or 'fileAccess' if it is a link to a page where data can be downloaded) must be provided for to access the resource in the 'Distributor' section under the 'Distribution' tab."
-                            }
-                          }
-                        }
-                      }
-                    },
-                    "required": [
-                      "onlineOption"
-                    ],
-                    "errorMessage": {
-                      "required": {
-                        "onlineOption": "An online option for accessing the resource must be provided in the 'Transfer Options' section of the 'Distributor' section under the 'Distribution' tab. A Regional Data Repository link may be provided by including 'file:' before the file path."
-                      }
-                    }
-                  }
-                }
-              },
-              "required": [
-                "contact",
-                "transferOption"
-              ]
+
             }
           }
         },
