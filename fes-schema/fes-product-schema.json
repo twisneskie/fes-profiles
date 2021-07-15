@@ -3,7 +3,7 @@
   "title": "Metadata",
   "description": "Required metadata fields and terms determined by the USFWS Alaska Region FES program for Products.",
   "$id": "fes-product-schema.json",
-  "version": "0.1.14",
+  "version": "0.1.15",
   "type": "object",
   "properties": {
     "metadata": {
@@ -341,6 +341,24 @@
     "ResourceDistribution": {
       "type": "array",
       "items": {
+        "properties": {
+          "distributor": {
+            "properties": {
+              "contact": {},
+              "transferOption": {}
+            },
+            "required": [
+              "contact",
+              "transferOption"
+            ],
+            "errorMessage": {
+              "required": {
+                "contact": "Provide a contact for distribution.",
+                "transferOption": "Provide a transfer option for distribution."
+              }
+            }
+          }
+        },
         "required": [
           "distributor"
         ],
