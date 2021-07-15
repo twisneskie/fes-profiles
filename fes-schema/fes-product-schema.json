@@ -342,14 +342,14 @@
       "type": "array",
       "contains": {
         "properties": {
-          "distribution": {}
+          "description": {}
         },
         "required": [
-          "distribution"
+          "description"
         ],
         "errorMessage": {
           "required": {
-            "distribution": "Distribution information must be provided in the 'Distribution' section under the 'Distribution' tab."
+            "description": "Distribution information must be provided in the 'Distribution' section under the 'Distribution' tab."
           }
         }
       },
