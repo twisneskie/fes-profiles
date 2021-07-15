@@ -3,7 +3,7 @@
   "title": "Metadata",
   "description": "Required metadata fields and terms determined by the USFWS Alaska Region FES program for Products.",
   "$id": "fes-product-schema.json",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "type": "object",
   "properties": {
     "metadata": {
@@ -342,14 +342,45 @@
       "type": "array",
       "contains": {
         "properties": {
-          "description": {}
+          "distributor": {
+            "properties": {
+              "contact": {
+                "properties": {
+                  "role": {
+                    "const": "distributor"
+                    "errorMessage": "Role for distributor must be 'distributor'."
+                  }
+                },
+                "required": [
+                  "role",
+                  "party"
+                ],
+                "errorMessage": {
+                  "required": {
+                    "role": "A role must be provided for a distributor under the 'Distributor' section under the 'Distribution' tab. The role must be 'distributor'."
+                  }
+                }
+              },
+              "transferOption":{}
+            },
+            "required": [
+              "contact",
+              "transferOption"
+            ],
+            "errorMessage": {
+              "required": {
+                "contact": "At least one distribution contact must be provided in the 'Distributor' section under the 'Distribution' tab.",
+                "transferOption": "At least one online transfer option must be provided in the 'Distributor' section under the 'Distribution' tab."
+              }
+            }
+          }
         },
         "required": [
-          "description"
+          "distributor"
         ],
         "errorMessage": {
           "required": {
-            "description": "Distribution information must be provided in the 'Distribution' section under the 'Distribution' tab."
+            "distributor": "Distribution information must be provided in the 'Distribution' section under the 'Distribution' tab."
           }
         }
       },
