@@ -346,7 +346,7 @@
             "type": "object",
             "properties": {
               "distributor"
-            }
+            },
             "required": [
               "distributor"
             ]
