@@ -347,7 +347,7 @@
               "contact": {
                 "properties": {
                   "role": {
-                    "const": "distributor"
+                    "const": "distributor",
                     "errorMessage": "Role for distributor must be 'distributor'."
                   }
                 },
