@@ -343,25 +343,27 @@
       "items": {
         "properties": {
           "distributor": {
-            "properties": {
-              "contact": {
-                "type": "object",
-                "properties": {
-                  "role": {
-                    "const": "distributor",
-                    "errorMessage": {
-                      "const": "Role must be distributor."
+            "items": {
+              "properties": {
+                "contact": {
+                  "type": "object",
+                  "properties": {
+                    "role": {
+                      "const": "distributor",
+                      "errorMessage": {
+                        "const": "Role must be distributor."
+                      }
                     }
                   }
                 }
-              }
-            },
-            "required": [
-              "contact"
-            ],
-            "errorMessage": {
-              "required": {
-                "contact": "Provide a contact for distribution."
+              },
+              "required": [
+                "contact"
+              ],
+              "errorMessage": {
+                "required": {
+                  "contact": "Provide a contact for distribution."
+                }
               }
             }
           }
