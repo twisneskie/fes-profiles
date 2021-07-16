@@ -3,7 +3,7 @@
   "title": "Metadata",
   "description": "Required metadata fields and terms determined by the USFWS Alaska Region FES program for Products.",
   "$id": "fes-product-schema.json",
-  "version": "0.1.21",
+  "version": "0.1.23",
   "type": "object",
   "properties": {
     "metadata": {
@@ -351,18 +351,52 @@
                     "role": {
                       "const": "distributor",
                       "errorMessage": {
-                        "const": "Role must be distributor."
+                        "const": "Role for distributor in the 'Distributor' section under the 'Distribution' tab must be 'distributor'."
+                      }
+                    }
+                  }
+                },
+                "transferOption": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "onlineOption": {
+                        "type": "array",
+                        "items": {
+                          "required": [
+                            "uri",
+                            "name",
+                            "function"
+                          ],
+                          "errorMessage": {
+                            "required": {
+                              "uri": "A URI must be provided for an online option to access the resource under the 'Transfer Option' section of the 'Distributor' section under the 'Distribution' tab. The URI should link to either the direct download (URI that will automatically start a download) or the link to page where you can download the resource.",
+                              "name": "A specific name for the resource download must be provided for an online option to access the resource under the 'Transfer Option' section of the 'Distributor' section under the 'Distribution' tab.",
+                              "function": "A link function must be provided for an online option to access the resource under the 'Transfer Option' section of the 'Distributor' section under the 'Distribution' tab. The function should be either 'download' if it is a direct download link or 'fileAccess' if it is a link to a page where data can be downloaded."
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "required": [
+                      "onlineOption"
+                    ],
+                    "errorMessage": {
+                      "required": {
+                        "onlineOption": "An online option for distribution must be provided in the 'Transfer Option' section of the 'Distributor' section under the 'Distribution' tab."
                       }
                     }
                   }
                 }
               },
               "required": [
-                "contact"
+                "contact",
+                "transferOption"
               ],
               "errorMessage": {
                 "required": {
-                  "contact": "Provide a contact for distribution."
+                  "contact": "Provide a contact for distribution in the 'Distributor' section under the 'Distribution' tab.",
+                  "transferOption": "A transfer option must be provided for distribution in the 'Distributor' section under the 'Distribution' tab."
                 }
               }
             }
