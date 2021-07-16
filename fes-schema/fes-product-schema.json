@@ -345,7 +345,7 @@
           "distributor": {
             "properties": {
               "contact": {}
-            }
+            },
             "required": [
               "contact"
             ],
