@@ -22,20 +22,20 @@
         "graphic": false
       },
       "domain": {
-        "domainInformation": {
+        "basicInformation": {
           "domainIdentifier": false
         },
         "domainItem": {
-          "itemReference": false
+          "citation": false
         },
         "domainReference": false
       },
       "entity":{
-        "entityInformation": {
+        "basicInformation": {
           "entityIdentifier": false
         },
         "attributes": {
-          "attributeReference": false
+          "citation": false
         },
         "entityReference": false
       }
