@@ -3,7 +3,7 @@
   "title": "Metadata",
   "description": "Required metadata fields and terms determined by the USFWS Alaska Region FES program for Products.",
   "$id": "fes-product-schema.json",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "type": "object",
   "properties": {
     "metadata": {
@@ -57,31 +57,29 @@
         "metadataContact": {
           "type": "array",
           "minItems": 2,
-          "items": [
-            "allOf": [
-              {
-                "properties": {
-                  "role": {
-                    "enum": [
-                      "author",
-                      "pointOfContact"
-                    ],
-                    "errorMessage": "The first two metadata contacts must have the roles 'pointOfContact' and 'author' under the 'Metadata Contacts' section of the 'Metadata' tab."
-                  }
-                }
-              },
-              {
-                "properties": {
-                  "role": {
-                    "enum": [
-                      "author",
-                      "pointOfContact"
-                    ],
-                    "errorMessage": "The first two metadata contacts must have the roles 'pointOfContact' and 'author' under the 'Metadata Contacts' section of the 'Metadata' tab."
-                  }
+          "allOf": [
+            {
+              "properties": {
+                "role": {
+                  "enum": [
+                    "author",
+                    "pointOfContact"
+                  ],
+                  "errorMessage": "The first two metadata contacts must have the roles 'pointOfContact' and 'author' under the 'Metadata Contacts' section of the 'Metadata' tab."
                 }
               }
-            ]
+            },
+            {
+              "properties": {
+                "role": {
+                  "enum": [
+                    "author",
+                    "pointOfContact"
+                  ],
+                  "errorMessage": "The first two metadata contacts must have the roles 'pointOfContact' and 'author' under the 'Metadata Contacts' section of the 'Metadata' tab."
+                }
+              }
+            }
           ],
           "uniqueItems": true,
           "additionalItems": true,
