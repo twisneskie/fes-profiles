@@ -58,28 +58,30 @@
           "type": "array",
           "minItems": 2,
           "items": [
-            {
-              "properties": {
-                "role": {
-                  "enum": [
-                    "author",
-                    "pointOfContact"
-                  ],
-                  "errorMessage": "The first two metadata contacts must have the roles 'pointOfContact' and 'author' under the 'Metadata Contacts' section of the 'Metadata' tab."
+            "allOf": [
+              {
+                "properties": {
+                  "role": {
+                    "enum": [
+                      "author",
+                      "pointOfContact"
+                    ],
+                    "errorMessage": "The first two metadata contacts must have the roles 'pointOfContact' and 'author' under the 'Metadata Contacts' section of the 'Metadata' tab."
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "role": {
+                    "enum": [
+                      "author",
+                      "pointOfContact"
+                    ],
+                    "errorMessage": "The first two metadata contacts must have the roles 'pointOfContact' and 'author' under the 'Metadata Contacts' section of the 'Metadata' tab."
+                  }
                 }
               }
-            },
-            {
-              "properties": {
-                "role": {
-                  "enum": [
-                    "author",
-                    "pointOfContact"
-                  ],
-                  "errorMessage": "The first two metadata contacts must have the roles 'pointOfContact' and 'author' under the 'Metadata Contacts' section of the 'Metadata' tab."
-                }
-              }
-            }
+            ]
           ],
           "uniqueItems": true,
           "additionalItems": true,
