@@ -64,7 +64,9 @@
                   "role": {
                     "const": "author"
                   }
-                },
+                }
+              },
+              {
                 "properties": {
                   "role": {
                     "const": "pointOfContact"
