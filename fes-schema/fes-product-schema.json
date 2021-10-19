@@ -3,7 +3,7 @@
   "title": "Metadata",
   "description": "Required metadata fields and terms determined by the USFWS Alaska Region FES program for Products.",
   "$id": "fes-product-schema.json",
-  "version": "1.0.19",
+  "version": "1.0.20",
   "type": "object",
   "properties": {
     "metadata": {
@@ -60,10 +60,10 @@
           "uniqueItems": true,
           "contains": {
             "role": {
-              "const": "author"
-            },
-            "role": {
-              "const": "pointOfContact"
+              "enum": [
+                "author",
+                "pointOfContact"
+              ]
             }
           },
           "required": [
