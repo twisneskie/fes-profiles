@@ -58,29 +58,18 @@
           "type": "array",
           "minItems": 2,
           "contains": {
-            "allOf": [
-              {
-                "properties": {
-                  "role": {
-                    "enum": [
-                      "author",
-                      "pointOfContact"
-                    ]
-                  }
-                }
-              },
-              {
-                "properties": {
-                  "role": {
-                    "enum": [
-                      "author",
-                      "pointOfContact"
-                    ]
-                  }
+            {
+              "properties": {
+                "role": {
+                  "enum": [
+                    "author",
+                    "pointOfContact"
+                  ]
                 }
               }
-            ]
+            }
           },
+          "minContains": 2,
           "uniqueItems": true,
           "additionalItems": true,
           "required": [
