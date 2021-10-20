@@ -3,7 +3,7 @@
   "title": "Metadata",
   "description": "Required metadata fields and terms determined by the USFWS Alaska Region FES program for Products.",
   "$id": "fes-product-schema.json",
-  "version": "1.1.5",
+  "version": "1.2.0",
   "type": "object",
   "properties": {
     "metadata": {
@@ -132,7 +132,7 @@
                 },
                 "minLength": 1,
                 "errorMessage": {
-                  "not": "Resource type for products must not be 'product' or 'project' in the 'Resource Types' section under the 'Main' tab. Products should use a more specific type such as 'tabularDataset' or 'document'. For projects, use the 'FES Project' custom profile."
+                  "not": "Resource type for products must not be 'product' or 'project' in the 'Resource Types' section under the 'Main' tab. Products should use a more specific type such as 'tabularDataset' or 'document'. For projects, use the custom profile for FES projects."
                 }
               }
             }
