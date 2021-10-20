@@ -3,7 +3,7 @@
   "title": "Metadata",
   "description": "Required metadata fields and terms determined by the USFWS Alaska Region FES program for Products.",
   "$id": "fes-product-schema.json",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "type": "object",
   "properties": {
     "metadata": {
@@ -25,6 +25,9 @@
         },
         "resourceDistribution": {
           "$ref": "#/definitions/ResourceDistribution"
+        },
+        "associatedResource": {
+          "$ref": "#/definitions/AssociatedResource"
         }
       },
       "required": [
@@ -504,6 +507,28 @@
         }
       },
       "title": "ResourceDistribution"
+    },
+    "AssociatedResource": {
+      "type": "array",
+      "contains": {
+        "properties": {
+          "associationType": {
+            "const": "parentProject",
+            "errorMessage": {
+              "const": "At least one association type must be parentProject under the 'Associations' tab."
+            }
+          }
+        },
+        "required": [
+          "associationType"
+        ],
+        "errorMessage": {
+          "required": {
+            "associationType": "Products with associations must have an association type listed under the 'Associations' tab."
+          }
+        }
+      },
+      "title": "AssociatedResource"
     }
   }
 }
