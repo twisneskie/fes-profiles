@@ -3,7 +3,7 @@
   "title": "Metadata",
   "description": "Required metadata fields and terms determined by the USFWS Alaska Region FES program for Products.",
   "$id": "fes-product-schema.json",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "type": "object",
   "properties": {
     "metadata": {
@@ -140,15 +140,27 @@
       },
         "pointOfContact": {
           "type": "array",
-          "contains": {
-            "properties": {
-              "role": {
-                "const": "pointOfContact",
-                "errorMessage": {
-                  "const": "The 'Point of Contact' section under the 'Main' tab must have at least one person listed as the role 'pointOfContact'."
+          "allOf": {
+            "contains": {
+              "properties": {
+                "role": {
+                  "const": "pointOfContact",
+                  "errorMessage": {
+                    "const": "The 'Point of Contact' section under the 'Main' tab must have at least one person listed as the role 'pointOfContact'."
+                  }
                 }
-              }
+              },
             },
+            "contains": {
+              "properties": {
+                "role": {
+                  "const": "principalInvestigator",
+                  "errorMessage": {
+                    "const": "The 'Point of Contact' section under the 'Main' tab must have at least one person listed as the role 'principalInvestigator'."
+                  }
+                }
+              },
+            }
           },
           "required": [
             "role",
@@ -181,16 +193,28 @@
             },
             "responsibleParty": {
               "type": "array",
-              "contains": {
-                "properties": {
-                  "role": {
-                    "const": "pointOfContact",
-                    "errorMessage": {
-                      "const": "One role for 'Responsible Parties' within the 'Citation' section under the 'Main' tab must be pointOfContact."
+              "allOf": [
+                "contains": {
+                  "properties": {
+                    "role": {
+                      "const": "pointOfContact",
+                      "errorMessage": {
+                        "const": "One role for 'Responsible Parties' within the 'Citation' section under the 'Main' tab must be pointOfContact."
+                      }
+                    }
+                  }
+                },
+                "contains": {
+                  "properties": {
+                    "role": {
+                      "const": "principalInvestigator",
+                      "errorMessage": {
+                        "const": "One role for 'Responsible Parties' within the 'Citation' section under the 'Main' tab must be principalInvestigator."
+                      }
                     }
                   }
                 }
-              }
+              ]
             },
             "onlineResource": {
               "type": "array",
@@ -209,20 +233,46 @@
                   }
                 }
               }
+            },
+            "identifier": {
+              "type": "array",
+              "items": {
+                "properties": {
+                  "identifier": {},
+                  "namespace": {
+                    "const": "DOI"
+                    "errorMessage": {
+                      "const": "At least one identifier must be a Digital Object Identifier (DOI) in the 'Citation' section under the 'Main' tab."
+                    }
+                  }
+                },
+                "required": [
+                  "identifier",
+                  "namespace"
+                ],
+                "errorMessage": {
+                  "required": {
+                    "identifier": "Provide an identifier (e.g. Digital Object Identifier (DOI), ISBN, UUID) for the product in the 'Citation' section under the 'Main' tab.",
+                    "namespace": "Provide the context (namespace) for the product identifier in the 'Citation' section under the 'Main' tab."
+                  }
+                }
+              }
             }
           },
           "required": [
             "title",
             "date",
             "responsibleParty",
-            "onlineResource"
+            "onlineResource",
+            "identifier"
           ],
           "errorMessage": {
             "required": {
               "title": "A short, descriptive product title must be provided in the 'Basic Information' section under the 'Main' tab. Product titles should be uniquely identifiable.",
               "date": "At least one date (e.g. acquisition, creation, revision) must be provided in the 'Citation' section under the 'Main' tab.",
-              "responsibleParty": "At least one Responsible Party must be provided in the 'Citation' section under the 'Main' tab. At least one role must be listed a pointOfContact.",
-              "onlineResource": "At least one online resource must be provided within the 'Citation' section under the 'Main' tab. A link to the project Regional Data Repository folder can be used if no other online resource exists yet."
+              "responsibleParty": "At least one Responsible Party must be provided in the 'Citation' section under the 'Main' tab. At least one pointOfContact and one principalInvestigator must be provided.",
+              "onlineResource": "At least one online resource for the project (e.g. project homepage, project ServCat page, Regional Data Repository folder) must be provided within the 'Citation' section under the 'Main' tab.",
+              "identifier": "At least one identifier must be provided within the 'Citation' section under the 'Main' tab. At least one identifier must be a Digital Object Identifier (DOI)."
             }
           },
           "title": "Citation"
