@@ -140,7 +140,7 @@
       },
         "pointOfContact": {
           "type": "array",
-          "allOf": {
+          "allOf": [
             "contains": {
               "properties": {
                 "role": {
@@ -161,7 +161,7 @@
                 }
               },
             }
-          },
+          ],
           "required": [
             "role",
             "party"
