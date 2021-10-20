@@ -3,7 +3,7 @@
   "title": "Metadata",
   "description": "Required metadata fields and terms determined by the USFWS Alaska Region FES program for Products.",
   "$id": "fes-product-schema.json",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "type": "object",
   "properties": {
     "metadata": {
@@ -141,25 +141,29 @@
         "pointOfContact": {
           "type": "array",
           "allOf": [
-            "contains": {
-              "properties": {
-                "role": {
-                  "const": "pointOfContact",
-                  "errorMessage": {
-                    "const": "The 'Point of Contact' section under the 'Main' tab must have at least one person listed as the role 'pointOfContact'."
+            {
+              "contains": {
+                "properties": {
+                  "role": {
+                    "const": "pointOfContact",
+                    "errorMessage": {
+                      "const": "The 'Point of Contact' section under the 'Main' tab must have at least one person listed as the role 'pointOfContact'."
+                    }
                   }
-                }
-              },
+                },
+              }
             },
-            "contains": {
-              "properties": {
-                "role": {
-                  "const": "principalInvestigator",
-                  "errorMessage": {
-                    "const": "The 'Point of Contact' section under the 'Main' tab must have at least one person listed as the role 'principalInvestigator'."
+            {
+              "contains": {
+                "properties": {
+                  "role": {
+                    "const": "principalInvestigator",
+                    "errorMessage": {
+                      "const": "The 'Point of Contact' section under the 'Main' tab must have at least one person listed as the role 'principalInvestigator'."
+                    }
                   }
-                }
-              },
+                },
+              }
             }
           ],
           "required": [
@@ -194,22 +198,26 @@
             "responsibleParty": {
               "type": "array",
               "allOf": [
-                "contains": {
-                  "properties": {
-                    "role": {
-                      "const": "pointOfContact",
-                      "errorMessage": {
-                        "const": "One role for 'Responsible Parties' within the 'Citation' section under the 'Main' tab must be pointOfContact."
+                {
+                  "contains": {
+                    "properties": {
+                      "role": {
+                        "const": "pointOfContact",
+                        "errorMessage": {
+                          "const": "One role for 'Responsible Parties' within the 'Citation' section under the 'Main' tab must be pointOfContact."
+                        }
                       }
                     }
                   }
                 },
-                "contains": {
-                  "properties": {
-                    "role": {
-                      "const": "principalInvestigator",
-                      "errorMessage": {
-                        "const": "One role for 'Responsible Parties' within the 'Citation' section under the 'Main' tab must be principalInvestigator."
+                {
+                  "contains": {
+                    "properties": {
+                      "role": {
+                        "const": "principalInvestigator",
+                        "errorMessage": {
+                          "const": "One role for 'Responsible Parties' within the 'Citation' section under the 'Main' tab must be principalInvestigator."
+                        }
                       }
                     }
                   }
