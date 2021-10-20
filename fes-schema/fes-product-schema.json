@@ -3,7 +3,7 @@
   "title": "Metadata",
   "description": "Required metadata fields and terms determined by the USFWS Alaska Region FES program for Products.",
   "$id": "fes-product-schema.json",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "type": "object",
   "properties": {
     "metadata": {
@@ -248,7 +248,7 @@
                 "properties": {
                   "identifier": {},
                   "namespace": {
-                    "const": "DOI"
+                    "const": "DOI",
                     "errorMessage": {
                       "const": "At least one identifier must be a Digital Object Identifier (DOI) in the 'Citation' section under the 'Main' tab."
                     }
