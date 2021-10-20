@@ -3,7 +3,7 @@
   "title": "Metadata",
   "description": "Required metadata fields and terms determined by the USFWS Alaska Region FES program for Products.",
   "$id": "fes-product-schema.json",
-  "version": "1.0.0",
+  "version": "1.4.0",
   "type": "object",
   "properties": {
     "metadata": {
@@ -25,6 +25,9 @@
         },
         "resourceDistribution": {
           "$ref": "#/definitions/ResourceDistribution"
+        },
+        "associatedResource": {
+          "$ref": "#/definitions/AssociatedResource"
         }
       },
       "required": [
@@ -57,32 +60,27 @@
         "metadataContact": {
           "type": "array",
           "minItems": 2,
-          "items": [
+          "uniqueItems": true,
+          "allOf": [
             {
-              "properties": {
-                "role": {
-                  "enum": [
-                    "author",
-                    "pointOfContact"
-                  ],
-                  "errorMessage": "The first two metadata contacts must have the roles 'pointOfContact' and 'author' under the 'Metadata Contacts' section of the 'Metadata' tab."
+              "contains": {
+                "properties": {
+                  "role": {
+                    "const": "author"
+                  }
                 }
               }
             },
             {
-              "properties": {
-                "role": {
-                  "enum": [
-                    "author",
-                    "pointOfContact"
-                  ],
-                  "errorMessage": "The first two metadata contacts must have the roles 'pointOfContact' and 'author' under the 'Metadata Contacts' section of the 'Metadata' tab."
+              "contains": {
+                "properties": {
+                  "role": {
+                    "const": "pointOfContact"
+                  }
                 }
               }
             }
           ],
-          "uniqueItems": true,
-          "additionalItems": true,
           "required": [
             "role"
           ],
@@ -137,7 +135,7 @@
                 },
                 "minLength": 1,
                 "errorMessage": {
-                  "not": "Resource type for products must not be 'product' or 'project' in the 'Resource Types' section under the 'Main' tab. Products should use a more specific type such as 'tabularDataset' or 'document'. For projects, use the 'FES Project' custom profile."
+                  "not": "Resource type for products must not be 'product' or 'project' in the 'Resource Types' section under the 'Main' tab. Products should use a more specific type such as 'tabularDataset' or 'document'. For projects, use the custom profile for FES projects."
                 }
               }
             }
@@ -145,16 +143,32 @@
       },
         "pointOfContact": {
           "type": "array",
-          "contains": {
-            "properties": {
-              "role": {
-                "const": "pointOfContact",
-                "errorMessage": {
-                  "const": "The 'Point of Contact' section under the 'Main' tab must have at least one person listed as the role 'pointOfContact'."
-                }
+          "allOf": [
+            {
+              "contains": {
+                "properties": {
+                  "role": {
+                    "const": "pointOfContact",
+                    "errorMessage": {
+                      "const": "The 'Point of Contact' section under the 'Main' tab must have at least one person listed as the role 'pointOfContact'."
+                    }
+                  }
+                },
               }
             },
-          },
+            {
+              "contains": {
+                "properties": {
+                  "role": {
+                    "const": "principalInvestigator",
+                    "errorMessage": {
+                      "const": "The 'Point of Contact' section under the 'Main' tab must have at least one person listed as the role 'principalInvestigator'."
+                    }
+                  }
+                },
+              }
+            }
+          ],
           "required": [
             "role",
             "party"
@@ -186,16 +200,32 @@
             },
             "responsibleParty": {
               "type": "array",
-              "contains": {
-                "properties": {
-                  "role": {
-                    "const": "pointOfContact",
-                    "errorMessage": {
-                      "const": "One role for 'Responsible Parties' within the 'Citation' section under the 'Main' tab must be pointOfContact."
+              "allOf": [
+                {
+                  "contains": {
+                    "properties": {
+                      "role": {
+                        "const": "pointOfContact",
+                        "errorMessage": {
+                          "const": "One role for 'Responsible Parties' within the 'Citation' section under the 'Main' tab must be pointOfContact."
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "contains": {
+                    "properties": {
+                      "role": {
+                        "const": "principalInvestigator",
+                        "errorMessage": {
+                          "const": "One role for 'Responsible Parties' within the 'Citation' section under the 'Main' tab must be principalInvestigator."
+                        }
+                      }
                     }
                   }
                 }
-              }
+              ]
             },
             "onlineResource": {
               "type": "array",
@@ -214,20 +244,46 @@
                   }
                 }
               }
+            },
+            "identifier": {
+              "type": "array",
+              "contains": {
+                "properties": {
+                  "identifier": {},
+                  "namespace": {
+                    "const": "info:doi/",
+                    "errorMessage": {
+                      "const": "At least one identifier must be a Digital Object Identifier (DOI) in the 'Citation' section under the 'Main' tab."
+                    }
+                  }
+                },
+                "required": [
+                  "identifier",
+                  "namespace"
+                ],
+                "errorMessage": {
+                  "required": {
+                    "identifier": "Provide an identifier (e.g. Digital Object Identifier (DOI), ISBN, UUID) for the product in the 'Citation' section under the 'Main' tab.",
+                    "namespace": "Provide the context (namespace) for the product identifier in the 'Citation' section under the 'Main' tab."
+                  }
+                }
+              }
             }
           },
           "required": [
             "title",
             "date",
             "responsibleParty",
-            "onlineResource"
+            "onlineResource",
+            "identifier"
           ],
           "errorMessage": {
             "required": {
               "title": "A short, descriptive product title must be provided in the 'Basic Information' section under the 'Main' tab. Product titles should be uniquely identifiable.",
               "date": "At least one date (e.g. acquisition, creation, revision) must be provided in the 'Citation' section under the 'Main' tab.",
-              "responsibleParty": "At least one Responsible Party must be provided in the 'Citation' section under the 'Main' tab. At least one role must be listed a pointOfContact.",
-              "onlineResource": "At least one online resource must be provided within the 'Citation' section under the 'Main' tab. A link to the project Regional Data Repository folder can be used if no other online resource exists yet."
+              "responsibleParty": "At least one Responsible Party must be provided in the 'Citation' section under the 'Main' tab. At least one pointOfContact and one principalInvestigator must be provided.",
+              "onlineResource": "At least one online resource for the project (e.g. project homepage, project ServCat page, Regional Data Repository folder) must be provided within the 'Citation' section under the 'Main' tab.",
+              "identifier": "At least one identifier must be provided within the 'Citation' section under the 'Main' tab. At least one identifier must be a Digital Object Identifier (DOI)."
             }
           },
           "title": "Citation"
@@ -315,6 +371,43 @@
               }
             }
           }
+        },
+        "constraint": {
+          "type": "array",
+          "items": {
+            "properties": {
+              "type": {},
+              "legal": {
+                "properties": {
+                  "accessConstraint": {},
+                  "useConstraint": {},
+                  "otherConstraint": {}
+                },
+                "required": [
+                  "accessConstraint",
+                  "useConstraint",
+                  "otherConstraint"
+                ],
+                "errorMessage": {
+                  "required": {
+                    "accessConstraint": "Data products are by default in the Public Domain and should have 'Access Constraint' set to 'licenseUnrestricted' in the 'Legal' section under the 'Constraints' tab.",
+                    "useConstraint": "Data products are by default in the Public Domain and should have 'Use Constraint' set to 'unrestricted' in the 'Legal' section under the 'Constraint' tab.",
+                    "otherConstraint": "Data products are by default in the Public Domain and should have the link to this license (https://creativecommons.org/publicdomain/zero/1.0/) in the 'Legal' section under the 'Constraint' tab. If another license applies to this data product, provide that link here."
+                  }
+                }
+              }
+            },
+            "required": [
+              "type",
+              "legal"
+            ],
+            "errorMessage": {
+              "required": {
+                "type": "A constraint type for product use must be provided under the 'Constraints' tab. Government products by default fall under the U.S. Public Domain, and should have a constraint type of 'legal'.",
+                "legal": "A description of the legal constraints for the product's use must be provided in the 'Legal' section under the 'Constraints' tab. Government products by default fall under the U.S. Public Domain, and should have 'Access Constraints' and 'Use Constraints' set to 'licenseUnrestricted' and 'unrestricted', respectively. A link to the public domain license should be provided in the 'Other Constraints' section."
+              }
+            }
+          }
         }
       },
       "required": [
@@ -324,7 +417,8 @@
         "citation",
         "abstract",
         "keyword",
-        "resourceMaintenance"
+        "resourceMaintenance",
+        "constraint"
       ],
       "errorMessage": {
         "required": {
@@ -333,7 +427,8 @@
           "pointOfContact": "Project and product specific personnel must be provided in the 'Point of Contact' section under the 'Main' tab.",
           "abstract": "An abstract for the product must be provided in the 'Description' section under the 'Main' tab. Abstracts should summarize the product's purpose and goals.",
           "keyword": "Product keywords must be provided under the 'Keywords' tab. At least one keyword must be provided from the 'ISO Topic Category' thesaurus.",
-          "resourceMaintenance": "Resource maintenance requency must be provided in the 'Maintenance' section under the 'Main' tab. The maintenance frequency should describe how often the product is reviewed and/or updated."
+          "resourceMaintenance": "Resource maintenance frequency must be provided in the 'Maintenance' section under the 'Main' tab. The maintenance frequency should describe how often the product is reviewed and/or updated.",
+          "constraint": "Resource constraints must be provided under the 'Constraints' tab. Government works are by default in the Public Domain, and should indicate this in the 'Legal' section."
         }
       },
       "title": "ResourceInfo"
@@ -412,6 +507,28 @@
         }
       },
       "title": "ResourceDistribution"
+    },
+    "AssociatedResource": {
+      "type": "array",
+      "contains": {
+        "properties": {
+          "associationType": {
+            "const": "parentProject",
+            "errorMessage": {
+              "const": "At least one association type must be parentProject under the 'Associations' tab."
+            }
+          }
+        },
+        "required": [
+          "associationType"
+        ],
+        "errorMessage": {
+          "required": {
+            "associationType": "Products with associations must have an association type listed under the 'Associations' tab."
+          }
+        }
+      },
+      "title": "AssociatedResource"
     }
   }
 }
