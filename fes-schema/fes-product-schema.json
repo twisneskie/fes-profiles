@@ -3,7 +3,7 @@
   "title": "Metadata",
   "description": "Required metadata fields and terms determined by the USFWS Alaska Region FES program for Products.",
   "$id": "fes-product-schema.json",
-  "version": "1.4.6",
+  "version": "1.4.7",
   "type": "object",
   "properties": {
     "metadata": {
@@ -14,31 +14,33 @@
     }
   },
   "allOf": [
-    "if": {
-      "properties": {
-        "metadata": {
-          "properties": {
-            "resourceInfo": {
-              "properties": {
-                "resourceType": {
-                  "const": "tabularDataset"
+    {
+      "if": {
+        "properties": {
+          "metadata": {
+            "properties": {
+              "resourceInfo": {
+                "properties": {
+                  "resourceType": {
+                    "const": "tabularDataset"
+                  }
                 }
               }
             }
           }
         }
+      },
+      "then": {
+        "required": [
+          "metadata",
+          "dataDictionary"
+        ]
+      },
+      "else": {
+        "required": [
+          "metadata"
+        ]
       }
-    },
-    "then": {
-      "required": [
-        "metadata",
-        "dataDictionary"
-      ]
-    },
-    "else": {
-      "required": [
-        "metadata"
-      ]
     }
   ],
   "definitions": {
