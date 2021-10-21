@@ -3,7 +3,7 @@
   "title": "Metadata",
   "description": "Required metadata fields and terms determined by the USFWS Alaska Region FES program for Products.",
   "$id": "fes-product-schema.json",
-  "version": "1.4.7",
+  "version": "1.4.9",
   "type": "object",
   "properties": {
     "metadata": {
@@ -13,36 +13,21 @@
       "$ref": "#/definitions/DataDictionary"
     }
   },
-  "allOf": [
-    {
-      "if": {
-        "properties": {
-          "metadata": {
-            "properties": {
-              "resourceInfo": {
-                "properties": {
-                  "resourceType": {
-                    "const": "tabularDataset"
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "then": {
-        "required": [
-          "metadata",
-          "dataDictionary"
-        ]
-      },
-      "else": {
-        "required": [
-          "metadata"
-        ]
-      }
-    }
+  "required": [
+    "metadata"
   ],
+  "dependencies": {
+    "metadata": {
+      "properties": {
+        "resourceType": {
+          "const": "tabularDataset"
+        }
+      }
+    },
+    "required": [
+      "dataDictionary"
+    ]
+  },
   "definitions": {
     "Metadata": {
       "type": "object",
@@ -145,6 +130,7 @@
               "proposed",
               "accepted"
             ],
+            "default": "onGoing",
             "errorMessage": {
               "enum": "Product status in the 'Basic Information' section under the 'Main' tab must be one of: 'completed', 'onGoing', 'proposed', or 'accepted'"
             }
