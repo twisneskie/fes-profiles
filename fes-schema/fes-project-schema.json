@@ -3,7 +3,7 @@
   "title": "Metadata",
   "description": "Required metadata fields and terms determined by the USFWS Alaska Region FES program for Projects.",
   "$id": "project-metadata.json",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "type": "object",
   "properties": {
     "metadata": {
@@ -48,32 +48,29 @@
         "metadataContact": {
           "type": "array",
           "minItems": 2,
-          "items": [
+          "allOf": [
             {
-              "properties": {
-                "role": {
-                  "enum": [
-                    "author",
-                    "pointOfContact"
-                  ],
-                  "errorMessage": "The first two metadata contacts must have the roles 'pointOfContact' and 'author' under the 'Metadata Contacts' section of the 'Metadata' tab."
+              "contains": {
+                "properties": {
+                  "role": {
+                    "const": "author",
+                    "errorMessage": "At least one metadata contact must have the role 'author' under the 'Metadata Contacts' section of the 'Metadata' tab."
+                  }
                 }
               }
             },
             {
-              "properties": {
-                "role": {
-                  "enum": [
-                    "author",
-                    "pointOfContact"
-                  ],
-                  "errorMessage": "The first two metadata contacts must have the roles 'pointOfContact' and 'author' under the 'Metadata Contacts' section of the 'Metadata' tab."
+              "contains": {
+                "properties": {
+                  "role": {
+                    "const": "pointOfContact",
+                    "errorMessage": "At least one metadata contact must have the role 'pointOfContact' under the 'Metadata Contacts' section of the 'Metadata' tab."
+                  }
                 }
               }
             }
           ],
           "uniqueItems": true,
-          "additionalItems": true,
           "required": [
             "role"
           ],
@@ -131,16 +128,32 @@
       },
         "pointOfContact": {
           "type": "array",
-          "contains": {
-            "properties": {
-              "role": {
-                "const": "pointOfContact",
-                "errorMessage": {
-                  "const": "The 'Point of Contact' section under the 'Main' tab must have at least one person listed as the role 'pointOfContact'."
-                }
+          "allOf": [
+            {
+              "contains": {
+                "properties": {
+                  "role": {
+                    "const": "pointOfContact",
+                    "errorMessage": {
+                      "const": "The 'Point of Contact' section under the 'Main' tab must have at least one person listed as the role 'pointOfContact'."
+                    }
+                  }
+                },
               }
             },
-          },
+            {
+              "contains": {
+                "properties": {
+                  "role": {
+                    "const": "principalInvestigator",
+                    "errorMessage": {
+                      "const": "The 'Point of Contact' section under the 'Main' tab must have at least one person listed as the role 'principalInvestigator'."
+                    }
+                  }
+                },
+              }
+            }
+          ],
           "required": [
             "role",
             "party"
@@ -172,16 +185,32 @@
             },
             "responsibleParty": {
               "type": "array",
-              "contains": {
-                "properties": {
-                  "role": {
-                    "const": "pointOfContact",
-                    "errorMessage": {
-                      "const": "One role for 'Responsible Parties' within the 'Citation' section under the 'Main' tab must be pointOfContact."
+              "allOf": [
+                {
+                  "contains": {
+                    "properties": {
+                      "role": {
+                        "const": "pointOfContact",
+                        "errorMessage": {
+                          "const": "One role for 'Responsible Parties' within the 'Citation' section under the 'Main' tab must be pointOfContact."
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "contains": {
+                    "properties": {
+                      "role": {
+                        "const": "principalInvestigator",
+                        "errorMessage": {
+                          "const": "One role for 'Responsible Parties' within the 'Citation' section under the 'Main' tab must be principalInvestigator."
+                        }
+                      }
                     }
                   }
                 }
-              }
+              ]
             },
             "onlineResource": {
               "type": "array",
