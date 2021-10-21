@@ -1,9 +1,9 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Metadata",
-  "description": "Required metadata fields and terms determined by the USFWS Alaska Region FES program for Products.",
+  "description": "Required fields and terms for metadata written for USFWS Alaska Region data products.",
   "$id": "fes-product-schema.json",
-  "version": "1.4.12",
+  "version": "1.5.0",
   "type": "object",
   "properties": {
     "metadata": {
@@ -182,7 +182,7 @@
                   "role": {
                     "const": "pointOfContact",
                     "errorMessage": {
-                      "const": "The 'Point of Contact' section under the 'Main' tab must have at least one person listed as the role 'pointOfContact'."
+                      "const": "The 'Point of Contact' section under the 'Main' tab must have at least one primary contact listed with the role 'pointOfContact'."
                     }
                   }
                 },
@@ -195,6 +195,54 @@
                     "const": "principalInvestigator",
                     "errorMessage": {
                       "const": "The 'Point of Contact' section under the 'Main' tab must have at least one person listed as the role 'principalInvestigator'."
+                    }
+                  }
+                },
+              }
+            },
+            {
+              "contains": {
+                "properties": {
+                  "role": {
+                    "pattern": "custodian",
+                    "errorMessage": {
+                      "const": "The 'Point of Contact' section under the 'Main' tab must have at least one Data Custodian listed with the role 'custodian' or 'AKRegionDataCustodian', which must be entered manually rather than by the dropdown menu."
+                    }
+                  }
+                },
+              }
+            },
+            {
+              "contains": {
+                "properties": {
+                  "role": {
+                    "const": "AKRegionDataTrustee",
+                    "errorMessage": {
+                      "const": "The 'Point of Contact' section under the 'Main' tab must have at least one Data Trustee listed with the role 'AKRegionDataTrustee', which must be entered manually rather than by the dropdown menu."
+                    }
+                  }
+                },
+              }
+            },
+            {
+              "contains": {
+                "properties": {
+                  "role": {
+                    "const": "AKRegionDataSteward",
+                    "errorMessage": {
+                      "const": "The 'Point of Contact' section under the 'Main' tab must have at least one Data Steward listed with the role 'AKRegionDataSteward', which must be entered manually rather than by the dropdown menu."
+                    }
+                  }
+                },
+              }
+            },
+            {
+              "contains": {
+                "properties": {
+                  "role": {
+                    "const": "administrator",
+                    "errorMessage": {
+                      "const": "The 'Point of Contact' section under the 'Main' tab must have the Alaska Region contact listed with the role 'administrator'."
                     }
                   }
                 },
