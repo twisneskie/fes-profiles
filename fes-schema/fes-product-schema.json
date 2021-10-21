@@ -82,7 +82,7 @@
             "properties": {
               "date": {},
               "dateType": {
-                "const": "creation"
+                "const": "creation",
                 "errorMessage": {
                   "const": "A creation date for the metadata must be provided in the 'Basic Information' section under the 'Metadata' tab."
                 }
