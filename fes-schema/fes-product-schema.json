@@ -204,7 +204,7 @@
               "contains": {
                 "properties": {
                   "role": {
-                    "pattern": "custodian",
+                    "const": "AKRegionDataCustodian",
                     "errorMessage": {
                       "const": "The 'Point of Contact' section under the 'Main' tab must have at least one Data Custodian listed with the role 'custodian' or 'AKRegionDataCustodian', which must be entered manually rather than by the dropdown menu."
                     }
@@ -231,6 +231,18 @@
                     "const": "AKRegionDataSteward",
                     "errorMessage": {
                       "const": "The 'Point of Contact' section under the 'Main' tab must have at least one Data Steward listed with the role 'AKRegionDataSteward', which must be entered manually rather than by the dropdown menu."
+                    }
+                  }
+                },
+              }
+            },
+            {
+              "contains": {
+                "properties": {
+                  "role": {
+                    "const": "AKRegionDataProducer",
+                    "errorMessage": {
+                      "const": "The 'Point of Contact' section under the 'Main' tab must have at least one Data Producer listed with the role 'AKRegionDataProducer', which must be entered manually rather than by the dropdown menu."
                     }
                   }
                 },
@@ -472,7 +484,7 @@
                   "required": {
                     "accessConstraint": "Data products are by default in the Public Domain and should have 'Access Constraint' set to 'licenseUnrestricted' in the 'Legal' section under the 'Constraints' tab.",
                     "useConstraint": "Data products are by default in the Public Domain and should have 'Use Constraint' set to 'unrestricted' in the 'Legal' section under the 'Constraint' tab.",
-                    "otherConstraint": "Data products are by default in the Public Domain and should have the link to this license (https://creativecommons.org/publicdomain/zero/1.0/) in the 'Legal' section under the 'Constraint' tab. If another license applies to this data product, provide that link here."
+                    "otherConstraint": "Data products are by default in the Public Domain and should have the link to this license (http://www.usa.gov/publicdomain/label/1.0/) in the 'Legal' section under the 'Constraint' tab. Products indented to be used internationally should be given a Creative Commons Zero license (https://creativecommons.org/publicdomain/zero/1.0/). If another license applies to this data product, provide that link here."
                   }
                 }
               }
