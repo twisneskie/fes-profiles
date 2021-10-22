@@ -1,9 +1,9 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Metadata",
+  "title": "Schema",
   "description": "Required fields and terms for metadata written for USFWS Alaska Region data products.",
   "$id": "fes-product-schema.json",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "properties": {
     "metadata": {
       "$ref": "#/definitions/Metadata"
@@ -52,7 +52,6 @@
   "errorMessage": "If a data product is a 'tabularDataset', then it must be associated with a data dictionary under the 'Dictionaries' tab.",
   "definitions": {
     "Metadata": {
-      "type": "object",
       "properties": {
         "metadataInfo": {
           "$ref": "#/definitions/MetadataInfo"
@@ -80,12 +79,26 @@
       "title": "Metadata"
     },
     "MetadataInfo": {
-      "type": "object",
       "properties": {
         "metadataDate": {
-          "contains": {
+          "items": {
             "properties": {
               "date": {},
+              "dateType": {}
+            },
+            "required": [
+              "date",
+              "dateType"
+            ],
+            "errorMessage": {
+              "required": {
+                "date": "At least one date associated with the metadata must be provided in the 'Basic Information' section under the 'Metadata' tab.",
+                "dateType": "A date type must be provided for dates associated with the metadata in the 'Basic Information' section under the 'Metadata' tab."
+              }
+            }
+          },
+          "contains": {
+            "properties": {
               "dateType": {
                 "const": "creation",
                 "errorMessage": {
@@ -93,21 +106,9 @@
                 }
               }
             }
-          },
-          "required": [
-            "date",
-            "dateType"
-          ],
-          "errorMessage": {
-            "required": {
-              "date": "At least one date associated with the metadata must be provided in the 'Basic Information' section under the 'Metadata' tab.",
-              "dateType": "A date type must be provided for dates associated with the metadata in the 'Basic Information' section under the 'Metadata' tab."
-            }
           }
         },
         "metadataContact": {
-          "type": "array",
-          "minItems": 2,
           "uniqueItems": true,
           "allOf": [
             {
@@ -130,11 +131,15 @@
             }
           ],
           "required": [
-            "role"
+            "role",
+            "party"
           ],
           "errorMessage": {
-            "minItems": "At least two metadata contacts must be provided under the 'Metadata Contacts' section of the 'Metadata' tab. The first two metadata contacts must have the roles 'pointOfContact' and 'author'.",
-            "uniqueItems": "Each role in the 'Metadata Contacts' section under the 'Metadata' tab must be unique."
+            "uniqueItems": "Each role in the 'Metadata Contacts' section under the 'Metadata' tab must be unique.",
+            "required": {
+              "role": "A role must be provided in the 'Metadata Contacts' section under the 'Metadata' tab.",
+              "party": "A contact must be provided in the 'Metadata Contacts' section under the 'Metadata' tab."
+            }
           }
         }
       },
@@ -145,7 +150,7 @@
       "errorMessage": {
         "required": {
           "metadataDate": "At least one date associated with the metadata (such as creation or lastUpdate) must be provided in the 'Basic Information' section under the 'Metadata' tab.",
-          "metadataContact": "At least one contact must be provided in the 'Metadata Contact' section under the 'Metadata' tab. At least one role must be 'pointOfContact'."
+          "metadataContact": "Contacts for metadata creation must be provided in the 'Metadata Contact' section under the 'Metadata' tab. Roles must include at least 'pointOfContact' and 'author'."
         }
       },
       "title": "MetadataInfo"
