@@ -3,7 +3,7 @@
   "title": "Schema",
   "description": "Required fields and terms for metadata written for USFWS Alaska Region data products.",
   "$id": "fes-product-schema.json",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "properties": {
     "metadata": {
       "$ref": "#/definitions/Metadata"
@@ -128,29 +128,42 @@
                   }
                 }
               }
+            },
+            {
+              "items": {
+                "properties": {
+                  "role": {},
+                  "party": {}
+                },
+                "required": [
+                  "role",
+                  "party"
+                ],
+                "errorMessage": {
+                  "required": {
+                    "role": "A role must be provided in the 'Metadata Contacts' section under the 'Metadata' tab.",
+                    "party": "A contact must be provided in the 'Metadata Contacts' section under the 'Metadata' tab."
+                  }
+                }
+              }
             }
-          ],
-          "required": [
-            "role",
-            "party"
           ],
           "errorMessage": {
-            "uniqueItems": "Each role in the 'Metadata Contacts' section under the 'Metadata' tab must be unique.",
-            "required": {
-              "role": "A role must be provided in the 'Metadata Contacts' section under the 'Metadata' tab.",
-              "party": "A contact must be provided in the 'Metadata Contacts' section under the 'Metadata' tab."
-            }
+            "uniqueItems": "Each role in the 'Metadata Contacts' section under the 'Metadata' tab must be unique."
           }
-        }
+        },
+        "metadataStatus": {}
       },
       "required": [
         "metadataDate",
-        "metadataContact"
+        "metadataContact",
+        "metadataStatus"
       ],
       "errorMessage": {
         "required": {
-          "metadataDate": "At least one date associated with the metadata (such as creation or lastUpdate) must be provided in the 'Basic Information' section under the 'Metadata' tab.",
-          "metadataContact": "Contacts for metadata creation must be provided in the 'Metadata Contact' section under the 'Metadata' tab. Roles must include at least 'pointOfContact' and 'author'."
+          "metadataDate": "The creation date of the metadata must be provided in the 'Basic Information' section under the 'Metadata' tab.",
+          "metadataContact": "Contacts for metadata creation must be provided in the 'Metadata Contact' section under the 'Metadata' tab. Roles must include at least 'pointOfContact' and 'author'.",
+          "metadataStatus": "The status of the metadata (e.g. onGoing, completed), must be provided in the 'Basic Information' section under the 'Metadata' tab."
         }
       },
       "title": "MetadataInfo"
