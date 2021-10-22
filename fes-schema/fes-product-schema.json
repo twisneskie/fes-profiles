@@ -3,7 +3,7 @@
   "title": "Metadata",
   "description": "Required fields and terms for metadata written for USFWS Alaska Region data products.",
   "$id": "fes-product-schema.json",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "properties": {
     "metadata": {
       "$ref": "#/definitions/Metadata"
@@ -49,9 +49,7 @@
       "metadata"
     ]
   },
-  "errorMessage": {
-    "then": "If a data product is a 'tabularDataset', then it must be associated with a data dictionary under the 'Dictionaries' tab."
-  },
+  "errorMessage": "If a data product is a 'tabularDataset', then it must be associated with a data dictionary under the 'Dictionaries' tab.",
   "definitions": {
     "Metadata": {
       "type": "object",
