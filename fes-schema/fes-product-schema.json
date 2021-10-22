@@ -3,7 +3,7 @@
   "title": "Schema",
   "description": "Required fields and terms for metadata written for USFWS Alaska Region data products.",
   "$id": "fes-product-schema.json",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "properties": {
     "metadata": {
       "$ref": "#/definitions/Metadata"
@@ -131,22 +131,6 @@
               }
             }
           ],
-          "items": {
-            "properties": {
-              "role": {},
-              "party": {}
-            },
-            "required": [
-              "role",
-              "party"
-            ],
-            "errorMessage": {
-              "required": {
-                "role": "A role must be provided in the 'Metadata Contacts' section under the 'Metadata' tab.",
-                "party": "A contact must be provided in the 'Metadata Contacts' section under the 'Metadata' tab."
-              }
-            }
-          },
           "errorMessage": {
             "uniqueItems": "Each role in the 'Metadata Contacts' section under the 'Metadata' tab must be unique."
           }
