@@ -82,7 +82,7 @@
                 "const": "creation"
               }
             }
-          }
+          },
           "required": [
             "date",
             "dateType"
