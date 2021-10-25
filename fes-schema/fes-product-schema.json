@@ -419,7 +419,7 @@
                     "boundingBox": {},
                     "description": {},
                     "geographicElement": {}
-                  }
+                  },
                   "required": [
                     "boundingBox",
                     "description",
