@@ -627,7 +627,7 @@
                             "uri": {},
                             "name": {},
                             "function": {}
-                          }
+                          },
                           "required": [
                             "uri",
                             "name",
