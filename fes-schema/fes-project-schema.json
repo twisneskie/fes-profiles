@@ -1,9 +1,9 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Metadata",
-  "description": "Required metadata fields and terms determined by the USFWS Alaska Region FES program for Projects.",
+  "description": "Required fields and terms for metadata written for USFWS Alaska Region projects.",
   "$id": "project-metadata.json",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "type": "object",
   "properties": {
     "metadata": {
@@ -22,6 +22,47 @@
         },
         "resourceInfo": {
           "$ref": "#/definitions/ResourceInfo"
+        },
+        "funding": {
+          "items": {
+            "properties": {
+              "allocation": {
+                "items": {
+                  "properties": {
+                    "sourceAllocationId": {},
+                    "ammount": {},
+                    "sourceId": {},
+                    "recipientId": {}
+                  },
+                  "required": [
+                    "sourceAllocationId",
+                    "ammount",
+                    "sourceId",
+                    "recipientId"
+                  ],
+                  "errorMessage": {
+                    "required": {
+                      "sourceAllocationId": "A funding Award ID must be provided in the 'Allocation' section under the 'Funding' tab.",
+                      "ammount": "A funding ammount must be provided in the 'Allocation' section under the 'Funding' tab.",
+                      "sourceId": "A funding source must be provided in the 'Allocation' section under the 'Funding' tab.",
+                      "recipientId": "A funding recipient must be provided in the 'Allocation' section under the 'Funding' tab. This recipient should always be an organization, not an individual."
+                    }
+                  }
+                }
+              },
+              "timePeriod": {}
+            },
+            "required": [
+              "allocation",
+              "timePeriod"
+            ],
+            "errorMessage": {
+              "required": {
+                "allocation": "Funding allocation must be described in the 'Allocation' section under the 'Funding' tab.",
+                "timePeriod": "The fiscal year of funding allocation (Time Period) must be provided in the 'Allocation' section under the 'Funding' tab."
+              }
+            }
+          }
         }
       },
       "required": [
@@ -34,6 +75,14 @@
       "type": "object",
       "properties": {
         "metadataDate": {
+          "contains": {
+            "properties": {
+              "date": {},
+              "dateType": {
+                "const": "creation"
+              }
+            }
+          },
           "required": [
             "date",
             "dateType"
@@ -47,7 +96,6 @@
         },
         "metadataContact": {
           "type": "array",
-          "minItems": 2,
           "allOf": [
             {
               "contains": {
@@ -68,6 +116,16 @@
                   }
                 }
               }
+            },
+            {
+              "contains": {
+                "properties": {
+                  "role": {
+                    "const": "publisher",
+                    "errorMessage": "Alaska Region must be listed with the role 'publisher' under the 'Metadata Contacts' section of the 'Metadata' tab."
+                  }
+                }
+              }
             }
           ],
           "uniqueItems": true,
@@ -75,7 +133,6 @@
             "role"
           ],
           "errorMessage": {
-            "minItems": "At least two metadata contacts must be provided under the 'Metadata Contacts' section of the 'Metadata' tab. The first two metadata contacts must have the roles 'pointOfContact' and 'author'.",
             "uniqueItems": "Each role in the 'Metadata Contacts' section under the 'Metadata' tab must be unique."
           }
         }
@@ -135,7 +192,7 @@
                   "role": {
                     "const": "pointOfContact",
                     "errorMessage": {
-                      "const": "The 'Point of Contact' section under the 'Main' tab must have at least one person listed as the role 'pointOfContact'."
+                      "const": "The 'Point of Contact' section under the 'Main' tab must have at least one primary contact listed with the role 'pointOfContact'."
                     }
                   }
                 },
@@ -148,6 +205,54 @@
                     "const": "principalInvestigator",
                     "errorMessage": {
                       "const": "The 'Point of Contact' section under the 'Main' tab must have at least one person listed as the role 'principalInvestigator'."
+                    }
+                  }
+                },
+              }
+            },
+            {
+              "contains": {
+                "properties": {
+                  "role": {
+                    "const": "AKRegionDataCustodian",
+                    "errorMessage": {
+                      "const": "The 'Point of Contact' section under the 'Main' tab must have at least one Data Custodian listed with the role 'custodian' or 'AKRegionDataCustodian', which must be entered manually rather than by the dropdown menu."
+                    }
+                  }
+                },
+              }
+            },
+            {
+              "contains": {
+                "properties": {
+                  "role": {
+                    "const": "AKRegionDataTrustee",
+                    "errorMessage": {
+                      "const": "The 'Point of Contact' section under the 'Main' tab must have at least one Data Trustee listed with the role 'AKRegionDataTrustee', which must be entered manually rather than by the dropdown menu."
+                    }
+                  }
+                },
+              }
+            },
+            {
+              "contains": {
+                "properties": {
+                  "role": {
+                    "const": "AKRegionDataSteward",
+                    "errorMessage": {
+                      "const": "The 'Point of Contact' section under the 'Main' tab must have at least one Data Steward listed with the role 'AKRegionDataSteward', which must be entered manually rather than by the dropdown menu."
+                    }
+                  }
+                },
+              }
+            },
+            {
+              "contains": {
+                "properties": {
+                  "role": {
+                    "const": "administrator",
+                    "errorMessage": {
+                      "const": "The 'Point of Contact' section under the 'Main' tab must have the Alaska Region contact listed with the role 'administrator'."
                     }
                   }
                 },
@@ -229,13 +334,33 @@
                   }
                 }
               }
+            },
+            "identifier": {
+              "type": "array",
+              "contains": {
+                "properties": {
+                  "identifier": {},
+                  "namespace": {}
+                },
+                "required": [
+                  "identifier",
+                  "namespace"
+                ],
+                "errorMessage": {
+                  "required": {
+                    "identifier": "Provide an identifier (e.g. Digital Object Identifier (DOI), ISBN, UUID) for the product in the 'Citation' section under the 'Main' tab.",
+                    "namespace": "Provide the context (namespace) for the product identifier in the 'Citation' section under the 'Main' tab."
+                  }
+                }
+              }
             }
           },
           "required": [
             "title",
             "date",
             "responsibleParty",
-            "onlineResource"
+            "onlineResource",
+            "identifier"
           ],
           "errorMessage": {
             "required": {
