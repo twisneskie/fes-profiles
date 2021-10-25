@@ -247,7 +247,7 @@
                     "party": "At least one person must be assigned to a role in the 'Responsible Party' section of the 'Citation' section under the 'Main' tab."
                   }
                 }
-              }
+              },
               "allOf": [
                 {
                   "contains": {
@@ -589,8 +589,7 @@
           "metadataDate": "The creation date of the metadata must be provided in the 'Basic Information' section under the 'Metadata' tab.",
           "metadataContact": "Contacts for metadata creation must be provided in the 'Metadata Contact' section under the 'Metadata' tab. Roles must include at least 'pointOfContact' and 'author'."
         }
-      },
-      "title": "MetadataInfo"
+      }
     },
     "ResourceDistribution": {
       "items": {
