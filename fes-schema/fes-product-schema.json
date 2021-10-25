@@ -394,7 +394,7 @@
                 "thesaurus": "At least one keyword thesaurus must be provided under the 'Keywords' tab."
               }
             }
-          }
+          },
           "contains": {
             "properties": {
               "thesaurus": {
