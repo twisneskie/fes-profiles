@@ -3,7 +3,7 @@
   "title": "Dictionary",
   "description": "Required fields and terms for metadata written for USFWS Alaska Region data dictionaries.",
   "$id": "data-dict-schema.json",
-  "version": "0.1.6",
+  "version": "1.0.0",
   "properties": {
     "dataDictionary": {
       "properties": {
@@ -85,18 +85,18 @@
                   "properties": {
                     "name": {},
                     "value": {},
-                    "definitions": {}
+                    "definition": {}
                   },
                   "required": [
                     "name",
                     "value",
-                    "definitions"
+                    "definition"
                   ],
                   "errorMessage": {
                     "required": {
                       "name": "A descriptive name associated with a domain value (Domain Item Name) must be provided in the 'Domain Items' section under the 'Domain' tab.",
                       "value": "A domain value must be provided in the 'Domain Items' section under the 'Domain' tab.",
-                      "definitions": "A definition for a domain value must be provided in the 'Domain Items' section under the 'Domain' tab."
+                      "definition": "A definition for a domain value must be provided in the 'Domain Items' section under the 'Domain' tab."
                     }
                   }
                 }
@@ -119,7 +119,6 @@
         "entity": {
           "items": {
             "properties": {
-              "commonName": {},
               "codeName": {},
               "definition": {},
               "attribute": {
@@ -148,14 +147,12 @@
               }
             },
             "required": [
-              "commonName",
               "codeName",
               "definition",
               "attribute"
             ],
             "errorMessage": {
               "required": {
-                "commonName": "Provide a common name used to identify the entity in the 'Entity Information' section under the 'Entities' tab.",
                 "codeName": "Provide a code name used to identify the entity in a database schema or application software in the 'Entity Information' section under the 'Entities' tab. For spreadsheets, this would likely be the sheet name.",
                 "definition": "Provide a brief definition for the entity in the 'Entity Information' section under the 'Entities' tab.",
                 "attribute": "Provide at least one attribute (column or field) for an entity under the 'Entities' tab."
