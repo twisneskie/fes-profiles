@@ -94,7 +94,6 @@
           "items": {
             "properties": {
               "type": {
-                "type": "string",
                 "not": {
                   "enum": [
                     "product",
@@ -678,6 +677,22 @@
       }
     },
     "AssociatedResource": {
+      "items": {
+        "properties": {
+          "associationType": {},
+          "resourceCitation": {}
+        },
+        "required": [
+          "associationType",
+          "resourceCitation"
+        ],
+        "errorMessage": {
+          "required": {
+            "associationType": "Data products with associations must have an association type listed under the 'Associations' tab.",
+            "resourceCitation": "Provide the citation information for the associated resource under the 'Associations' tab."
+          }
+        }
+      },
       "contains": {
         "properties": {
           "associationType": {
@@ -685,14 +700,6 @@
             "errorMessage": {
               "const": "At least one association type must be parentProject under the 'Associations' tab."
             }
-          }
-        },
-        "required": [
-          "associationType"
-        ],
-        "errorMessage": {
-          "required": {
-            "associationType": "Products with associations must have an association type listed under the 'Associations' tab."
           }
         }
       }

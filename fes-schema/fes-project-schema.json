@@ -1,27 +1,22 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Metadata",
+  "title": "Schema",
   "description": "Required fields and terms for metadata written for USFWS Alaska Region projects.",
-  "$id": "project-metadata.json",
-  "version": "1.2.0",
-  "type": "object",
+  "$id": "fes-project-metadata.json",
+  "version": "2.0.0",
   "properties": {
     "metadata": {
       "$ref": "#/definitions/Metadata"
     }
   },
-  "required": [
-    "metadata"
-  ],
   "definitions": {
     "Metadata": {
-      "type": "object",
       "properties": {
-        "metadataInfo": {
-          "$ref": "#/definitions/MetadataInfo"
-        },
         "resourceInfo": {
           "$ref": "#/definitions/ResourceInfo"
+        },
+        "metadataInfo": {
+          "$ref": "#/definitions/MetadataInfo"
         },
         "funding": {
           "items": {
@@ -63,99 +58,21 @@
               }
             }
           }
+        },
+        "associatedResource": {
+          "$ref": "#/definitions/AssociatedResource"
         }
       },
       "required": [
         "metadataInfo",
-        "resourceInfo"
-      ],
-      "title": "Metadata"
-    },
-    "MetadataInfo": {
-      "type": "object",
-      "properties": {
-        "metadataDate": {
-          "contains": {
-            "properties": {
-              "date": {},
-              "dateType": {
-                "const": "creation"
-              }
-            }
-          },
-          "required": [
-            "date",
-            "dateType"
-          ],
-          "errorMessage": {
-            "required": {
-              "date": "At least one date associated with the metadata must be provided in the 'Basic Information' section under the 'Metadata' tab.",
-              "dateType": "A date type must be provided for dates associated with the metadata in the 'Basic Information' section under the 'Metadata' tab."
-            }
-          }
-        },
-        "metadataContact": {
-          "type": "array",
-          "allOf": [
-            {
-              "contains": {
-                "properties": {
-                  "role": {
-                    "const": "author",
-                    "errorMessage": "At least one metadata contact must have the role 'author' under the 'Metadata Contacts' section of the 'Metadata' tab."
-                  }
-                }
-              }
-            },
-            {
-              "contains": {
-                "properties": {
-                  "role": {
-                    "const": "pointOfContact",
-                    "errorMessage": "At least one metadata contact must have the role 'pointOfContact' under the 'Metadata Contacts' section of the 'Metadata' tab."
-                  }
-                }
-              }
-            },
-            {
-              "contains": {
-                "properties": {
-                  "role": {
-                    "const": "publisher",
-                    "errorMessage": "Alaska Region must be listed with the role 'publisher' under the 'Metadata Contacts' section of the 'Metadata' tab."
-                  }
-                }
-              }
-            }
-          ],
-          "uniqueItems": true,
-          "required": [
-            "role"
-          ],
-          "errorMessage": {
-            "uniqueItems": "Each role in the 'Metadata Contacts' section under the 'Metadata' tab must be unique."
-          }
-        }
-      },
-      "required": [
-        "metadataDate",
-        "metadataContact"
-      ],
-      "errorMessage": {
-        "required": {
-          "metadataDate": "At least one date associated with the metadata (such as creation or lastUpdate) must be provided in the 'Basic Information' section under the 'Metadata' tab.",
-          "metadataContact": "At least one contact must be provided in the 'Metadata Contact' section under the 'Metadata' tab. At least one role must be 'pointOfContact'."
-        }
-      },
-      "title": "MetadataInfo"
+        "resourceInfo",
+        "associatedResource"
+      ]
     },
     "ResourceInfo": {
-      "type": "object",
       "properties": {
         "status": {
-          "type": "array",
           "items": {
-            "type": "string",
             "enum": [
               "completed",
               "onGoing",
@@ -165,26 +82,21 @@
             "errorMessage": {
               "enum": "Project status in the 'Basic Information' section under the 'Main' tab must be one of: 'completed', 'onGoing', 'proposed', or 'accepted'"
             }
-          },
-          "title": "Status"
+          }
         },
         "resourceType": {
-          "type": "array",
           "items": {
             "properties": {
               "type": {
-                "type": "string",
                 "const": "project",
-                "minLength": 1,
                 "errorMessage": {
                   "const": "Resource type for project must be listed as 'project' in the 'Resource Types' section under the 'Main' tab."
                 }
               }
             }
-        }
-      },
+          }
+        },
         "pointOfContact": {
-          "type": "array",
           "allOf": [
             {
               "contains": {
@@ -259,23 +171,30 @@
               }
             }
           ],
-          "required": [
-            "role",
-            "party"
-          ],
-          "title": "PointOfContact",
-          "errorMessage": {
-            "role": "At least one role must be provided in the 'Point of Contact' section under the 'Main' tab.",
-            "party": "At least one person must be assigned to a role in the 'Point of Contact' section under the 'Main' tab."
+          "items": {
+            "properties": {
+              "role": {},
+              "party": {}
+            },
+            "required": [
+              "role",
+              "party"
+            ],
+            "errorMessage": {
+              "role": "At least one role must be provided in the 'Point of Contact' section under the 'Main' tab.",
+              "party": "At least one person must be assigned to a role in the 'Point of Contact' section under the 'Main' tab."
+            }
           }
         },
         "citation": {
-          "type": "object",
           "properties": {
+            "title": {},
             "date": {
-              "type": "array",
-              "minItems": 1,
               "items": {
+                "properties": {
+                  "date": {},
+                  "dateType": {},
+                },
                 "required": [
                   "date",
                   "dateType"
@@ -289,7 +208,22 @@
               }
             },
             "responsibleParty": {
-              "type": "array",
+              "items": {
+                "properties": {
+                  "role": {},
+                  "party": {}
+                },
+                "required": [
+                  "role",
+                  "party"
+                ],
+                "errorMessage": {
+                  "required": {
+                    "role": "At least one role must be provided in the 'Responsible Party' section of the 'Citation' section under the 'Main' tab.",
+                    "party": "At least one person must be assigned to a role in the 'Responsible Party' section of the 'Citation' section under the 'Main' tab."
+                  }
+                }
+              },
               "allOf": [
                 {
                   "contains": {
@@ -318,8 +252,6 @@
               ]
             },
             "onlineResource": {
-              "type": "array",
-              "minItems": 1,
               "items": {
                 "required": [
                   "uri",
@@ -336,10 +268,9 @@
               }
             },
             "identifier": {
-              "type": "array",
-              "contains": {
+              "items": {
                 "properties": {
-                  "identifier": {},
+                  "properties": {},
                   "namespace": {}
                 },
                 "required": [
@@ -365,18 +296,17 @@
           "errorMessage": {
             "required": {
               "title": "A short, descriptive project title must be provided in the 'Basic Information' section under the 'Main' tab.",
-              "date": "At least one date (e.g. acquisition, creation, revision) must be provided in the 'Citation' section under the 'Main' tab.",
+              "date": "At least one date (e.g. award, start, revision) must be provided in the 'Citation' section under the 'Main' tab.",
               "responsibleParty": "At least one Responsible Party must be provided in the 'Citation' section under the 'Main' tab. At least one role must be listed a pointOfContact.",
-              "onlineResource": "At least one online resource must be provided within the 'Citation' section under the 'Main' tab. A link to the project Regional Data Repository folder can be used if no other online resource exists yet."
+              "onlineResource": "At least one online resource for the project (e.g. project homepage, project ServCat page, Regional Data Repository folder) must be provided within the 'Citation' section under the 'Main' tab.",
+              "identifier": "At least one identifier must be provided within the 'Citation' section under the 'Main' tab."
             }
-          },
-          "title": "Citation"
+          }
         },
+        "abstract": {},
         "timePeriod": {
-          "type": "object",
           "oneOf": [
             {
-              "type": "object",
               "properties": {
                 "startDateTime": {},
                 "endDateTime": {}
@@ -395,34 +325,15 @@
               ]
             },
           ],
-          "title": "TimePeriod"
-        },
-        "keyword": {
-          "type": "array",
-          "contains": {
-            "properties": {
-              "thesaurus": {
-                "type": "object",
-                "minItems": 1,
-                "properties": {
-                  "title": {
-                    "const": "ISO 19115 Topic Category",
-                    "errorMessage": {
-                      "const": "At least one keyword under the 'Keywords' tab must be from the ISO Topic Category thesaurus."
-                    }
-                  }
-                }
-              }
-            },
-          },
-          "required": [
-            "thesaurus"
-          ],
-          "title": "Keywords"
+          "errorMessage": {
+            "oneOf": "A start date and/or an end date must be provided for this project in the 'Time Period' section under the 'Main' tab."
+          }
         },
         "resourceMaintenance": {
-          "type": "array",
           "items": {
+            "properties": {
+              "frequency": {}
+            },
             "required": [
               "frequency"
             ],
@@ -433,12 +344,48 @@
             }
           }
         },
+        "keyword": {
+          "items": {
+            "properties": {
+              "keyword": {},
+              "thesaurus": {}
+            },
+            "required": [
+              "keyword",
+              "thesaurus"
+            ],
+            "errorMessage": {
+              "required": {
+                "keyword": "At least one keyword must be provided from a thesaurus under the 'Keywords' tab.",
+                "thesaurus": "At least one keyword thesaurus must be provided under the 'Keywords' tab."
+              }
+            }
+          },
+          "contains": {
+            "properties": {
+              "thesaurus": {
+                "properties": {
+                  "title": {
+                    "const": "ISO 19115 Topic Category",
+                    "errorMessage": {
+                      "const": "At least one keyword under the 'Keywords' tab must be from the ISO Topic Category thesaurus."
+                    }
+                  }
+                }
+              }
+            },
+          }
+        },
         "extent": {
-          "type": "array",
           "items": {
             "properties": {
               "geographicExtent": {
                 "items": {
+                  "properties": {
+                    "boundingBox": {},
+                    "description": {},
+                    "geographicElement": {}
+                  },
                   "required": [
                     "description",
                     "boundingBox",
@@ -464,8 +411,8 @@
         "citation",
         "abstract",
         "timePeriod",
-        "keyword",
-        "resourceMaintenance"
+        "resourceMaintenance",
+        "keyword"
       ],
       "errorMessage": {
         "required": {
@@ -474,11 +421,137 @@
           "pointOfContact": "Project personnel must be provided in the 'Point of Contact' section under the 'Main' tab.",
           "abstract": "Project abstract must be provided in the 'Description' section under the 'Main' tab. Abstracts should summarize the project's purpose and goals.",
           "timePeriod": "Project time period must be provided in the 'Time Period' section under the 'Main' tab. At least a project start date and/or a project end date must be provided.",
-          "keyword": "Project keywords must be provided under the 'Keywords' tab. At least one keyword must be provided from the 'ISO Topic Category' thesaurus.",
-          "resourceMaintenance": "Resource maintenance requency must be provided in the 'Maintenance' section under the 'Main' tab. The maintenance frequency should describe how often project materials are reviewed and/or updated."
+          "resourceMaintenance": "Resource maintenance frequency must be provided in the 'Maintenance' section under the 'Main' tab. The maintenance frequency should describe how often project materials are reviewed and/or updated.",
+          "keyword": "Project keywords must be provided under the 'Keywords' tab. At least one keyword must be provided from the 'ISO Topic Category' thesaurus."
+        }
+      }
+    },
+    "MetadataInfo": {
+      "properties": {
+        "metadataStatus": {},
+        "metadataDate": {
+          "items": {
+            "properties": {
+              "date": {},
+              "dateType": {}
+            },
+            "required": [
+              "date",
+              "dateType"
+            ],
+            "errorMessage": {
+              "required": {
+                "date": "At least one date associated with the metadata must be provided in the 'Basic Information' section under the 'Metadata' tab.",
+                "dateType": "A date type must be provided for dates associated with the metadata in the 'Basic Information' section under the 'Metadata' tab."
+              }
+            }
+          },
+          "contains": {
+            "properties": {
+              "dateType": {
+                "const": "creation",
+                "errorMessage": {
+                  "const": "A creation date for the metadata must be provided in the 'Basic Information' section under the 'Metadata' tab."
+                }
+              }
+            }
+          }
+        },
+        "metadataContact": {
+          "uniqueItems": true,
+          "allOf": [
+            {
+              "contains": {
+                "properties": {
+                  "role": {
+                    "const": "author",
+                    "errorMessage": "At least one metadata contact must have the role 'author' under the 'Metadata Contacts' section of the 'Metadata' tab."
+                  }
+                }
+              }
+            },
+            {
+              "contains": {
+                "properties": {
+                  "role": {
+                    "const": "pointOfContact",
+                    "errorMessage": "At least one metadata contact must have the role 'pointOfContact' under the 'Metadata Contacts' section of the 'Metadata' tab."
+                  }
+                }
+              }
+            },
+            {
+              "contains": {
+                "properties": {
+                  "role": {
+                    "const": "publisher",
+                    "errorMessage": "Alaska Region must be listed with the role 'publisher' under the 'Metadata Contacts' section of the 'Metadata' tab."
+                  }
+                }
+              }
+            }
+          ],
+          "items": {
+            "properties": {
+              "role": {},
+              "party": {}
+            },
+            "required": [
+              "role",
+              "party"
+            ],
+            "errorMessage": {
+              "required": {
+                "role": "A role must be provided in the 'Metadata Contacts' section under the 'Metadata' tab.",
+                "party": "A contact must be provided in the 'Metadata Contacts' section under the 'Metadata' tab."
+              }
+            }
+          },
+          "errorMessage": {
+            "uniqueItems": "Each role in the 'Metadata Contacts' section under the 'Metadata' tab must be unique."
+          }
         }
       },
-      "title": "ResourceInfo"
+      "required": [
+        "metadataStatus",
+        "metadataDate",
+        "metadataContact"
+      ],
+      "errorMessage": {
+        "required": {
+          "metadataStatus": "The status of the metadata (e.g. onGoing, completed), must be provided in the 'Basic Information' section under the 'Metadata' tab.",
+          "metadataDate": "At least one date associated with the metadata (such as creation or lastUpdate) must be provided in the 'Basic Information' section under the 'Metadata' tab.",
+          "metadataContact": "At least one contact must be provided in the 'Metadata Contact' section under the 'Metadata' tab. At least one role must be 'pointOfContact'."
+        }
+      }
+    },
+    "AssociatedResource": {
+      "items": {
+        "properties": {
+          "associationType": {},
+          "resourceCitation": {}
+        },
+        "required": [
+          "associationType",
+          "resourceCitation"
+        ],
+        "errorMessage": {
+          "required": {
+            "associationType": "Projects with associations must have an association type listed under the 'Associations' tab.",
+            "resourceCitation": "Provide the citation information for the associated resource under the 'Associations' tab."
+          }
+        }
+      },
+      "contains": {
+        "properties": {
+          "associationType": {
+            "const": "product",
+            "errorMessage": {
+              "const": "At least one association type must be product under the 'Associations' tab."
+            }
+          }
+        }
+      }
     }
   }
 }
