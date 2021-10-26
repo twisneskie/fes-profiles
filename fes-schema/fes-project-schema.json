@@ -3,7 +3,7 @@
   "title": "Schema",
   "description": "Required fields and terms for metadata written for USFWS Alaska Region projects.",
   "$id": "fes-project-metadata.json",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "properties": {
     "metadata": {
       "$ref": "#/definitions/Metadata"
@@ -25,20 +25,20 @@
                 "items": {
                   "properties": {
                     "sourceAllocationId": {},
-                    "ammount": {},
+                    "amount": {},
                     "sourceId": {},
                     "recipientId": {}
                   },
                   "required": [
                     "sourceAllocationId",
-                    "ammount",
+                    "amount",
                     "sourceId",
                     "recipientId"
                   ],
                   "errorMessage": {
                     "required": {
                       "sourceAllocationId": "A funding Award ID must be provided in the 'Allocation' section under the 'Funding' tab.",
-                      "ammount": "A funding ammount must be provided in the 'Allocation' section under the 'Funding' tab.",
+                      "amount": "A funding amount must be provided in the 'Allocation' section under the 'Funding' tab.",
                       "sourceId": "A funding source must be provided in the 'Allocation' section under the 'Funding' tab.",
                       "recipientId": "A funding recipient must be provided in the 'Allocation' section under the 'Funding' tab. This recipient should always be an organization, not an individual."
                     }
