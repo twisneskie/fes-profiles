@@ -3,15 +3,11 @@
   "title": "Schema",
   "description": "Required fields and terms for metadata written for USFWS Alaska Region data dictionaries.",
   "$id": "data-dict-schema.json",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "properties": {
+    "metadata": {},
     "dataDictionary": {
-      "$ref": "#/definitions/DataDictionary"
-    }
-  },
-  "definitions": {
-		"DataDictionary": {
-			"items": {
+      "items": {
 				"properties": {
 					"subject": {},
 					"responsibleParty": {
@@ -185,6 +181,6 @@
 					}
 				}
 			}
-		}
+    }
   }
 }
