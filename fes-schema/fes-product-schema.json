@@ -3,7 +3,7 @@
   "title": "Schema",
   "description": "Required fields and terms for metadata written for USFWS Alaska Region data products.",
   "$id": "fes-product-schema.json",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "properties": {
     "metadata": {
       "$ref": "#/definitions/Metadata"
@@ -455,7 +455,7 @@
                   "required": {
                     "accessConstraint": "Data products are by default in the Public Domain and should have 'Access Constraint' set to 'licenseUnrestricted' in the 'Legal' section under the 'Constraints' tab.",
                     "useConstraint": "Data products are by default in the Public Domain and should have 'Use Constraint' set to 'unrestricted' in the 'Legal' section under the 'Constraint' tab.",
-                    "otherConstraint": "Data products are by default in the Public Domain and should have the link to this license (<a href='url'>http://www.usa.gov/publicdomain/label/1.0/</a>) in the 'Legal' section under the 'Constraint' tab. Products indented to be used internationally should be given a Creative Commons Zero license (https://creativecommons.org/publicdomain/zero/1.0/). If another license applies to this data product, provide that link here."
+                    "otherConstraint": "http://www.usa.gov/publicdomain/label/1.0/"
                   }
                 }
               }
