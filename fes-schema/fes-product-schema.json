@@ -3,7 +3,7 @@
   "title": "Schema",
   "description": "Required fields and terms for metadata written for USFWS Alaska Region data products.",
   "$id": "fes-product-schema.json",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "properties": {
     "metadata": {
       "$ref": "#/definitions/Metadata"
@@ -187,7 +187,7 @@
                   "role": {
                     "const": "administrator",
                     "errorMessage": {
-                      "const": "The 'Point of Contact' section under the 'Main' tab must have the Alaska Region contact listed with the role 'administrator'."
+                      "const": "The 'Point of Contact' section under the 'Main' tab must have the Alaska Region, program, or sub-program contact listed with the role 'administrator'."
                     }
                   }
                 },
@@ -306,16 +306,6 @@
                     "namespace": "Provide the context (namespace) for the product identifier in the 'Citation' section under the 'Main' tab."
                   }
                 }
-              },
-              "contains": {
-                "properties": {
-                  "namespace": {
-                    "const": "info:doi/",
-                    "errorMessage": {
-                      "const": "At least one identifier must be a Digital Object Identifier (DOI) in the 'Citation' section under the 'Main' tab."
-                    }
-                  }
-                }
               }
             }
           },
@@ -332,7 +322,7 @@
               "date": "At least one date (e.g. acquisition, creation, revision) must be provided in the 'Citation' section under the 'Main' tab.",
               "responsibleParty": "At least one Responsible Party must be provided in the 'Citation' section under the 'Main' tab. At least one pointOfContact and one principalInvestigator must be provided.",
               "onlineResource": "At least one online resource for the project (e.g. project homepage, project ServCat page, Regional Data Repository folder) must be provided within the 'Citation' section under the 'Main' tab.",
-              "identifier": "At least one identifier must be provided within the 'Citation' section under the 'Main' tab. At least one identifier must be a Digital Object Identifier (DOI)."
+              "identifier": "At least one identifier must be provided within the 'Citation' section under the 'Main' tab."
             }
           }
         },

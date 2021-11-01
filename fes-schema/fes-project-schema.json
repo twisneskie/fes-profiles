@@ -3,7 +3,7 @@
   "title": "Schema",
   "description": "Required fields and terms for metadata written for USFWS Alaska Region projects.",
   "$id": "fes-project-metadata.json",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "properties": {
     "metadata": {
       "$ref": "#/definitions/Metadata"
@@ -164,7 +164,7 @@
                   "role": {
                     "const": "administrator",
                     "errorMessage": {
-                      "const": "The 'Point of Contact' section under the 'Main' tab must have the Alaska Region contact listed with the role 'administrator'."
+                      "const": "The 'Point of Contact' section under the 'Main' tab must have the Alaska Region, program, or sub-program contact listed with the role 'administrator'."
                     }
                   }
                 },
