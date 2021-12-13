@@ -1,9 +1,9 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Schema",
+  "title": "AK Schema",
   "description": "Required fields and terms for metadata written for USFWS Alaska Region projects.",
-  "$id": "fes-project-metadata.json",
-  "version": "2.1.0",
+  "$id": "ak-project-metadata.json",
+  "version": "3.0.0",
   "properties": {
     "metadata": {
       "$ref": "#/definitions/Metadata"
@@ -65,8 +65,7 @@
       },
       "required": [
         "metadataInfo",
-        "resourceInfo",
-        "associatedResource"
+        "resourceInfo"
       ]
     },
     "ResourceInfo": {
@@ -104,7 +103,7 @@
                   "role": {
                     "const": "pointOfContact",
                     "errorMessage": {
-                      "const": "The 'Point of Contact' section under the 'Main' tab must have at least one primary contact listed with the role 'pointOfContact'."
+                      "const": "The 'Point of Contact' section under the 'Main' tab must have at least one Data Steward listed with the role 'pointOfContact'."
                     }
                   }
                 },
@@ -114,9 +113,9 @@
               "contains": {
                 "properties": {
                   "role": {
-                    "const": "principalInvestigator",
+                    "const": "custodian",
                     "errorMessage": {
-                      "const": "The 'Point of Contact' section under the 'Main' tab must have at least one person listed as the role 'principalInvestigator'."
+                      "const": "The 'Point of Contact' section under the 'Main' tab must have at least one Data Custodian listed with the role 'custodian'."
                     }
                   }
                 },
@@ -126,33 +125,9 @@
               "contains": {
                 "properties": {
                   "role": {
-                    "const": "AKRegionDataCustodian",
+                    "const": "owner",
                     "errorMessage": {
-                      "const": "The 'Point of Contact' section under the 'Main' tab must have at least one Data Custodian listed with the role 'custodian' or 'AKRegionDataCustodian', which must be entered manually rather than by the dropdown menu."
-                    }
-                  }
-                },
-              }
-            },
-            {
-              "contains": {
-                "properties": {
-                  "role": {
-                    "const": "AKRegionDataTrustee",
-                    "errorMessage": {
-                      "const": "The 'Point of Contact' section under the 'Main' tab must have at least one Data Trustee listed with the role 'AKRegionDataTrustee', which must be entered manually rather than by the dropdown menu."
-                    }
-                  }
-                },
-              }
-            },
-            {
-              "contains": {
-                "properties": {
-                  "role": {
-                    "const": "AKRegionDataSteward",
-                    "errorMessage": {
-                      "const": "The 'Point of Contact' section under the 'Main' tab must have at least one Data Steward listed with the role 'AKRegionDataSteward', which must be entered manually rather than by the dropdown menu."
+                      "const": "The 'Point of Contact' section under the 'Main' tab must have at least one Data Trustee listed with the role 'owner'."
                     }
                   }
                 },
@@ -223,46 +198,16 @@
                     "party": "At least one person must be assigned to a role in the 'Responsible Party' section of the 'Citation' section under the 'Main' tab."
                   }
                 }
-              },
-              "allOf": [
-                {
-                  "contains": {
-                    "properties": {
-                      "role": {
-                        "const": "pointOfContact",
-                        "errorMessage": {
-                          "const": "One role for 'Responsible Parties' within the 'Citation' section under the 'Main' tab must be pointOfContact."
-                        }
-                      }
-                    }
-                  }
-                },
-                {
-                  "contains": {
-                    "properties": {
-                      "role": {
-                        "const": "principalInvestigator",
-                        "errorMessage": {
-                          "const": "One role for 'Responsible Parties' within the 'Citation' section under the 'Main' tab must be principalInvestigator."
-                        }
-                      }
-                    }
-                  }
-                }
-              ]
+              }
             },
             "onlineResource": {
               "items": {
                 "required": [
-                  "uri",
-                  "name",
-                  "function"
+                  "uri"
                 ],
                 "errorMessage": {
                   "required": {
-                    "uri": "A URI for the project homepage or Regional Data Repository folder must be provided in the 'Online Resource' section of the 'Citation' section under the 'Main' tab. This should be a link for browsing rather than a direct download link.",
-                    "name": "A name for the project homepage or Regional Data Repository must be provided in the 'Online Resource' section of the 'Citation' section under the 'Main' tab.",
-                    "function": "The function of the project homepage (i.e. browsing) must be provided in the 'Online Resource' section of the 'Citation' section under the 'Main' tab."
+                    "uri": "A URI for the project homepage or Regional Data Repository folder must be provided in the 'Online Resource' section of the 'Citation' section under the 'Main' tab. This should be a link for browsing rather than a direct download link."
                   }
                 }
               }
@@ -270,7 +215,7 @@
             "identifier": {
               "items": {
                 "properties": {
-                  "properties": {},
+                  "identifier": {},
                   "namespace": {}
                 },
                 "required": [
@@ -289,17 +234,13 @@
           "required": [
             "title",
             "date",
-            "responsibleParty",
-            "onlineResource",
-            "identifier"
+            "responsibleParty"
           ],
           "errorMessage": {
             "required": {
               "title": "A short, descriptive project title must be provided in the 'Basic Information' section under the 'Main' tab.",
               "date": "At least one date (e.g. award, start, revision) must be provided in the 'Citation' section under the 'Main' tab.",
-              "responsibleParty": "At least one Responsible Party must be provided in the 'Citation' section under the 'Main' tab. At least one role must be listed a pointOfContact.",
-              "onlineResource": "At least one online resource for the project (e.g. project homepage, project ServCat page, Regional Data Repository folder) must be provided within the 'Citation' section under the 'Main' tab.",
-              "identifier": "At least one identifier must be provided within the 'Citation' section under the 'Main' tab."
+              "responsibleParty": "At least one Responsible Party must be provided in the 'Citation' section under the 'Main' tab. At least one role must be listed a pointOfContact."
             }
           }
         },
@@ -329,21 +270,6 @@
             "oneOf": "A start date and/or an end date must be provided for this project in the 'Time Period' section under the 'Main' tab."
           }
         },
-        "resourceMaintenance": {
-          "items": {
-            "properties": {
-              "frequency": {}
-            },
-            "required": [
-              "frequency"
-            ],
-            "errorMessage": {
-              "required": {
-                "frequency": "Project resource maintenance frequency must be provided in the 'Maintenance' section under the 'Main' tab."
-              }
-            }
-          }
-        },
         "keyword": {
           "items": {
             "properties": {
@@ -366,41 +292,14 @@
               "thesaurus": {
                 "properties": {
                   "title": {
-                    "const": "ISO 19115 Topic Category",
+                    "const": "Global Change Master Directory (GCMD) Science Keywords",
                     "errorMessage": {
-                      "const": "At least one keyword under the 'Keywords' tab must be from the ISO Topic Category thesaurus."
+                      "const": "At least one keyword under the 'Keywords' tab must be from the Global Change Master Directory (GCMD) Science Keywords thesaurus."
                     }
                   }
                 }
               }
             },
-          }
-        },
-        "extent": {
-          "items": {
-            "properties": {
-              "geographicExtent": {
-                "items": {
-                  "properties": {
-                    "boundingBox": {},
-                    "description": {},
-                    "geographicElement": {}
-                  },
-                  "required": [
-                    "description",
-                    "boundingBox",
-                    "geographicElement"
-                  ],
-                  "errorMessage": {
-                    "required": {
-                      "description": "A description of the geographic extent must be provided in the 'Geographic Extent' section under the 'Extent' tab.",
-                      "boundingBox": "Bounding box coordinates for the geographic extent must be provided in the 'Geographic Extent' section under the 'Extent' tab.",
-                      "geographicElement": "A map of geographic features must be provided in the 'Geographic Extent' section under the 'Extent' tab."
-                    }
-                  }
-                }
-              }
-            }
           }
         }
       },
@@ -411,7 +310,6 @@
         "citation",
         "abstract",
         "timePeriod",
-        "resourceMaintenance",
         "keyword"
       ],
       "errorMessage": {
@@ -421,8 +319,7 @@
           "pointOfContact": "Project personnel must be provided in the 'Point of Contact' section under the 'Main' tab.",
           "abstract": "Project abstract must be provided in the 'Description' section under the 'Main' tab. Abstracts should summarize the project's purpose and goals.",
           "timePeriod": "Project time period must be provided in the 'Time Period' section under the 'Main' tab. At least a project start date and/or a project end date must be provided.",
-          "resourceMaintenance": "Resource maintenance frequency must be provided in the 'Maintenance' section under the 'Main' tab. The maintenance frequency should describe how often project materials are reviewed and/or updated.",
-          "keyword": "Project keywords must be provided under the 'Keywords' tab. At least one keyword must be provided from the 'ISO Topic Category' thesaurus."
+          "keyword": "Project keywords must be provided under the 'Keywords' tab. At least one keyword must be provided from the 'Global Change Master Directory (GCMD) Science Keywords' thesaurus."
         }
       }
     },
@@ -476,16 +373,6 @@
                   "role": {
                     "const": "pointOfContact",
                     "errorMessage": "At least one metadata contact must have the role 'pointOfContact' under the 'Metadata Contacts' section of the 'Metadata' tab."
-                  }
-                }
-              }
-            },
-            {
-              "contains": {
-                "properties": {
-                  "role": {
-                    "const": "publisher",
-                    "errorMessage": "Alaska Region must be listed with the role 'publisher' under the 'Metadata Contacts' section of the 'Metadata' tab."
                   }
                 }
               }
