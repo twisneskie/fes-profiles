@@ -3,7 +3,7 @@
   "title": "Schema",
   "description": "Required fields and terms for metadata written for USFWS Alaska Region data products.",
   "$id": "fes-product-schema.json",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "properties": {
     "metadata": {
       "$ref": "#/definitions/Metadata"
@@ -115,7 +115,7 @@
                   "role": {
                     "const": "pointOfContact",
                     "errorMessage": {
-                      "const": "The 'Point of Contact' section under the 'Main' tab must have at least one primary contact listed with the role 'pointOfContact'."
+                      "const": "The 'Point of Contact' section under the 'Main' tab must have at least one Data Steward listed with the role 'pointOfContact'."
                     }
                   }
                 },
@@ -125,9 +125,9 @@
               "contains": {
                 "properties": {
                   "role": {
-                    "const": "principalInvestigator",
+                    "const": "custodian",
                     "errorMessage": {
-                      "const": "The 'Point of Contact' section under the 'Main' tab must have at least one person listed as the role 'principalInvestigator'."
+                      "const": "The 'Point of Contact' section under the 'Main' tab must have at least one Data Custodian listed with the role 'custodian'."
                     }
                   }
                 },
@@ -137,9 +137,9 @@
               "contains": {
                 "properties": {
                   "role": {
-                    "const": "AKRegionDataCustodian",
+                    "const": "owner",
                     "errorMessage": {
-                      "const": "The 'Point of Contact' section under the 'Main' tab must have at least one Data Custodian listed with the role 'custodian' or 'AKRegionDataCustodian', which must be entered manually rather than by the dropdown menu."
+                      "const": "The 'Point of Contact' section under the 'Main' tab must have at least one Data Trustee listed with the role 'owner'."
                     }
                   }
                 },
@@ -149,45 +149,9 @@
               "contains": {
                 "properties": {
                   "role": {
-                    "const": "AKRegionDataTrustee",
+                    "const": "originator",
                     "errorMessage": {
-                      "const": "The 'Point of Contact' section under the 'Main' tab must have at least one Data Trustee listed with the role 'AKRegionDataTrustee', which must be entered manually rather than by the dropdown menu."
-                    }
-                  }
-                },
-              }
-            },
-            {
-              "contains": {
-                "properties": {
-                  "role": {
-                    "const": "AKRegionDataSteward",
-                    "errorMessage": {
-                      "const": "The 'Point of Contact' section under the 'Main' tab must have at least one Data Steward listed with the role 'AKRegionDataSteward', which must be entered manually rather than by the dropdown menu."
-                    }
-                  }
-                },
-              }
-            },
-            {
-              "contains": {
-                "properties": {
-                  "role": {
-                    "const": "AKRegionDataProducer",
-                    "errorMessage": {
-                      "const": "The 'Point of Contact' section under the 'Main' tab must have at least one Data Producer listed with the role 'AKRegionDataProducer', which must be entered manually rather than by the dropdown menu."
-                    }
-                  }
-                },
-              }
-            },
-            {
-              "contains": {
-                "properties": {
-                  "role": {
-                    "const": "administrator",
-                    "errorMessage": {
-                      "const": "The 'Point of Contact' section under the 'Main' tab must have the Alaska Region, program, or sub-program contact listed with the role 'administrator'."
+                      "const": "The 'Point of Contact' section under the 'Main' tab must have at least one Data Producer listed with the role 'originator'."
                     }
                   }
                 },
@@ -204,7 +168,7 @@
               "party"
             ],
             "errorMessage": {
-              "role": "At least one role must be provided in the 'Point of Contact' section under the 'Main' tab.",
+              "role": "Project data management personnel must be provided in the 'Point of Contact' section under the 'Main' tab. Roles that must be included are Data Trustee (owner), Data Steward (pointOfContact), Data Custodian (custodian), and Data Producer (originator).",
               "party": "At least one person must be assigned to a role in the 'Point of Contact' section under the 'Main' tab."
             }
           }
@@ -246,48 +210,6 @@
                     "party": "At least one person must be assigned to a role in the 'Responsible Party' section of the 'Citation' section under the 'Main' tab."
                   }
                 }
-              },
-              "allOf": [
-                {
-                  "contains": {
-                    "properties": {
-                      "role": {
-                        "const": "pointOfContact",
-                        "errorMessage": {
-                          "const": "One role for 'Responsible Parties' within the 'Citation' section under the 'Main' tab must be pointOfContact."
-                        }
-                      }
-                    }
-                  }
-                },
-                {
-                  "contains": {
-                    "properties": {
-                      "role": {
-                        "const": "principalInvestigator",
-                        "errorMessage": {
-                          "const": "One role for 'Responsible Parties' within the 'Citation' section under the 'Main' tab must be principalInvestigator."
-                        }
-                      }
-                    }
-                  }
-                }
-              ]
-            },
-            "onlineResource": {
-              "items": {
-                "required": [
-                  "uri",
-                  "name",
-                  "function"
-                ],
-                "errorMessage": {
-                  "required": {
-                    "uri": "A URI for the project homepage or Regional Data Repository folder must be provided in the 'Online Resource' section of the 'Citation' section under the 'Main' tab. This should be a link for browsing rather than a direct download link.",
-                    "name": "A name for the project homepage or Regional Data Repository must be provided in the 'Online Resource' section of the 'Citation' section under the 'Main' tab.",
-                    "function": "The function of the project homepage (i.e. browsing) must be provided in the 'Online Resource' section of the 'Citation' section under the 'Main' tab."
-                  }
-                }
               }
             },
             "identifier": {
@@ -312,17 +234,13 @@
           "required": [
             "title",
             "date",
-            "responsibleParty",
-            "onlineResource",
-            "identifier"
+            "responsibleParty"
           ],
           "errorMessage": {
             "required": {
               "title": "A short, descriptive product title must be provided in the 'Basic Information' section under the 'Main' tab. Product titles should be uniquely identifiable.",
               "date": "At least one date (e.g. acquisition, creation, revision) must be provided in the 'Citation' section under the 'Main' tab.",
-              "responsibleParty": "At least one Responsible Party must be provided in the 'Citation' section under the 'Main' tab. At least one pointOfContact and one principalInvestigator must be provided.",
-              "onlineResource": "At least one online resource for the project (e.g. project homepage, project ServCat page, Regional Data Repository folder) must be provided within the 'Citation' section under the 'Main' tab.",
-              "identifier": "At least one identifier must be provided within the 'Citation' section under the 'Main' tab."
+              "responsibleParty": "At least one Responsible Party must be provided in the 'Citation' section under the 'Main' tab."
             }
           }
         },
@@ -389,42 +307,15 @@
               "thesaurus": {
                 "properties": {
                   "title": {
-                    "const": "ISO 19115 Topic Category",
+                    "const": "Global Change Master Directory (GCMD) Science Keywords",
                     "errorMessage": {
-                      "const": "At least one keyword under the 'Keywords' tab must be from the ISO Topic Category thesaurus."
+                      "const": "At least one keyword under the 'Keywords' tab must be from the Global Change Master Directory (GCMD) Science Keywords thesaurus."
                     }
                   }
                 }
               }
             },
           },
-        },
-        "extent": {
-          "items": {
-            "properties": {
-              "geographicExtent": {
-                "items": {
-                  "properties": {
-                    "boundingBox": {},
-                    "description": {},
-                    "geographicElement": {}
-                  },
-                  "required": [
-                    "boundingBox",
-                    "description",
-                    "geographicElement"
-                  ],
-                  "errorMessage": {
-                    "required": {
-                      "boundingBox": "Bounding box coordinates for the geographic extent must be provided in the 'Geographic Extent' section under the 'Extent' tab.",
-                      "description": "A description of the geographic extent must be provided in the 'Geographic Extent' section under the 'Extent' tab.",
-                      "geographicElement": "A map of geographic features must be provided in the 'Geographic Extent' section under the 'Extent' tab."
-                    }
-                  }
-                }
-              }
-            }
-          }
         },
         "constraint": {
           "items": {
