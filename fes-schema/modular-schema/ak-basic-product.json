@@ -1,0 +1,208 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AK Region Basic Product Schema",
+  "description": "Minimum required fields and terms for metadata written for USFWS Alaska Region data products.",
+  "$id": "ak-product-schema.json",
+  "version": "0.1.0",
+  "properties": {
+    "metadata": {
+      "properties": {
+        "resourceInfo": {
+          "properties": {
+            "resourceType": {
+              "items": {
+                "properties": {
+                  "type": {
+                    "not": {
+                      "enum": [
+                        "product",
+                        "project"
+                      ]
+                    },
+                    "errorMessage": {
+                      "not": "Resource type for products must not be 'product' or 'project' in the 'Resource Types' section under the 'Main' tab. Products should use a more specific type such as 'tabularDataset' or 'document'. For projects, use the custom profile for AK Region projects."
+                    }
+                  }
+                }
+              }
+            },
+            "pointOfContact": {
+              "contains": {
+                "properties": {
+                  "role": {
+                    "const": "originator",
+                    "errorMessage": {
+                      "const": "The 'Point of Contact' section under the 'Main' tab must have at least one Data Producer listed with the role 'originator'."
+                    }
+                  }
+                }
+              }
+            },
+            "resourceMaintenance": {
+              "items": {
+                "properties": {
+                  "frequency": {}
+                },
+                "required": [
+                  "frequency"
+                ],
+                "errorMessage": {
+                  "required": {
+                    "frequency": "Product resource maintenance frequency must be provided in the 'Maintenance' section under the 'Main' tab."
+                  }
+                }
+              }
+            }
+          },
+          "required": [
+            "resourceMaintenance"
+          ],
+          "errorMessage": {
+            "required": {
+              "resourceMaintenance": "Resource maintenance frequency must be provided in the 'Maintenance' section under the 'Main' tab. The maintenance frequency should describe how often the product is reviewed and/or updated."
+            }
+          }
+        },
+        "resourceDistribution": {
+          "items": {
+            "properties": {
+              "distributor": {
+                "items": {
+                  "properties": {
+                    "contact": {
+                      "properties": {
+                        "role": {
+                          "const": "distributor",
+                          "errorMessage": {
+                            "const": "Role for distributor in the 'Distributor' section under the 'Distribution' tab must be 'distributor'."
+                          }
+                        },
+                        "party": {}
+                      },
+                      "required": [
+                        "role",
+                        "party"
+                      ],
+                      "errorMessage": {
+                        "required": {
+                          "role": "Indicate 'distributor' as the role for the product distributor under the 'Distribution' tab.",
+                          "party": "Indicate the organization that will distribute the product as the contact under the 'Distribution' tab."
+                        }
+                      }
+                    },
+                    "transferOption": {
+                      "items": {
+                        "properties": {
+                          "onlineOption": {
+                            "items": {
+                              "properties": {
+                                "uri": {}
+                              },
+                              "required": [
+                                "uri"
+                              ],
+                              "errorMessage": {
+                                "required": {
+                                  "uri": "A URI must be provided for an online option to access the resource under the 'Transfer Option' section of the 'Distributor' section under the 'Distribution' tab. The URI should link to either the direct download (URI that will automatically start a download) or the link to page where you can download the resource."
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "required": [
+                          "onlineOption"
+                        ],
+                        "errorMessage": {
+                          "required": {
+                            "onlineOption": "An online option for distribution must be provided in the 'Transfer Option' section of the 'Distributor' section under the 'Distribution' tab."
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "contact",
+                    "transferOption"
+                  ],
+                  "errorMessage": {
+                    "required": {
+                      "contact": "Provide a contact for distribution in the 'Distributor' section under the 'Distribution' tab.",
+                      "transferOption": "A transfer option must be provided for distribution in the 'Distributor' section under the 'Distribution' tab."
+                    }
+                  }
+                }
+              }
+            },
+            "required": [
+              "distributor"
+            ],
+            "errorMessage": {
+              "required": {
+                "distributor": "Provide a distributor under the 'Distribution' tab."
+              }
+            }
+          }
+        },
+        "associatedResource": {
+          "contains": {
+            "properties": {
+              "associationType": {
+                "const": "parentProject",
+                "errorMessage": {
+                  "const": "At least one association type must be parentProject under the 'Associations' tab."
+                }
+              }
+            }
+          }
+        }
+      },
+      "required": [
+        "resourceDistribution"
+      ],
+      "errorMessage": {
+        "required": {
+          "resourceDistribution": "Resource distribution must be described under the 'Distribution' tab."
+        }
+      }
+    },
+    "dataDictionary": {}
+  },
+  "if": {
+    "properties": {
+      "metadata": {
+        "properties": {
+          "resourceInfo": {
+            "properties": {
+              "resourceType": {
+                "contains": {
+                  "properties": {
+                    "type": {
+                      "const": "tabularDataset"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "then": {
+    "required": [
+      "metadata",
+      "dataDictionary"
+    ],
+    "errorMessage": {
+      "required": {
+        "dataDictionary": "Data products with the type 'tabularDataset' must be associated with a data dictionary under the 'Dictionaries' tab."
+      }
+    }
+  },
+  "else": {
+    "required": [
+      "metadata"
+    ]
+  },
+  "errorMessage": "If a data product is a 'tabularDataset', then it must be associated with a data dictionary under the 'Dictionaries' tab."
+}
