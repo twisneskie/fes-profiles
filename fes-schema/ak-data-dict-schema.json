@@ -1,8 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Dictionary",
-  "description": "Required fields and terms for metadata written for USFWS Alaska Region data dictionaries.",
-  "$id": "data-dict-schema.json",
+  "title": "AK Region Dictionary Dictionary Schema",
+  "description": "Minimum required fields and terms for metadata written for USFWS Alaska Region data dictionaries.",
+  "$id": "ak-data-dict-schema.json",
   "version": "1.0.0",
   "properties": {
     "dataDictionary": {
@@ -70,7 +70,7 @@
           "errorMessage": {
             "required": {
               "title": "A title must be provided for the data dictionary in the 'Basic Information' section under the 'Main' tab.",
-              "date": "A date (e.g. creation, revision) must be provided for the data dictionary in the 'Basic Information' section under the 'Citation' tab.",
+              "date": "A date (such as creation date) must be provided for the data dictionary in the 'Basic Information' section under the 'Citation' tab.",
               "responsibleParty": "Responsible parties must be provided for the data dictionary under the 'Citation' tab."
             }
           }
