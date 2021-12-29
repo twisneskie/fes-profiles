@@ -3,7 +3,7 @@
   "title": "AK Schema",
   "description": "Required fields and terms for metadata written for USFWS Alaska Region projects.",
   "$id": "ak-project-metadata.json",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "properties": {
     "metadata": {
       "$ref": "#/definitions/Metadata"
@@ -106,7 +106,7 @@
                       "const": "The 'Point of Contact' section under the 'Main' tab must have at least one Data Steward listed with the role 'pointOfContact'."
                     }
                   }
-                },
+                }
               }
             },
             {
@@ -118,7 +118,7 @@
                       "const": "The 'Point of Contact' section under the 'Main' tab must have at least one Data Custodian listed with the role 'custodian'."
                     }
                   }
-                },
+                }
               }
             },
             {
@@ -130,7 +130,7 @@
                       "const": "The 'Point of Contact' section under the 'Main' tab must have at least one Data Trustee listed with the role 'owner'."
                     }
                   }
-                },
+                }
               }
             },
             {
@@ -142,7 +142,7 @@
                       "const": "The 'Point of Contact' section under the 'Main' tab must have the Alaska Region, program, or sub-program contact listed with the role 'administrator'."
                     }
                   }
-                },
+                }
               }
             }
           ],
@@ -168,7 +168,7 @@
               "items": {
                 "properties": {
                   "date": {},
-                  "dateType": {},
+                  "dateType": {}
                 },
                 "required": [
                   "date",
@@ -264,7 +264,7 @@
                   ]
                 }
               ]
-            },
+            }
           ],
           "errorMessage": {
             "oneOf": "A start date and/or an end date must be provided for this project in the 'Time Period' section under the 'Main' tab."
@@ -299,7 +299,7 @@
                   }
                 }
               }
-            },
+            }
           }
         }
       },
