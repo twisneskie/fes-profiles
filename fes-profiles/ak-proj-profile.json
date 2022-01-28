@@ -1,20 +1,15 @@
 {
-  "identifier": "akproj",
+  "identifier": "ak-region-proj",
   "namespace": "gov.fws.profile",
-  "alternateId": ["akproj"],
   "title": "AK Region Project Profile",
-  "description": "Document a project, to be associated with the project's products. Modified for use by the USFWS Alaska Region staff.",
-  "version": "1.2.0",
+  "description": "Hides fields and navigation menu items to simplify metadata entry for USFWS Alaska Region Staff during project metadata entry.",
+  "version": "1.3.0",
   "components": {
     "record": {
       "main": {
         "basicInformation": {
           "recordId": false,
           "defaultLocale": false
-        },
-        "resourceType": {
-          "resourceType": true,
-          "name": true
         },
         "citation": {
           "basicInformation": {
@@ -47,6 +42,8 @@
           "duration": false
         },
         "maintenance": {
+          "dates": false,
+          "contact": false,
           "scope": false,
           "note": false
         },
@@ -55,16 +52,8 @@
       },
       "metadata": {
         "metadataIdentifier": false,
-        "parentMetadata": false,
         "onlineResource": false,
-        "repositories": false,
-        "maintenance": {
-          "frequency": true,
-          "dates": false,
-          "contact": false,
-          "note": false,
-          "scope": false
-        },
+        "maintenance": false,
         "defaultLocale": false,
         "alternateMetadataReference": false
       },
@@ -85,60 +74,55 @@
               },
               "identifier": false,
               "identifierSimple": {
-                "authority": {
-                  "basicInformation": {
-                    "alternateTitle": false,
-                    "dates": false
-                  },
-                  "onlineResource": {
-                    "protocol": false,
-                    "applicationProfile": false,
-                    "protocolRequest": false
-                  },
-                  "identifier": false
-                }
+                "version": false,
+                "description": false,
+                "authority": false
               },
               "identifierShort": false,
               "series": false,
               "otherCitationDetails": false,
               "graphic": false
-            }
+            },
+            "modifications": false
           }
         }
       },
       "distribution": {
         "distributor": {
           "transferOption": {
+            "transferSize": false,
             "distributionUnit": false,
             "onlineOption": {
               "protocol": false,
               "applicationProfile": false,
               "protocolRequest": false
             },
-            "offlineOption": {
-              "storage": {
-                "density": false,
-                "units": false
-              },
-              "identifier": false
-            },
+            "offlineOption": false,
+            "distributionFormat": false,
             "transferFrequency": false
           },
-          "orderProcess": {
-            "plannedAvailability": false,
-            "turnaround": false
-          }
+          "orderProcess": false
         }
       },
       "funding": {
-        "timePeriod": {
-          "identifier": false,
-          "periodName": false,
-          "interval": false,
-          "duration": false
+        "fundingPeriod": {
+          "allocation": {
+            "onlineResource": {
+              "protocol": false,
+              "applicationProfile": false,
+              "protocolRequest": false
+            }
+          },
+          "timePeriod": {
+            "identifier": false,
+            "periodName": false,
+            "interval": false,
+            "duration": false
+          }
         }
       },
       "associated": {
+        "initiativeType": false,
         "resourceCitation": {
           "basicInformation": {
             "alternateTitle": false,
@@ -198,7 +182,7 @@
       {
         "title": "Extent",
         "target": "record.show.edit.extent",
-        "tip": "Information describing the bounds of the project."
+        "tip": "Information describing the geographic bounds of the project."
       },
       {
         "title": "Taxonomy",
@@ -208,12 +192,12 @@
       {
         "title": "Distribution",
         "target": "record.show.edit.distribution",
-        "tip": "Information about obtaining the product."
+        "tip": "Information about obtaining project resources."
       },
       {
         "title": "Funding",
         "target": "record.show.edit.funding",
-        "tip": "Information about funding allocated to development of the resource."
+        "tip": "Information about funding allocated to development of the project."
       },
       {
         "title": "Associated",
