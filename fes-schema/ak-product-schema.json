@@ -3,7 +3,7 @@
   "title": "AK Region Product Schema",
   "description": "Minimum required fields and terms for metadata written for USFWS Alaska Region data products.",
   "$id": "ak-product-schema.json",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "properties": {
     "metadata": {
       "properties": {
@@ -83,7 +83,7 @@
                       "role": {
                         "const": "originator",
                         "errorMessage": {
-                          "const": "The 'Point of Contact' section under the 'Main' tab must have at least one Data Producer listed with the role 'originator'."
+                          "const": "The 'Point of Contact' section under the 'Main' tab must have at least one Data Producer/Originator listed with the role 'originator'."
                         }
                       }
                     }
@@ -100,8 +100,8 @@
                   "party"
                 ],
                 "errorMessage": {
-                  "role": "Project data management personnel must be provided in the 'Point of Contact' section under the 'Main' tab. Roles that must be included are Data Trustee (owner), Data Steward (pointOfContact), Data Custodian (custodian), and Data Producer (originator).",
-                  "party": "At least one person must be assigned to a role in the 'Point of Contact' section under the 'Main' tab."
+                  "role": "Project data management personnel must be provided in the 'Point of Contact' section under the 'Main' tab. Roles that must be included are Data Trustee (owner), Data Steward (pointOfContact), Data Custodian (custodian), and Data Producer/Originator (originator).",
+                  "party": "At least one person must be assigned to each role in the 'Point of Contact' section under the 'Main' tab."
                 }
               }
             },
@@ -202,21 +202,6 @@
                 "oneOf": "A start date and/or an end date must be provided for this data product in the 'Time Period' section under the 'Main' tab."
               }
             },
-            "resourceMaintenance": {
-              "items": {
-                "properties": {
-                  "frequency": {}
-                },
-                "required": [
-                  "frequency"
-                ],
-                "errorMessage": {
-                  "required": {
-                    "frequency": "Product resource maintenance frequency must be provided in the 'Maintenance' section under the 'Main' tab."
-                  }
-                }
-              }
-            },
             "keyword": {
               "items": {
                 "properties": {
@@ -229,7 +214,7 @@
                 ],
                 "errorMessage": {
                   "required": {
-                    "keyword": "At least one keyword must be provided from a thesaurus under the 'Keywords' tab.",
+                    "keyword": "At least one keyword must be provided from each thesaurus under the 'Keywords' tab.",
                     "thesaurus": "At least one keyword thesaurus must be provided under the 'Keywords' tab."
                   }
                 }
@@ -257,7 +242,6 @@
             "citation",
             "abstract",
             "timePeriod",
-            "resourceMaintenance",
             "keyword"
           ],
           "errorMessage": {
@@ -267,8 +251,7 @@
               "pointOfContact": "Project and product specific personnel must be provided in the 'Point of Contact' section under the 'Main' tab.",
               "abstract": "An abstract for the product must be provided in the 'Description' section under the 'Main' tab. Abstracts should summarize the product's purpose and goals.",
               "timePeriod": "A relevant time period for the product must be provided in the 'Time Period' section under the 'Main' tab.",
-              "resourceMaintenance": "Resource maintenance frequency must be provided in the 'Maintenance' section under the 'Main' tab. The maintenance frequency should describe how often the product is reviewed and/or updated.",
-              "keyword": "Product keywords must be provided under the 'Keywords' tab. At least one keyword must be provided from the 'ISO Topic Category' thesaurus."
+              "keyword": "Product keywords must be provided under the 'Keywords' tab. At least one keyword must be provided from the Global Change Master Directory (GCMD) Science Keywords thesaurus."
             }
           }
         },
@@ -287,7 +270,7 @@
                 ],
                 "errorMessage": {
                   "required": {
-                    "date": "At least one date associated with the metadata must be provided in the 'Basic Information' section under the 'Metadata' tab.",
+                    "date": "A creation date for the metadata must be provided in the 'Basic Information' section under the 'Metadata' tab.",
                     "dateType": "A date type must be provided for dates associated with the metadata in the 'Basic Information' section under the 'Metadata' tab."
                   }
                 }
@@ -297,7 +280,7 @@
                   "dateType": {
                     "const": "creation",
                     "errorMessage": {
-                      "const": "A creation date for the metadata must be provided in the 'Basic Information' section under the 'Metadata' tab."
+                      "const": "At least one date with the type 'creation' must be provided in the 'Basic Information' section under the 'Metadata' tab."
                     }
                   }
                 }
@@ -436,7 +419,7 @@
             ],
             "errorMessage": {
               "required": {
-                "distributor": "Provide a distributor under the 'Distribution' tab."
+                "distributor": "Provide a distributor for the resource under the 'Distribution' tab."
               }
             }
           }
