@@ -3,7 +3,7 @@
   "title": "AK Region Project Schema",
   "description": "Minimum required fields and terms for metadata written for USFWS Alaska Region projects.",
   "$id": "ak-project-metadata.json",
-  "version": "3.1.0",
+  "version": "3.2.0",
   "properties": {
     "metadata": {
       "properties": {
@@ -134,7 +134,7 @@
                     ],
                     "errorMessage": {
                       "required": {
-                        "uri": "A URI for the project homepage must be provided in the 'Online Resource' section of the 'Citation' section under the 'Main' tab. This should be a link for browsing rather than a direct download link."
+                        "uri": "If providing an online resource for a project, a URI for the project homepage must be provided in the 'Online Resource' section of the 'Citation' section under the 'Main' tab. This should be a link for browsing rather than a direct download link."
                       }
                     }
                   }
@@ -167,7 +167,7 @@
                 "required": {
                   "title": "A short, descriptive project title must be provided in the 'Basic Information' section under the 'Main' tab.",
                   "date": "At least one date (e.g. award, start, revision) must be provided in the 'Citation' section under the 'Main' tab.",
-                  "responsibleParty": "At least one Responsible Party must be provided in the 'Citation' section under the 'Main' tab."
+                  "responsibleParty": "At least one Responsible Party associated with the project's citation must be provided in the 'Citation' section under the 'Main' tab."
                 }
               }
             },
@@ -209,7 +209,7 @@
                 ],
                 "errorMessage": {
                   "required": {
-                    "keyword": "At least one keyword must be provided from each thesaurus under the 'Keywords' tab.",
+                    "keyword": "At least one keyword must be provided from each selected thesaurus under the 'Keywords' tab.",
                     "thesaurus": "At least one keyword must be provided from the Global Change Master Directory (GCMD) Science Keywords thesaurus under the 'Keywords' tab."
                   }
                 }
@@ -282,7 +282,6 @@
               }
             },
             "metadataContact": {
-              "uniqueItems": true,
               "allOf": [
                 {
                   "contains": {
@@ -320,9 +319,6 @@
                     "party": "A contact must be provided in the 'Metadata Contacts' section under the 'Metadata' tab."
                   }
                 }
-              },
-              "errorMessage": {
-                "uniqueItems": "Each role in the 'Metadata Contacts' section under the 'Metadata' tab must be unique."
               }
             }
           },
@@ -334,8 +330,80 @@
           "errorMessage": {
             "required": {
               "metadataStatus": "The status of the metadata (e.g. onGoing, completed), must be provided in the 'Basic Information' section under the 'Metadata' tab.",
-              "metadataDate": "At least one date associated with the metadata (such as creation) must be provided in the 'Basic Information' section under the 'Metadata' tab.",
-              "metadataContact": "At least one contact must be provided in the 'Metadata Contact' section under the 'Metadata' tab. At least one role must be 'pointOfContact'."
+              "metadataDate": "A creation date for the metadata must be provided in the 'Basic Information' section under the 'Metadata' tab.",
+              "metadataContact": "An author and a pointOfContact for the metadata must be provided in the 'Metadata Contact' section under the 'Metadata' tab."
+            }
+          }
+        },
+        "resourceDistribution": {
+          "items": {
+            "properties": {
+              "distributor": {
+                "items": {
+                  "properties": {
+                    "contact": {
+                      "properties": {
+                        "role": {
+                          "const": "distributor",
+                          "errorMessage": {
+                            "const": "Role for distributor in the 'Distributor' section under the 'Distribution' tab must be 'distributor'."
+                          }
+                        },
+                        "party": {}
+                      },
+                      "required": [
+                        "role",
+                        "party"
+                      ],
+                      "errorMessage": {
+                        "required": {
+                          "role": "Indicate 'distributor' as the role for the product distributor under the 'Distribution' tab.",
+                          "party": "Indicate the organization that will distribute the product as the contact under the 'Distribution' tab."
+                        }
+                      }
+                    },
+                    "transferOption": {
+                      "items": {
+                        "properties": {
+                          "onlineOption": {
+                            "items": {
+                              "properties": {
+                                "uri": {}
+                              },
+                              "required": [
+                                "uri"
+                              ],
+                              "errorMessage": {
+                                "required": {
+                                  "uri": "A URI must be provided for an online option to access the resource under the 'Transfer Option' section of the 'Distributor' section under the 'Distribution' tab. The URI should link to either the direct download (URI that will automatically start a download) or the link to page where you can download the resource."
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "required": [
+                          "onlineOption"
+                        ],
+                        "errorMessage": {
+                          "required": {
+                            "onlineOption": "An online option for distribution must be provided in the 'Transfer Option' section of the 'Distributor' section under the 'Distribution' tab."
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "contact",
+                    "transferOption"
+                  ],
+                  "errorMessage": {
+                    "required": {
+                      "contact": "Provide a contact for distribution in the 'Distributor' section under the 'Distribution' tab.",
+                      "transferOption": "A transfer option must be provided for distribution in the 'Distributor' section under the 'Distribution' tab."
+                    }
+                  }
+                }
+              }
             }
           }
         },
