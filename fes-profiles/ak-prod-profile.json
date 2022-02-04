@@ -48,13 +48,13 @@
       },
       "metadata": {
         "metadataIdentifier": false,
+        "parentMetadata": false,
         "onlineResource": false,
         "maintenance": false,
         "defaultLocale": false,
         "alternateMetadataReference": false
       },
       "extent": {
-        "description": false,
         "geographic": {
           "containsData": false
         }
