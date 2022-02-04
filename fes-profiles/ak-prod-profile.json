@@ -3,7 +3,7 @@
   "namespace": "gov.fws.profile",
   "title": "AK Region Product Profile",
   "description": "Hides fields and navigation menu items to simplify metadata entry for USFWS Alaska Region Staff during product metadata entry.",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "components": {
     "record": {
       "main": {
@@ -55,6 +55,7 @@
         "alternateMetadataReference": false
       },
       "extent": {
+        "description": false,
         "geographic": {
           "containsData": false
         }
