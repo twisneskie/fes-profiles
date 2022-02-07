@@ -3,7 +3,7 @@
   "title": "AK Region Product Schema",
   "description": "Minimum required fields and terms for metadata written for USFWS Alaska Region data products.",
   "$id": "ak-product-schema.json",
-  "version": "2.4.4",
+  "version": "2.4.5",
   "properties": {
     "metadata": {
       "properties": {
@@ -504,6 +504,6 @@
     ]
   },
   "errorMessage": {
-    "then": "If this data product is a tabular dataset, then it must be associated with a data dictionary under the 'Dictionaries' tab."
+    "required": "If this data product is a tabular dataset, then it must be associated with a data dictionary under the 'Dictionaries' tab."
   }
 }
