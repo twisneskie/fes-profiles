@@ -503,5 +503,5 @@
       "metadata"
     ]
   },
-  "errorMessage": "If a data product is a 'tabularDataset', then it must be associated with a data dictionary under the 'Dictionaries' tab."
+  "errorMessage": "This is where the issue is."
 }
