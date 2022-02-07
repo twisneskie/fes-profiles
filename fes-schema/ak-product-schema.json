@@ -502,5 +502,6 @@
     "required": [
       "metadata"
     ]
-  }
+  },
+  "errorMessage": "Bug"
 }
