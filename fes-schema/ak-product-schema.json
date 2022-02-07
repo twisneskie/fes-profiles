@@ -503,5 +503,7 @@
       "metadata"
     ]
   },
-  "errorMessage": "Bug"
+  "errorMessage": {
+    "then": "If this data product is a tabular dataset, then it must be associated with a data dictionary under the 'Dictionaries' tab."
+  }
 }
