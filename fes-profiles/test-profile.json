@@ -41,7 +41,8 @@
           "identifier": false,
           "periodName": false,
           "interval": false,
-          "duration": false
+          "duration": false,
+          "description": false
         },
         "maintenance": {
           "contact": false,
