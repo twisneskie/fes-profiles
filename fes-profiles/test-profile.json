@@ -3,7 +3,7 @@
   "namespace": "gov.fws.profile",
   "title": "Test Product Profile",
   "description": "A file for testing profiles.",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "components": {
     "record": {
       "main": {
@@ -27,9 +27,9 @@
             "applicationProfile": false,
             "protocolRequest": false
           },
-          "identifier": true,
+          "identifier": false,
           "identifierShort": false,
-          "identifierSimple": false,
+          "identifierSimple": true,
           "otherCitationDetails": false,
           "graphic": false
         },
