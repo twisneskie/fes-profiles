@@ -1,12 +1,12 @@
-# FES mdEditor Profiles and Schema
+# FES Test mdEditor Profiles and Schema
 
-The mdEditor program allows users to create metadata for a wide variety of data types, which results in edit sessions displaying many more fields than a user will need for the data they are describing. Profiles in mdEditor allow users to hide fields that are not needed for their metadata. Validation schema in mdEditor allow custom metadata content standards to be enforced and displays custom error messages to guide users.
+This repository is used for testing experimental mdEditor profile definitions and schema. Use care when implementing them in mdEditor as schema may be unstable. 
 
-## FES Profiles
+## Profile Definitions
 
-FES Profiles are created for mdEditor users within USFWS Alaska Region Fisheries and Ecological Services program in order to create a more streamlined metadata creation process. Profiles control which fields and menus are displayed when editing metadata.
+Profile definitions are created for mdEditor users in order to create a more streamlined metadata creation process. Profiles control which fields and menus are displayed when editing metadata.
 
-### Adding profiles to mdEditor
+### Adding profile definitions to mdEditor
 1. Go to Settings/Profiles.
 2. Click the 'Manage Definitions' button.
 3. Select 'Add Definition'.
